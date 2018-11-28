@@ -1,0 +1,5 @@
+rootProject.name = 'tictactoe'
+include 'config-server'
+include 'discovery-server'
+include 'user-service'
+
