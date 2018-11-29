@@ -16,9 +16,11 @@ public class DataLoader implements ApplicationRunner {
   }
 
   public void run(ApplicationArguments args) {
+    userRepository.deleteAll()
+        .subscribe();
     userRepository.save(new User("lala", 0))
         .subscribe();
-    userRepository.save(new User("baba", 0))
+    userRepository.save(new User("tata", 0))
         .subscribe();
   }
 }

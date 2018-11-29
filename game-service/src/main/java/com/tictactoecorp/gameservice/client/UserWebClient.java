@@ -2,7 +2,6 @@ package com.tictactoecorp.gameservice.client;
 
 import com.tictactoecorp.domain.User;
 import com.tictactoecorp.gameservice.config.ApplicationConfig;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -29,7 +28,6 @@ public class UserWebClient {
         .build()
         .get()
         .uri(applicationConfig.getUserServiceUrl() + "/v1/users/{userId}", userId)
-        .accept(MediaType.APPLICATION_JSON_UTF8)
         .retrieve()
         .bodyToMono(User.class);
   }
