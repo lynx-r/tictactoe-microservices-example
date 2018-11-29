@@ -1,11 +1,9 @@
 package com.tictactoecorp.gameservice.controller;
 
-import com.tictactoecorp.domain.User;
+import com.tictactoecorp.domain.Game;
 import com.tictactoecorp.gameservice.service.GameService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.ws.rs.QueryParam;
@@ -16,7 +14,7 @@ import javax.ws.rs.QueryParam;
  * Time: 08:49
  */
 @RestController
-@RequestMapping("v1/game/{userId}")
+@RequestMapping("v1/games")
 public class GameController {
 
   private final GameService gameService;
@@ -25,14 +23,17 @@ public class GameController {
     this.gameService = gameService;
   }
 
-  @PostMapping("/{opponentId}")
+  @GetMapping("")
+  public Flux<Game> getGames() {
+    return gameService.getAllGames();
+  }
+
+  @PostMapping("{userId}/{opponentId}")
   public Mono<?> createGame(
       @PathVariable("userId") String userId,
       @PathVariable("opponentId") String opponentId,
       @QueryParam("black") Boolean black
   ) {
-    User user = new User();
-    User user2 = new User();
-    return gameService.createGame(user, user2, black);
+    return gameService.createGame(userId, opponentId, black);
   }
 }

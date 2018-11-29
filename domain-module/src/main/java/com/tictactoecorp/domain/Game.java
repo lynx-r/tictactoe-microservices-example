@@ -1,5 +1,7 @@
 package com.tictactoecorp.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -29,7 +31,8 @@ public class Game {
 
   private List<List<Boolean>> field;
 
-  public Game(User userBlack, User userWhite) {
+  @JsonCreator
+  public Game(@JsonProperty("userBlack") User userBlack, @JsonProperty("userWhite") User userWhite) {
     this.userBlack = userBlack;
     this.userWhite = userWhite;
   }

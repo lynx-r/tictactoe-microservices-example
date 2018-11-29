@@ -8,5 +8,8 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 logging:
   level:
-    org.springframework: DEBUG
-    reactor: ERROR
+    root: WARN
+    org.springframework.web: DEBUG
+    com.tictactoecorp: DEBUG
+
+userservice-url: "http://userservice"

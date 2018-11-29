@@ -2,8 +2,10 @@ package com.tictactoecorp.gameservice.service;
 
 import com.tictactoecorp.domain.Game;
 import com.tictactoecorp.domain.User;
+import com.tictactoecorp.gameservice.client.UserWebClient;
 import com.tictactoecorp.gameservice.repository.GameRepository;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
@@ -17,20 +19,33 @@ import java.util.ArrayList;
 public class GameService {
 
   private final GameRepository gameRepository;
+  private final UserWebClient userClient;
 
-  public GameService(GameRepository gameRepository) {
+  public GameService(GameRepository gameRepository,
+                     UserWebClient userWebClient) {
     this.gameRepository = gameRepository;
+    this.userClient = userWebClient;
   }
 
-  public Mono<Game> createGame(User userBlack, User userWhite, Boolean black) {
-    Game game;
-    if (black) {
-      game = new Game(userBlack, userWhite);
-    } else {
-      game = new Game(userWhite, userBlack);
-    }
-    initGameField(game);
-    return gameRepository.save(game);
+  public Flux<Game> getAllGames() {
+    return gameRepository.findAll();
+  }
+
+  public Mono<Game> createGame(String userBlackId, String userWhiteId, Boolean black) {
+    Mono<User> userBlackMono = userClient.getUser(userBlackId);
+    Mono<User> userWhiteMono = userClient.getUser(userWhiteId);
+    return userBlackMono
+        .zipWith(userWhiteMono, (userBlack, userWhite) -> {
+          Game game;
+          if (black) {
+            game = new Game(userBlack, userWhite);
+          } else {
+            game = new Game(userWhite, userBlack);
+          }
+          initGameField(game);
+          return game;
+        })
+        .flatMap(gameRepository::insert);
   }
 
   private void initGameField(Game game) {

@@ -1,5 +1,7 @@
 package com.tictactoecorp.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,5 +18,11 @@ public class User {
   @Id
   private String id;
   private String name;
-  private String score;
+  private Integer score;
+
+  @JsonCreator
+  public User(@JsonProperty("name") String name, @JsonProperty("score") Integer score) {
+    this.name = name;
+    this.score = score;
+  }
 }
