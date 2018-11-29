@@ -1,6 +1,6 @@
 package com.tictactoecorp.gameservice.repository;
 
-import com.tictactoecorp.gameservice.model.Game;
+import com.tictactoecorp.domain.Game;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 /**

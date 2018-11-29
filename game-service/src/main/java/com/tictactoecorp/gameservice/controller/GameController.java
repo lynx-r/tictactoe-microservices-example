@@ -1,5 +1,6 @@
 package com.tictactoecorp.gameservice.controller;
 
+import com.tictactoecorp.domain.User;
 import com.tictactoecorp.gameservice.service.GameService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +31,8 @@ public class GameController {
       @PathVariable("opponentId") String opponentId,
       @QueryParam("black") Boolean black
   ) {
-    return gameService.createGame(userId, opponentId, black);
+    User user = new User();
+    User user2 = new User();
+    return gameService.createGame(user, user2, black);
   }
 }

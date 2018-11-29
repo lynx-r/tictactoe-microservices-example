@@ -1,16 +1,11 @@
-plugins {
-    id 'java'
+subprojects {
+    apply plugin: 'java'
+    group = 'com.tictactoecorp'
+    version = '1.0-SNAPSHOT'
 }
 
-group 'com.tictactoecorp'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
+//project(':game-service') {
+//    dependencies {
+//       implementation project(':domain-module')
+//    }
+//}

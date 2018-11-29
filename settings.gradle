@@ -1,5 +1,6 @@
 rootProject.name = 'tictactoe'
 include 'config-server'
 include 'discovery-server'
+include 'domain-module'
 include 'user-service'
-
+include 'game-service'

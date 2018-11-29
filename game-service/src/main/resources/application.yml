@@ -9,3 +9,4 @@ eureka:
 logging:
   level:
     org.springframework: DEBUG
+    reactor: ERROR

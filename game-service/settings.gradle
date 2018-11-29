@@ -1,1 +1,3 @@
 rootProject.name = 'game-service'
+include ':domain-module'
+project(':domain-module').projectDir = file('../domain-module')

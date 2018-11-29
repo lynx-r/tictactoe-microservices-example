@@ -1,7 +1,6 @@
-package com.tictactoecorp.gameservice.model;
+package com.tictactoecorp.domain;
 
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -23,15 +22,15 @@ public class Game {
   private String id;
 
   @DBRef
-  private ObjectId userBlack;
+  private User userBlack;
 
   @DBRef
-  private ObjectId userWhite;
+  private User userWhite;
 
   private List<List<Boolean>> field;
 
-  public Game(String userBlack, String userWhite) {
-    this.userBlack = new ObjectId(userBlack);
-    this.userWhite = new ObjectId(userWhite);
+  public Game(User userBlack, User userWhite) {
+    this.userBlack = userBlack;
+    this.userWhite = userWhite;
   }
 }

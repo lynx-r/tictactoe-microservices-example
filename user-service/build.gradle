@@ -17,7 +17,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.tictactoecorp'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 11
+sourceCompatibility = 10
 
 repositories {
     mavenCentral()
@@ -27,8 +27,8 @@ repositories {
 ext['springCloudVersion'] = 'Greenwich.M3'
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
-    implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+    implementation project(':domain-module')
+
     implementation('org.springframework.boot:spring-boot-starter-security')
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-webflux')
