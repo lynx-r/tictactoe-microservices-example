@@ -28,6 +28,11 @@ public class GameController {
     return gameService.getAllGames();
   }
 
+  @GetMapping("long")
+  public Flux<Game> getGamesLong() {
+    return gameService.getAllGamesLong();
+  }
+
   @PostMapping("{userId}/{opponentId}")
   public Mono<?> createGame(
       @PathVariable("userId") String userId,

@@ -1,5 +1,6 @@
 package com.tictactoecorp.user.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.tictactoecorp.domain.User;
 import com.tictactoecorp.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,12 @@ public class UserService {
     this.userRepository = userRepository;
   }
 
+  @HystrixCommand
   public Flux<User> getAllUsers() {
     return userRepository.findAll();
   }
 
+  @HystrixCommand
   public Mono<User> getUser(String userId) {
     return userRepository.findById(userId);
   }
