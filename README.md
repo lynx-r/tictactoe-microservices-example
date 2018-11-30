@@ -14,3 +14,8 @@
 
 Where `5bff786c6d0ae45f786b622d` - the first user, `5bff786c6d0ae45f786b622c` - the second user 
 and `black` marks the first like the black
+
+## Run Zipkin server
+
+See this [Zipkin quickstart](https://github.com/openzipkin/zipkin#quick-start)
+ 

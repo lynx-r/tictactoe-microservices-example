@@ -1,4 +1,4 @@
-package com.tictactoecorp.discoveryservice;
+package com.tictactoecorp.discoveryserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
