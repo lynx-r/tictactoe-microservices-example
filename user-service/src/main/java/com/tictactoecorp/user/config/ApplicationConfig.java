@@ -1,8 +1,8 @@
-package com.tictactoecorp.gameservice.config;
+
+package com.tictactoecorp.user.config;
 
 import com.tictactoecorp.authmodule.config.SpringSecurityWebFluxConfig;
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -15,8 +15,5 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @Import(SpringSecurityWebFluxConfig.class)
 public class ApplicationConfig {
-
-  @Value("${userservice-url}")
-  private String userServiceUrl;
 
 }
