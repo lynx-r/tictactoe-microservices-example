@@ -1,3 +1,5 @@
 rootProject.name = 'user-service'
 include ':domain-module'
 project(':domain-module').projectDir = file('../domain-module')
+include ':auth-module'
+project(':auth-module').projectDir = file('../auth-module')

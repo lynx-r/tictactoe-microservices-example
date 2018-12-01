@@ -10,8 +10,17 @@
 
 
 ####################################
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${DISCOVERY_SERVER_URL:http://localhost:8761/eureka/}
+
 server:
-  port: 8888
+  port: ${PORT:8888}
 spring:
   cloud:
     config:
@@ -19,10 +28,9 @@ spring:
         enabled: true
       server:
         git:
-          uri: https://github.com/${GITHUB_USERNAME}/tictactoe-config-repo.git
-          searchPaths: userservice,gameservice
-          username: ${GITHUB_USERNAME}
-          password: ${GITHUB_PASSWORD}
+          uri: ${GIT_CONFIG_URL:https://github.com/lynx-r/tictactoe-config-repo.git}
+#          username: ${GITHUB_USERNAME}
+#          password: ${GITHUB_PASSWORD}
 
 
 ####

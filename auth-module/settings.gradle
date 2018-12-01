@@ -1,0 +1,3 @@
+rootProject.name = 'auth-module'
+include ':domain-module'
+project(':domain-module').projectDir = file('../domain-module')

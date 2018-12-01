@@ -2,6 +2,7 @@ package com.tictactoecorp.gameservice.client;
 
 import com.tictactoecorp.domain.User;
 import com.tictactoecorp.gameservice.config.ApplicationConfig;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -29,6 +30,8 @@ public class UserWebClient {
         .get()
         .uri(applicationConfig.getUserServiceUrl() + "/v1/users/{userId}", userId)
         .retrieve()
+        .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
+        .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))
         .bodyToMono(User.class);
   }
 }

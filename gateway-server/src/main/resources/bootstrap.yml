@@ -1,8 +1,6 @@
-encrypt.key: ${ENCRYPT_KEY:12345}
-
 spring:
   application:
-    name: gameservice
+    name: gatewayserver
   profiles:
     active:
       default
