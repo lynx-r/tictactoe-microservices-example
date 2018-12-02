@@ -1,0 +1,13 @@
+encrypt.key: ${ENCRYPT_KEY:12345}
+
+spring:
+  application:
+    name: adminservice
+  profiles:
+    active:
+      default
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configserver

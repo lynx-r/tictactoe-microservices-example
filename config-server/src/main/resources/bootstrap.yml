@@ -1,3 +1,5 @@
+encrypt.key: ${ENCRYPT_KEY:12345}
+
 spring:
   application:
     name: configserver

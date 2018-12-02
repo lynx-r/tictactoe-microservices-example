@@ -1,3 +1,9 @@
 #Default port is 8761
 server:
   port: ${PORT:8761}
+
+spring:
+  security:
+    user:
+      name: ${EUREKA_NAME:eureka}
+      password: ${EUREKA_PASSWORD:password}

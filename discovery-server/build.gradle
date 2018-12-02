@@ -28,6 +28,7 @@ ext['springCloudVersion'] = 'Greenwich.M3'
 
 dependencies {
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+    implementation('org.springframework.boot:spring-boot-starter-security')
 
     compile('javax.xml.bind:jaxb-api:2.3.0')
     compile('javax.activation:activation:1.1')
