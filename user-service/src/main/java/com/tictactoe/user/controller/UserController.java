@@ -2,10 +2,7 @@ package com.tictactoe.user.controller;
 
 import com.tictactoe.domain.User;
 import com.tictactoe.user.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -32,5 +29,10 @@ public class UserController {
   @GetMapping("{userId}")
   public Mono<User> getUser(@PathVariable String userId) {
     return userService.getUser(userId);
+  }
+
+  @PostMapping("")
+  public Mono<User> createUser(@RequestBody User user) {
+    return userService.createUser(user);
   }
 }

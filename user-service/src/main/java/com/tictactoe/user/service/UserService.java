@@ -30,4 +30,9 @@ public class UserService {
   public Mono<User> getUser(String userId) {
     return userRepository.findById(userId);
   }
+
+  @HystrixCommand
+  public Mono<User> createUser(User user) {
+    return userRepository.insert(user);
+  }
 }

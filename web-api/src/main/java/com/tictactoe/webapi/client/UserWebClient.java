@@ -2,9 +2,10 @@ package com.tictactoe.webapi.client;
 
 import com.tictactoe.domain.User;
 import com.tictactoe.webapi.config.ApplicationConfig;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -24,14 +25,31 @@ public class UserWebClient {
     this.applicationConfig = applicationConfig;
   }
 
+  public Flux<User> getAllUsers() {
+    return webClientBuilder
+        .build()
+        .get()
+        .uri(applicationConfig.getUserServiceUrl() + "v1/users")
+        .retrieve()
+        .bodyToFlux(User.class);
+  }
+
+  public Mono<User> createUser(User userRequest) {
+    return webClientBuilder
+        .build()
+        .post()
+        .uri(applicationConfig.getUserServiceUrl() + "/v1/users")
+        .body(BodyInserters.fromObject(userRequest))
+        .retrieve()
+        .bodyToMono(User.class);
+  }
+
   public Mono<User> getUser(String userId) {
     return webClientBuilder
         .build()
         .get()
         .uri(applicationConfig.getUserServiceUrl() + "/v1/users/{userId}", userId)
         .retrieve()
-        .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
-        .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))
         .bodyToMono(User.class);
   }
 }

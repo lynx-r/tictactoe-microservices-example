@@ -1,5 +1,6 @@
 package com.tictactoe.gameservice.client;
 
+import com.tictactoe.domain.User;
 import com.tictactoe.gameservice.config.ApplicationConfig;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
