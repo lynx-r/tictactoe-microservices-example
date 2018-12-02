@@ -1,19 +1,46 @@
 # An example of a simple microservices application
 
-## GET users
+# Users
+
+## Authenticate
+
+![Login with Basic Auth](https://monosnap.com/file/d0ugMpb6iKuP9nvOcooCp5zCzJegYi)
+
+## View users
 
 `http://localhost:5555/api/user/v1/users`
 
-## GET games
+![View all Users](https://monosnap.com/file/9Hf3p6prihdKGQH66jvUtI6bAhKGSo)
+
+# Games
+
+## Authenticate
+
+![Login with Basic Auth](https://monosnap.com/file/uEEytZf4QcySoEJtmfOh8dKTrlUJji)
+
+There are two users:
+
+user / password
+admin / password
+
+User can view games. Admin can create games.
+
+## View games
 
 `http://localhost:5555/api/game/v1/games`
 
-## POST game
+![Request all Games](https://monosnap.com/file/PpfDWVpa6QwAHTFC7Z9xaftLvTobwC)
+
+## Create game
 
 `http://localhost:5555/api/game/v1/games/5bff786c6d0ae45f786b622d/5bff786c6d0ae45f786b622c?black=true`
 
+![Create a Game](https://monosnap.com/file/5GikwzspvziRf67LrLXGhTi9tQCXHL)
+
 Where `5bff786c6d0ae45f786b622d` - the first user, `5bff786c6d0ae45f786b622c` - the second user 
 and `black` marks the first like the black
+
+    Only user authenticated as admin can create a game.
 
 ## Run Zipkin server
 
