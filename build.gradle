@@ -1,10 +1,10 @@
 subprojects {
     apply plugin: 'java'
-    group = 'com.tictactoecorp'
+    group = 'com.tictactoe'
     version = '1.0-SNAPSHOT'
 }
 
-group = 'com.tictactoecorp'
+group = 'com.tictactoe'
 version = '1.0-SNAPSHOT'
 
 //project(':game-service') {

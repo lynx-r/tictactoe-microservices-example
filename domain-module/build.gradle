@@ -26,7 +26,7 @@ bootJar.enabled = false
 
 jar {
     enabled = true
-    group 'com.tictactoecorp'
+    group 'com.tictactoe'
     baseName = 'domain-module'
     version = '1.0'
 }
