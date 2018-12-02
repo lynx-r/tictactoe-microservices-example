@@ -18,4 +18,15 @@ and `black` marks the first like the black
 ## Run Zipkin server
 
 See this [Zipkin quickstart](https://github.com/openzipkin/zipkin#quick-start)
+
+I run it like this:
+
+```
+docker run -d -p 9411:9411 openzipkin/zipkin
+```
  
+And I added this line to my `/etc/hosts`:
+
+```
+192.168.1.2     mydomain
+```

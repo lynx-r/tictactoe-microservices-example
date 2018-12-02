@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 
 public class JWTAuthSuccessHandler implements ServerAuthenticationSuccessHandler {
 
-  private static String getHttpAuthHeaderValue(Authentication authentication) {
+  public static String getHttpAuthHeaderValue(Authentication authentication) {
     return String.join(" ", "Bearer", tokenFromAuthentication(authentication));
   }
 

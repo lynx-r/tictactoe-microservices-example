@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
@@ -17,7 +16,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.authentication.AuthenticationWebFilter;
 
 @Configuration
-@EnableWebFluxSecurity
+//@EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
 public class SpringSecurityWebFluxConfig {
 
@@ -51,8 +50,9 @@ public class SpringSecurityWebFluxConfig {
         .and()
         .addFilterAt(authenticationJWT, SecurityWebFiltersOrder.FIRST)
         .authorizeExchange()
-        .pathMatchers(HttpMethod.GET, "/api/movie/**").hasRole("USER")
-        .pathMatchers(HttpMethod.POST, "/api/movie/**").hasRole("ADMIN")
+        .pathMatchers(HttpMethod.GET, "/v1/users/**").hasRole("USER")
+        .pathMatchers(HttpMethod.GET, "/v1/games/**").hasRole("USER")
+        .pathMatchers(HttpMethod.POST, "/v1/games/**").hasRole("ADMIN")
         .anyExchange().authenticated()
         .and()
         .addFilterAt(new JWTAuthWebFilter(), SecurityWebFiltersOrder.HTTP_BASIC);

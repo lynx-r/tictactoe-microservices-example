@@ -41,8 +41,9 @@ public class JWTAuthWebFilter implements WebFilter {
 
   private ServerWebExchangeMatcher getAuthMatcher() {
     List<ServerWebExchangeMatcher> matchers = new ArrayList<>(2);
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/api/movie/**", HttpMethod.GET));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/api/movie/**", HttpMethod.POST));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.GET));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/games/**", HttpMethod.GET));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/games/**", HttpMethod.POST));
 
     ServerWebExchangeMatcher authMatcher = ServerWebExchangeMatchers.matchers(new OrServerWebExchangeMatcher(matchers));
     return authMatcher;
