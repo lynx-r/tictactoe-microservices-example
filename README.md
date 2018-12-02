@@ -4,7 +4,7 @@
 
 ## Authenticate
 
-![Login with Basic Auth](https://monosnap.com/file/d0ugMpb6iKuP9nvOcooCp5zCzJegYi)
+![](https://monosnap.com/file/d0ugMpb6iKuP9nvOcooCp5zCzJegYi)
 
 ## View users
 
