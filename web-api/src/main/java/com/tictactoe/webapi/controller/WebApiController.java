@@ -3,6 +3,7 @@ package com.tictactoe.webapi.controller;
 import com.tictactoe.domain.Game;
 import com.tictactoe.domain.User;
 import com.tictactoe.webapi.service.WebApiService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,18 @@ public class WebApiController {
 
   public WebApiController(WebApiService webApiService) {
     this.webApiService = webApiService;
+  }
+
+  @GetMapping("greetGuest")
+  @PreAuthorize("permitAll()")
+  public Mono<Map> getIndex() {
+    return Mono.just(Map.of("greet", "Hi there"));
+  }
+
+  @GetMapping("greetAdmin")
+  @PreAuthorize("hasRole('ADMIN')")
+  public Mono<Map> getIndexProtected() {
+    return Mono.just(Map.of("greet", "Hi admin"));
   }
 
   @GetMapping("users")

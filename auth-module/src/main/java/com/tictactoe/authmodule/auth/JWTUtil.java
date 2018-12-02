@@ -21,16 +21,25 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.joining;
+
 public class JWTUtil {
   public final static String DEFAULT_SECRET = "packtpubpacktpubpacktpubpacktpub";
   private static final String BEARER = "Bearer ";
+  public static final String TOKEN_ISSUER_COM = "tictactoe-example.com";
+  public static final String CLAIM = "auths";
 
   public static String generateToken(String subjectName, Collection<? extends GrantedAuthority> authorities) {
     JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
         .subject(subjectName)
-        .issuer("javacodebook.com")
+        .issuer(TOKEN_ISSUER_COM)
         .expirationTime(new Date(new Date().getTime() + 30 * 1000))
-        .claim("auths", authorities.parallelStream().map(auth -> (GrantedAuthority) auth).map(a -> a.getAuthority()).collect(Collectors.joining(",")))
+        .claim(CLAIM,
+            authorities
+                .parallelStream()
+                .map(auth -> (GrantedAuthority) auth)
+                .map(GrantedAuthority::getAuthority)
+                .collect(joining(",")))
         .build();
 
     SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);
@@ -44,7 +53,7 @@ public class JWTUtil {
     return signedJWT.serialize();
   }
 
-  public static JWSSigner getJWTSigner() {
+  private static JWSSigner getJWTSigner() {
     JWSSigner jwsSigner;
     try {
       jwsSigner = new MACSigner(DEFAULT_SECRET);
@@ -54,23 +63,21 @@ public class JWTUtil {
     return jwsSigner;
   }
 
-  public static String getAuthorizationPayload(ServerWebExchange serverWebExchange) {
+  static String getAuthorizationPayload(ServerWebExchange serverWebExchange) {
     return serverWebExchange.getRequest()
         .getHeaders()
         .getFirst(HttpHeaders.AUTHORIZATION);
   }
 
-  public static Predicate<String> matchBearerLength() {
-    Predicate<String> matchBearerLength = authValue -> authValue.length() > BEARER.length();
-    return matchBearerLength;
+  static Predicate<String> matchBearerLength() {
+    return authValue -> authValue.length() > BEARER.length();
   }
 
-  public static Function<String, String> getBearerValue() {
-    Function<String, String> getBearerValue = authValue -> authValue.substring(BEARER.length());
-    return getBearerValue;
+  static Function<String, String> getBearerValue() {
+    return authValue -> authValue.substring(BEARER.length());
   }
 
-  public static Mono<SignedJWT> verifySignedJWT(String token) {
+  static Mono<SignedJWT> verifySignedJWT(String token) {
     try {
       return Mono.just(SignedJWT.parse(token));
     } catch (ParseException e) {
@@ -78,19 +85,23 @@ public class JWTUtil {
     }
   }
 
-  public static Authentication getUsernamePasswordAuthenticationToken(Mono<SignedJWT> signedJWTMono) {
+  static Authentication getUsernamePasswordAuthenticationToken(Mono<SignedJWT> signedJWTMono) {
     SignedJWT signedJWT = signedJWTMono.block();
     String subject;
     String auths;
 
     try {
-      subject = signedJWT.getJWTClaimsSet().getSubject();
-      auths = (String) signedJWT.getJWTClaimsSet().getClaim("auths");
+      if (signedJWT != null) {
+        subject = signedJWT.getJWTClaimsSet().getSubject();
+        auths = (String) signedJWT.getJWTClaimsSet().getClaim("auths");
+      } else {
+        return null;
+      }
     } catch (ParseException e) {
       return null;
     }
-    List authorities = Stream.of(auths.split(","))
-        .map(a -> new SimpleGrantedAuthority(a))
+    List<GrantedAuthority> authorities = Stream.of(auths.split(","))
+        .map(SimpleGrantedAuthority::new)
         .collect(Collectors.toList());
 
     return new UsernamePasswordAuthenticationToken(subject, null, authorities);

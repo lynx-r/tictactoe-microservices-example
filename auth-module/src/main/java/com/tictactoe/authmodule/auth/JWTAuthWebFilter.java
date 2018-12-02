@@ -40,7 +40,7 @@ public class JWTAuthWebFilter implements WebFilter {
   }
 
   private ServerWebExchangeMatcher getAuthMatcher() {
-    List<ServerWebExchangeMatcher> matchers = new ArrayList<>(2);
+    List<ServerWebExchangeMatcher> matchers = new ArrayList<>();
     matchers.add(new PathPatternParserServerWebExchangeMatcher("/users/**", HttpMethod.GET));
     matchers.add(new PathPatternParserServerWebExchangeMatcher("/user/**", HttpMethod.POST));
     matchers.add(new PathPatternParserServerWebExchangeMatcher("/games/**", HttpMethod.GET));
@@ -56,7 +56,7 @@ public class JWTAuthWebFilter implements WebFilter {
   private Mono<Void> authenticate(ServerWebExchange exchange,
                                   WebFilterChain chain, Authentication token) {
     WebFilterExchange webFilterExchange = new WebFilterExchange(exchange, chain);
-    return this.reactiveAuthManager.authenticate(token)
+    return reactiveAuthManager.authenticate(token)
         .flatMap(authentication -> onAuthSuccess(authentication, webFilterExchange));
   }
 
@@ -64,8 +64,8 @@ public class JWTAuthWebFilter implements WebFilter {
     ServerWebExchange exchange = webFilterExchange.getExchange();
     SecurityContextImpl securityContext = new SecurityContextImpl();
     securityContext.setAuthentication(authentication);
-    return this.securityContextRepository.save(exchange, securityContext)
-        .then(this.authSuccessHandler
+    return securityContextRepository.save(exchange, securityContext)
+        .then(authSuccessHandler
             .onAuthenticationSuccess(webFilterExchange, authentication))
         .subscriberContext(ReactiveSecurityContextHolder.withSecurityContext(Mono.just(securityContext)));
   }

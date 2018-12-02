@@ -23,6 +23,7 @@ public class SpringSecurityWebFluxConfig {
   private static final String[] WHITELISTED_AUTH_URLS = {
       "/login",
       "/",
+      "/public/**",
       "/auth/**"
   };
 
@@ -49,6 +50,8 @@ public class SpringSecurityWebFluxConfig {
         .permitAll()
         .and()
         .addFilterAt(authenticationJWT, SecurityWebFiltersOrder.FIRST)
+        .exceptionHandling()
+        .and()
         .authorizeExchange()
         .pathMatchers(HttpMethod.GET, "/users/**").hasRole("USER")
         .pathMatchers(HttpMethod.POST, "/user/**").hasRole("ADMIN")
@@ -58,9 +61,11 @@ public class SpringSecurityWebFluxConfig {
         .pathMatchers(HttpMethod.POST, "/v1/users/**").hasRole("ADMIN")
         .pathMatchers(HttpMethod.GET, "/v1/games/**").hasRole("USER")
         .pathMatchers(HttpMethod.POST, "/v1/games/**").hasRole("ADMIN")
-        .anyExchange().authenticated()
+        .anyExchange()
+        .authenticated()
         .and()
-        .addFilterAt(new JWTAuthWebFilter(), SecurityWebFiltersOrder.HTTP_BASIC);
+        .addFilterAt(new JWTAuthWebFilter(), SecurityWebFiltersOrder.HTTP_BASIC)
+        .exceptionHandling();
 
     return http.build();
   }

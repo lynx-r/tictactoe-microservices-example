@@ -10,7 +10,7 @@ eureka:
 logging:
   level:
     com.netflix: DEBUG
-    org.springframework: DEBUG
+    org.springframework.http.codec.json: DEBUG
     com.tictactoecorp: DEBUG
 
 userservice-url: "http://userservice"
