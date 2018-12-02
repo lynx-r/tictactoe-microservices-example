@@ -27,13 +27,13 @@ public class WebApiController {
     this.webApiService = webApiService;
   }
 
-  @GetMapping("greetGuest")
+  @GetMapping("users/greetGuest")
   @PreAuthorize("permitAll()")
   public Mono<Map> getIndex() {
     return Mono.just(Map.of("greet", "Hi there"));
   }
 
-  @GetMapping("greetAdmin")
+  @GetMapping("users/greetAdmin")
   @PreAuthorize("hasRole('ADMIN')")
   public Mono<Map> getIndexProtected() {
     return Mono.just(Map.of("greet", "Hi admin"));
