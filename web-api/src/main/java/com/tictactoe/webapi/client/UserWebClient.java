@@ -29,7 +29,7 @@ public class UserWebClient {
     return webClientBuilder
         .build()
         .get()
-        .uri(applicationConfig.getUserServiceUrl() + "v1/users")
+        .uri(applicationConfig.getUserServiceUrl() + "/v1/users")
         .retrieve()
         .bodyToFlux(User.class);
   }

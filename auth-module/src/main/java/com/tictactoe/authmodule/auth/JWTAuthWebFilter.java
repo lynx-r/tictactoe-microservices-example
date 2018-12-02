@@ -33,7 +33,7 @@ public class JWTAuthWebFilter implements WebFilter {
   @Override
   public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
     return this.getAuthMatcher().matches(exchange)
-        .filter(matchResult -> matchResult.isMatch())
+        .filter(ServerWebExchangeMatcher.MatchResult::isMatch)
         .flatMap(matchResult -> this.jwtAuthConverter.apply(exchange))
         .switchIfEmpty(chain.filter(exchange).then(Mono.empty()))
         .flatMap(token -> authenticate(exchange, chain, token));
@@ -41,12 +41,16 @@ public class JWTAuthWebFilter implements WebFilter {
 
   private ServerWebExchangeMatcher getAuthMatcher() {
     List<ServerWebExchangeMatcher> matchers = new ArrayList<>(2);
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/users/**", HttpMethod.GET));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/user/**", HttpMethod.POST));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/games/**", HttpMethod.GET));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/game/**", HttpMethod.POST));
     matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.GET));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.POST));
     matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/games/**", HttpMethod.GET));
     matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/games/**", HttpMethod.POST));
 
-    ServerWebExchangeMatcher authMatcher = ServerWebExchangeMatchers.matchers(new OrServerWebExchangeMatcher(matchers));
-    return authMatcher;
+    return ServerWebExchangeMatchers.matchers(new OrServerWebExchangeMatcher(matchers));
   }
 
   private Mono<Void> authenticate(ServerWebExchange exchange,

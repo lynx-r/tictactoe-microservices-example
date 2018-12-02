@@ -1,4 +1,4 @@
-package com.tictactoe.gameservice.controller;
+package com.tictactoe.webapi.controller;
 
 import com.tictactoe.authmodule.auth.JWTUtil;
 import com.tictactoe.domain.JWTAuthRequest;

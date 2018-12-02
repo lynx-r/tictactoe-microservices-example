@@ -1,4 +1,4 @@
-package com.tictactoe.gameservice.controller;
+package com.tictactoe.webapi.controller;
 
 import org.apache.logging.log4j.message.FormattedMessage;
 import org.springframework.web.bind.annotation.GetMapping;

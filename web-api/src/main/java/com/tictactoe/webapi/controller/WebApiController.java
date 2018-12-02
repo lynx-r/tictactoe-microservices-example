@@ -3,7 +3,10 @@ package com.tictactoe.webapi.controller;
 import com.tictactoe.domain.Game;
 import com.tictactoe.domain.User;
 import com.tictactoe.webapi.service.WebApiService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -15,7 +18,6 @@ import java.util.Map;
  * Time: 08:49
  */
 @RestController
-@RequestMapping("v1")
 public class WebApiController {
 
   private final WebApiService webApiService;

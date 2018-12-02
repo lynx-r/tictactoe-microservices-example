@@ -31,7 +31,7 @@ public class GameWebClient {
     return webClientBuilder
         .build()
         .get()
-        .uri(applicationConfig.getGameServiceUrl() + "/v1/game/games")
+        .uri(applicationConfig.getGameServiceUrl() + "/v1/games")
         .retrieve()
         .bodyToFlux(Game.class);
   }
@@ -40,7 +40,7 @@ public class GameWebClient {
     return webClientBuilder
         .build()
         .get()
-        .uri(applicationConfig.getGameServiceUrl() + "/v1/game/games/{gameId}", gameId)
+        .uri(applicationConfig.getGameServiceUrl() + "/v1/games/{gameId}", gameId)
         .retrieve()
         .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
         .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))
@@ -51,7 +51,7 @@ public class GameWebClient {
     return webClientBuilder
         .build()
         .post()
-        .uri(applicationConfig.getGameServiceUrl() + "/v1/game/games/{userFirst}/{userSecond}?black={black}", uriVariables)
+        .uri(applicationConfig.getGameServiceUrl() + "/v1/games/{userFirst}/{userSecond}?black={black}", uriVariables)
         .retrieve()
         .bodyToMono(Game.class);
   }
