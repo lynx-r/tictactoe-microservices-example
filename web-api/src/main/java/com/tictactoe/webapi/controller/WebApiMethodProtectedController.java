@@ -24,15 +24,9 @@ public class WebApiMethodProtectedController {
     this.webApiService = webApiService;
   }
 
-  @GetMapping("users/greetGuest")
-  @PreAuthorize("hasRole('GUEST')")
-  public Mono<Map> getIndex() {
-    return Mono.just(Map.of("greet", "Hi there"));
-  }
-
   @GetMapping("users/greetAdmin")
   @PreAuthorize("hasRole('ADMIN')")
-  public Mono<Map> getIndexProtected() {
+  public Mono<Map> greetAdmin() {
     return Mono.just(Map.of("greet", "Hi admin"));
   }
 

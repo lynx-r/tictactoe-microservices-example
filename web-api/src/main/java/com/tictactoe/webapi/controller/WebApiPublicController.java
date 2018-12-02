@@ -17,8 +17,8 @@ import java.util.Map;
 public class WebApiPublicController {
 
   @GetMapping("greet")
-  public Mono<Map> getIndex() {
-    return Mono.just(Map.of("greet", "Hi there"));
+  public Mono<Map> greet() {
+    return Mono.just(Map.of("greet", "Hi everybody"));
   }
 
 }
