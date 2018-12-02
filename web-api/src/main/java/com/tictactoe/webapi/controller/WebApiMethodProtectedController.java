@@ -1,13 +1,9 @@
 package com.tictactoe.webapi.controller;
 
-import com.tictactoe.domain.Game;
 import com.tictactoe.domain.User;
 import com.tictactoe.webapi.service.WebApiService;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -19,16 +15,17 @@ import java.util.Map;
  * Time: 08:49
  */
 @RestController
-public class WebApiController {
+@RequestMapping("method-protected")
+public class WebApiMethodProtectedController {
 
   private final WebApiService webApiService;
 
-  public WebApiController(WebApiService webApiService) {
+  public WebApiMethodProtectedController(WebApiService webApiService) {
     this.webApiService = webApiService;
   }
 
   @GetMapping("users/greetGuest")
-  @PreAuthorize("permitAll()")
+  @PreAuthorize("hasRole('GUEST')")
   public Mono<Map> getIndex() {
     return Mono.just(Map.of("greet", "Hi there"));
   }
@@ -49,18 +46,4 @@ public class WebApiController {
     return webApiService.createUser(userRequest);
   }
 
-  @GetMapping("games")
-  public Flux<Game> getAllGames() {
-    return webApiService.getAllGames();
-  }
-
-  /**
-   * @param gameRequest params {userFirst: String, userSecond: String, black: boolean}.
-   *                    if black == true then userFirst is black
-   * @return
-   */
-  @PostMapping("game")
-  public Mono<Game> createGame(@RequestBody Map<String, Object> gameRequest) {
-    return webApiService.createGame(gameRequest);
-  }
 }

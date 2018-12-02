@@ -5,6 +5,7 @@ import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -64,9 +65,10 @@ public class JWTUtil {
   }
 
   static String getAuthorizationPayload(ServerWebExchange serverWebExchange) {
-    return serverWebExchange.getRequest()
+    String token = serverWebExchange.getRequest()
         .getHeaders()
         .getFirst(HttpHeaders.AUTHORIZATION);
+    return token == null ? "" : token;
   }
 
   static Predicate<String> matchBearerLength() {
@@ -85,25 +87,26 @@ public class JWTUtil {
     }
   }
 
-  static Authentication getUsernamePasswordAuthenticationToken(Mono<SignedJWT> signedJWTMono) {
-    SignedJWT signedJWT = signedJWTMono.block();
-    String subject;
-    String auths;
+  static Mono<Authentication> getUsernamePasswordAuthenticationToken(Mono<SignedJWT> signedJWTMono) {
+    return signedJWTMono
+        .map((signedJWT -> {
+          try {
+            String subject = signedJWT.getJWTClaimsSet().getSubject();
+            String auths = (String) signedJWT.getJWTClaimsSet().getClaim(CLAIM);
+            List<GrantedAuthority> authorities = Stream.of(auths.split(","))
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+            return new UsernamePasswordAuthenticationToken(subject, null, authorities);
+          } catch (ParseException e) {
+            return getAnonymousAuthentication();
+          }
+        }));
+  }
 
-    try {
-      if (signedJWT != null) {
-        subject = signedJWT.getJWTClaimsSet().getSubject();
-        auths = (String) signedJWT.getJWTClaimsSet().getClaim("auths");
-      } else {
-        return null;
-      }
-    } catch (ParseException e) {
-      return null;
-    }
-    List<GrantedAuthority> authorities = Stream.of(auths.split(","))
-        .map(SimpleGrantedAuthority::new)
-        .collect(Collectors.toList());
-
-    return new UsernamePasswordAuthenticationToken(subject, null, authorities);
+  static AnonymousAuthenticationToken getAnonymousAuthentication() {
+    List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("GUEST"));
+    return new AnonymousAuthenticationToken(
+        JWTUtil.generateToken("anonymous", authorities),
+        "anonymous", authorities);
   }
 }

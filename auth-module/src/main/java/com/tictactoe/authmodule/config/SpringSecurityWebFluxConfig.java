@@ -53,10 +53,10 @@ public class SpringSecurityWebFluxConfig {
         .exceptionHandling()
         .and()
         .authorizeExchange()
-        .pathMatchers(HttpMethod.GET, "/users/**").hasRole("USER")
-        .pathMatchers(HttpMethod.POST, "/user/**").hasRole("ADMIN")
-        .pathMatchers(HttpMethod.GET, "/games/**").hasRole("USER")
-        .pathMatchers(HttpMethod.POST, "/game/**").hasRole("ADMIN")
+//        .pathMatchers(HttpMethod.GET, "/users/**").hasRole("USER")
+//        .pathMatchers(HttpMethod.POST, "/user/**").hasRole("ADMIN")
+        .pathMatchers(HttpMethod.GET, "/url-protected/games/**").hasRole("USER")
+        .pathMatchers(HttpMethod.POST, "/url-protected/game/**").hasRole("ADMIN")
         .pathMatchers(HttpMethod.GET, "/v1/users/**").hasRole("USER")
         .pathMatchers(HttpMethod.POST, "/v1/users/**").hasRole("ADMIN")
         .pathMatchers(HttpMethod.GET, "/v1/games/**").hasRole("USER")
@@ -72,9 +72,10 @@ public class SpringSecurityWebFluxConfig {
 
   @Bean
   public MapReactiveUserDetailsService userDetailsRepository() {
+    UserDetails anonymous = User.withUsername("anonymous").password("{noop}secret").roles("GUEST").build();
     UserDetails user = User.withUsername("user").password("{noop}password").roles("USER").build();
     UserDetails admin = User.withUsername("admin").password("{noop}password").roles("USER", "ADMIN").build();
-    return new MapReactiveUserDetailsService(user, admin);
+    return new MapReactiveUserDetailsService(anonymous, user, admin);
   }
 
 }

@@ -5,6 +5,7 @@ import com.tictactoe.domain.Game;
 import com.tictactoe.domain.User;
 import com.tictactoe.webapi.client.GameWebClient;
 import com.tictactoe.webapi.client.UserWebClient;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -31,11 +32,13 @@ public class WebApiService {
   }
 
   @HystrixCommand
+  @PreAuthorize("hasRole('USER')")
   public Flux<User> getAllUsers() {
     return userWebClient.getAllUsers();
   }
 
   @HystrixCommand
+  @PreAuthorize("hasRole('ADMIN')")
   public Mono<User> createUser(User userRequest) {
     return userWebClient.createUser(userRequest);
   }

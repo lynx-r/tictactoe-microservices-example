@@ -41,10 +41,11 @@ public class JWTAuthWebFilter implements WebFilter {
 
   private ServerWebExchangeMatcher getAuthMatcher() {
     List<ServerWebExchangeMatcher> matchers = new ArrayList<>();
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/users/**", HttpMethod.GET));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/user/**", HttpMethod.POST));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/games/**", HttpMethod.GET));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/game/**", HttpMethod.POST));
+//    matchers.add(new PathPatternParserServerWebExchangeMatcher("/users/**", HttpMethod.GET));
+//    matchers.add(new PathPatternParserServerWebExchangeMatcher("/user/**", HttpMethod.POST));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/method-protected/**"));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/url-protected/games/**", HttpMethod.GET));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/url-protected/game/**", HttpMethod.POST));
     matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.GET));
     matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.POST));
     matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/games/**", HttpMethod.GET));
