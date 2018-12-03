@@ -1,5 +1,6 @@
 package com.tictactoe.authmodule.auth;
 
+import com.tictactoe.authmodule.service.JWTService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.server.WebFilterExchange;
@@ -9,14 +10,10 @@ import reactor.core.publisher.Mono;
 
 public class JWTAuthSuccessHandler implements ServerAuthenticationSuccessHandler {
 
-  public static String getHttpAuthHeaderValue(Authentication authentication) {
-    return String.join(" ", "Bearer", tokenFromAuthentication(authentication));
-  }
+  private final JWTService jwtService;
 
-  private static String tokenFromAuthentication(Authentication authentication) {
-    return JWTUtil.generateToken(
-        authentication.getName(),
-        authentication.getAuthorities());
+  public JWTAuthSuccessHandler(JWTService jwtService) {
+    this.jwtService = jwtService;
   }
 
   @Override
@@ -24,7 +21,7 @@ public class JWTAuthSuccessHandler implements ServerAuthenticationSuccessHandler
     ServerWebExchange exchange = webFilterExchange.getExchange();
     exchange.getResponse()
         .getHeaders()
-        .add(HttpHeaders.AUTHORIZATION, getHttpAuthHeaderValue(authentication));
+        .add(HttpHeaders.AUTHORIZATION, jwtService.getHttpAuthHeaderValue(authentication));
     return webFilterExchange.getChain().filter(exchange);
   }
 }

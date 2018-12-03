@@ -1,5 +1,6 @@
 package com.tictactoe.authmodule.auth;
 
+import com.tictactoe.authmodule.service.JWTService;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.core.Authentication;
@@ -26,9 +27,13 @@ import java.util.function.Function;
 public class JWTAuthWebFilter implements WebFilter {
 
   private final ReactiveAuthenticationManager reactiveAuthManager = new JWTReactiveAuthManager();
-  private Function<ServerWebExchange, Mono<Authentication>> jwtAuthConverter = new JWTAuthConverter();
+  private Function<ServerWebExchange, Mono<Authentication>> jwtAuthConverter;
   private ServerAuthenticationSuccessHandler authSuccessHandler = new WebFilterChainServerAuthenticationSuccessHandler();
   private ServerSecurityContextRepository securityContextRepository = NoOpServerSecurityContextRepository.getInstance();
+
+  public JWTAuthWebFilter(JWTService jwtService) {
+    jwtAuthConverter = new JWTAuthConverter(jwtService);
+  }
 
   @Override
   public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {

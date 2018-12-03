@@ -1,15 +1,18 @@
-package com.tictactoe.authmodule.auth;
+package com.tictactoe.authmodule.service;
 
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import com.tictactoe.authmodule.config.ModuleConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -24,16 +27,29 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
 
-public class JWTUtil {
-  public final static String DEFAULT_SECRET = "packtpubpacktpubpacktpubpacktpub";
+@Service
+public class JWTService {
   private static final String BEARER = "Bearer ";
-  public static final String TOKEN_ISSUER_COM = "tictactoe-example.com";
   public static final String CLAIM = "auths";
 
-  public static String generateToken(String subjectName, Collection<? extends GrantedAuthority> authorities) {
+  @Autowired
+  private ModuleConfig moduleConfig;
+
+  public String getHttpAuthHeaderValue(Authentication authentication) {
+    return String.join(" ", "Bearer", tokenFromAuthentication(authentication));
+  }
+
+  private String tokenFromAuthentication(Authentication authentication) {
+    return generateToken(
+        authentication.getName(),
+        authentication.getAuthorities());
+  }
+
+
+  public String generateToken(String subjectName, Collection<? extends GrantedAuthority> authorities) {
     JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
         .subject(subjectName)
-        .issuer(TOKEN_ISSUER_COM)
+        .issuer(moduleConfig.getTokenIssuer())
         .expirationTime(new Date(new Date().getTime() + 30 * 1000))
         .claim(CLAIM,
             authorities
@@ -46,7 +62,7 @@ public class JWTUtil {
     SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);
 
     try {
-      signedJWT.sign(JWTUtil.getJWTSigner());
+      signedJWT.sign(getJWTSigner());
     } catch (JOSEException e) {
       e.printStackTrace();
     }
@@ -54,32 +70,32 @@ public class JWTUtil {
     return signedJWT.serialize();
   }
 
-  private static JWSSigner getJWTSigner() {
+  private JWSSigner getJWTSigner() {
     JWSSigner jwsSigner;
     try {
-      jwsSigner = new MACSigner(DEFAULT_SECRET);
+      jwsSigner = new MACSigner(moduleConfig.getTokenSecret());
     } catch (KeyLengthException e) {
       jwsSigner = null;
     }
     return jwsSigner;
   }
 
-  static String getAuthorizationPayload(ServerWebExchange serverWebExchange) {
+  public String getAuthorizationPayload(ServerWebExchange serverWebExchange) {
     String token = serverWebExchange.getRequest()
         .getHeaders()
         .getFirst(HttpHeaders.AUTHORIZATION);
     return token == null ? "" : token;
   }
 
-  static Predicate<String> matchBearerLength() {
+  public Predicate<String> matchBearerLength() {
     return authValue -> authValue.length() > BEARER.length();
   }
 
-  static Function<String, String> getBearerValue() {
+  public Function<String, String> getBearerValue() {
     return authValue -> authValue.substring(BEARER.length());
   }
 
-  static Mono<SignedJWT> verifySignedJWT(String token) {
+  public Mono<SignedJWT> verifySignedJWT(String token) {
     try {
       return Mono.just(SignedJWT.parse(token));
     } catch (ParseException e) {
@@ -87,7 +103,7 @@ public class JWTUtil {
     }
   }
 
-  static Mono<Authentication> getUsernamePasswordAuthenticationToken(Mono<SignedJWT> signedJWTMono) {
+  public Mono<Authentication> getUsernamePasswordAuthenticationToken(Mono<SignedJWT> signedJWTMono) {
     return signedJWTMono
         .map((signedJWT -> {
           try {
@@ -103,10 +119,10 @@ public class JWTUtil {
         }));
   }
 
-  static AnonymousAuthenticationToken getAnonymousAuthentication() {
+  AnonymousAuthenticationToken getAnonymousAuthentication() {
     List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("GUEST"));
     return new AnonymousAuthenticationToken(
-        JWTUtil.generateToken("anonymous", authorities),
+        generateToken("anonymous", authorities),
         "anonymous", authorities);
   }
 }

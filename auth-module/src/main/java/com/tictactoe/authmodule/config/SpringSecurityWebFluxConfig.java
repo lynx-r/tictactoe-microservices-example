@@ -2,6 +2,7 @@ package com.tictactoe.authmodule.config;
 
 import com.tictactoe.authmodule.auth.JWTAuthSuccessHandler;
 import com.tictactoe.authmodule.auth.JWTAuthWebFilter;
+import com.tictactoe.authmodule.service.JWTService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -37,10 +38,10 @@ public class SpringSecurityWebFluxConfig {
    * @throws Exception
    */
   @Bean
-  public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+  public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http, JWTService jwtService) {
 
     AuthenticationWebFilter authenticationJWT = new AuthenticationWebFilter(new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepository()));
-    authenticationJWT.setAuthenticationSuccessHandler(new JWTAuthSuccessHandler());
+    authenticationJWT.setAuthenticationSuccessHandler(new JWTAuthSuccessHandler(jwtService));
 
     http.csrf().disable();
 
@@ -64,7 +65,7 @@ public class SpringSecurityWebFluxConfig {
         .anyExchange()
         .authenticated()
         .and()
-        .addFilterAt(new JWTAuthWebFilter(), SecurityWebFiltersOrder.HTTP_BASIC)
+        .addFilterAt(new JWTAuthWebFilter(jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
         .exceptionHandling();
 
     return http.build();

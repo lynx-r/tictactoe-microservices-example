@@ -1,6 +1,6 @@
 package com.tictactoe.webapi.controller;
 
-import com.tictactoe.authmodule.auth.JWTUtil;
+import com.tictactoe.authmodule.service.JWTService;
 import com.tictactoe.domain.JWTAuthRequest;
 import com.tictactoe.domain.JWTAuthResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,9 @@ public class AuthController {
   @Autowired
   private MapReactiveUserDetailsService userDetailsRepository;
 
+  @Autowired
+  private JWTService jwtService;
+
   @RequestMapping(method = POST, value = "/token")
   @CrossOrigin("*")
   public Mono<ResponseEntity<JWTAuthResponse>> token(@RequestBody JWTAuthRequest jwtAuthRequest) throws AuthenticationException {
@@ -34,7 +37,7 @@ public class AuthController {
 
     return userDetailsRepository.findByUsername(username)
         .map(user -> ok().contentType(APPLICATION_JSON_UTF8).body(
-            new JWTAuthResponse(JWTUtil.generateToken(user.getUsername(), user.getAuthorities()), user.getUsername()))
+            new JWTAuthResponse(jwtService.generateToken(user.getUsername(), user.getAuthorities()), user.getUsername()))
         )
         .defaultIfEmpty(notFound().build());
   }

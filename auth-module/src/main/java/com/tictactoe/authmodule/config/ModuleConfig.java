@@ -2,7 +2,9 @@ package com.tictactoe.authmodule.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * User: aleksey
@@ -11,8 +13,13 @@ import org.springframework.context.annotation.Configuration;
  */
 @Data
 @Configuration
+@EnableConfigurationProperties
+@PropertySource("classpath:module.yml")
 public class ModuleConfig {
 
   @Value("${tokenIssuer:tictactoe-example.com}")
   private String tokenIssuer;
+
+  @Value("${tokenSecret:secret}")
+  private String tokenSecret;
 }
