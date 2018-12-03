@@ -25,6 +25,7 @@ public class WebApiJWTAuthWebFilter extends JWTAuthWebFilter {
   protected ServerWebExchangeMatcher getAuthMatcher() {
     List<ServerWebExchangeMatcher> matchers = new ArrayList<>();
     matchers.add(new PathPatternParserServerWebExchangeMatcher("/method-protected/**"));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/url-protected/**"));
     return ServerWebExchangeMatchers.matchers(new OrServerWebExchangeMatcher(matchers));
   }
 }
