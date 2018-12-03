@@ -1,1 +1,6 @@
 rootProject.name = 'user-service'
+
+include ':tictactoe-services:domain-module'
+project(':tictactoe-services:domain-module').projectDir = file('../domain-module')
+include ':tictactoe-services:auth-module'
+project(':tictactoe-services:auth-module').projectDir = file('../auth-module')

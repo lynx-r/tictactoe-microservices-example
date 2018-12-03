@@ -55,7 +55,7 @@ public class SpringSecurityWebFluxConfig {
         .exceptionHandling()
         .and()
         .authorizeExchange()
-        .pathMatchers("/actuator/**").hasRole("ADMIN")
+        .pathMatchers("/actuator/**").hasRole("SYSTEM")
         .pathMatchers(HttpMethod.GET, "/url-protected/games/**").hasRole("USER")
         .pathMatchers(HttpMethod.POST, "/url-protected/game/**").hasRole("ADMIN")
         .anyExchange()
@@ -69,10 +69,11 @@ public class SpringSecurityWebFluxConfig {
 
   @Bean
   public MapReactiveUserDetailsService userDetailsRepository() {
+    UserDetails actuator = User.withUsername("actuator").password("{noop}password").roles("SYSTEM").build();
     UserDetails anonymous = User.withUsername("anonymous").password("{noop}secret").roles("GUEST").build();
     UserDetails user = User.withUsername("user").password("{noop}password").roles("USER").build();
     UserDetails admin = User.withUsername("admin").password("{noop}password").roles("USER", "ADMIN").build();
-    return new MapReactiveUserDetailsService(anonymous, user, admin);
+    return new MapReactiveUserDetailsService(actuator, anonymous, user, admin);
   }
 
 }
