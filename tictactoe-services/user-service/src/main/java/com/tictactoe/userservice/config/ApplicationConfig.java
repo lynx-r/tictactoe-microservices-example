@@ -1,7 +1,6 @@
 
 package com.tictactoe.userservice.config;
 
-import com.tictactoe.authmodule.config.SpringSecurityWebFluxConfig;
 import com.tictactoe.authmodule.config.SpringWebFluxConfig;
 import lombok.Data;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +13,7 @@ import org.springframework.context.annotation.Import;
  */
 @Data
 @Configuration
-@Import({SpringSecurityWebFluxConfig.class, SpringWebFluxConfig.class})
+@Import({SpringWebFluxConfig.class})
 public class ApplicationConfig {
 
 }
