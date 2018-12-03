@@ -27,8 +27,8 @@ repositories {
 ext['springCloudVersion'] = 'Greenwich.M3'
 
 dependencies {
-    implementation project(':domain-module')
-    implementation project(':auth-module')
+    implementation project(':tictactoe-services:domain-module')
+    implementation project(':tictactoe-services:auth-module')
 
 //    implementation('org.springframework.boot:spring-boot-starter-security')
 //    implementation('org.springframework.boot:spring-boot-starter-web')

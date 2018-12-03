@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'com.tictactoe'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 10
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    implementation project(':config-server')
+//    implementation project(':discovery-server')
+//    implementation project(':gateway-server')
+//    implementation project(':admin-server')
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
