@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="auth-module_main" target="1.10" />
+      <module name="auth-module_test" target="1.10" />
+      <module name="com.tictactoe-domain-module_main" target="1.10" />
+      <module name="com.tictactoe-domain-module_test" target="1.10" />
+      <module name="com.tictactoe.admin-server.main" target="1.8" />
+      <module name="com.tictactoe.admin-server.test" target="1.8" />
+      <module name="com.tictactoe.web-api.main" target="1.8" />
+      <module name="com.tictactoe.web-api.test" target="1.8" />
+      <module name="com.tictactoecorp-domain-module_main" target="1.10" />
+      <module name="com.tictactoecorp-domain-module_test" target="1.10" />
+      <module name="com.tictactoecorp.auth-module.main" target="1.8" />
+      <module name="com.tictactoecorp.auth-module.test" target="1.8" />
+      <module name="com.tictactoecorp.zuul-server.main" target="1.8" />
+      <module name="com.tictactoecorp.zuul-server.test" target="1.8" />
+      <module name="discovery-service_main" target="11" />
+      <module name="discovery-service_test" target="11" />
+      <module name="domain-module_main" target="11" />
+      <module name="domain-module_test" target="11" />
+      <module name="game-service_main" target="1.10" />
+      <module name="game-service_test" target="1.10" />
+      <module name="infrastructure_main" target="1.10" />
+      <module name="infrastructure_test" target="1.10" />
+      <module name="tictactoe_main" target="11" />
+      <module name="tictactoe_test" target="11" />
+      <module name="user-server_main" target="11" />
+      <module name="user-server_test" target="11" />
+      <module name="user-service_main" target="1.10" />
+      <module name="user-service_test" target="1.10" />
+      <module name="user_main" target="11" />
+      <module name="user_test" target="11" />
+      <module name="web-api_main" target="1.10" />
+      <module name="web-api_test" target="1.10" />
+      <module name="zipkin-server_main" target="11" />
+      <module name="zipkin-server_test" target="11" />
+      <module name="zuul-server_main" target="11" />
+      <module name="zuul-server_test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/4.8/libexec" />
+        <option name="gradleJvm" value="10" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/spring-servers" />
+            <option value="$PROJECT_DIR$/spring-servers/admin-server" />
+            <option value="$PROJECT_DIR$/spring-servers/config-server" />
+            <option value="$PROJECT_DIR$/spring-servers/discovery-server" />
+            <option value="$PROJECT_DIR$/spring-servers/gateway-server" />
+            <option value="$PROJECT_DIR$/tictactoe-services" />
+            <option value="$PROJECT_DIR$/tictactoe-services/auth-module" />
+            <option value="$PROJECT_DIR$/tictactoe-services/domain-module" />
+            <option value="$PROJECT_DIR$/tictactoe-services/game-service" />
+            <option value="$PROJECT_DIR$/tictactoe-services/user-service" />
+            <option value="$PROJECT_DIR$/tictactoe-services/web-api" />
+          </set>
+        </option>
+        <option name="useAutoImport" value="true" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
