@@ -8,6 +8,31 @@ spring:
       default
   cloud:
     config:
+      username: ${CONFIG_USERNAME:configUser}
+      password: ${CONFIG_PASSWORD:configPassword}
       discovery:
         enabled: true
         service-id: configserver
+  security:
+    user:
+      name: ${GAMESERVICE_USERNAME:gamesService}
+      password: ${GAMESERVICE_PASSWORD:gamesPassword}
+
+eureka:
+  instance:
+    preferIpAddress: true
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${DISCOVERY_SERVER_URL:http://eureka:password@localhost:8761/eureka/}
+
+management:
+  endpoints:
+    web.exposure.include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

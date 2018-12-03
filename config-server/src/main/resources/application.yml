@@ -13,15 +13,29 @@
 eureka:
   instance:
     preferIpAddress: true
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
       defaultZone: ${DISCOVERY_SERVER_URL:http://eureka:password@localhost:8761/eureka/}
 
+management:
+  endpoints:
+    web.exposure.include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
 server:
   port: ${PORT:8888}
 spring:
+  security:
+    user:
+      name: ${CONFIG_USERNAME:configUser}
+      password: ${CONFIG_PASSWORD:configPassword}
   cloud:
     config:
       discovery:

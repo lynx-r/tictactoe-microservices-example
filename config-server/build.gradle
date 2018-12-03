@@ -27,6 +27,7 @@ repositories {
 ext['springCloudVersion'] = 'Greenwich.M3'
 
 dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-security')
     implementation('org.springframework.cloud:spring-cloud-config-server')
     implementation('org.springframework.cloud:spring-cloud-starter-config')
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
