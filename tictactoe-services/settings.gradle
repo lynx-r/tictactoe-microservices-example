@@ -1,1 +1,12 @@
-projectRoot.name = 'tictactoe-services'
+rootProject.name = 'tictactoe-services'
+
+include ':tictactoe-services:domain-module'
+project(':tictactoe-services:domain-module').projectDir = file('./domain-module')
+include ':tictactoe-services:auth-module'
+project(':tictactoe-services:auth-module').projectDir = file('./auth-module')
+include ':tictactoe-services:web-api'
+project(':tictactoe-services:web-api').projectDir = file('./web-api')
+include ':tictactoe-services:user-service'
+project(':tictactoe-services:user-service').projectDir = file('./user-service')
+include ':tictactoe-services:game-service'
+project(':tictactoe-services:game-service').projectDir = file('./game-service')

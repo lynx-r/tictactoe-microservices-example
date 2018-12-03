@@ -1,7 +1,7 @@
-package com.tictactoe.user.controller;
+package com.tictactoe.userservice.controller;
 
 import com.tictactoe.domain.User;
-import com.tictactoe.user.service.UserService;
+import com.tictactoe.userservice.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

@@ -1,7 +1,6 @@
 package com.tictactoe.authmodule.auth;
 
 import com.tictactoe.authmodule.service.JWTService;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
@@ -11,20 +10,15 @@ import org.springframework.security.web.server.authentication.ServerAuthenticati
 import org.springframework.security.web.server.authentication.WebFilterChainServerAuthenticationSuccessHandler;
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.security.web.server.context.ServerSecurityContextRepository;
-import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
-import org.springframework.security.web.server.util.matcher.PathPatternParserServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher;
-import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Function;
 
-public class JWTAuthWebFilter implements WebFilter {
+public abstract class JWTAuthWebFilter implements WebFilter {
 
   private final ReactiveAuthenticationManager reactiveAuthManager = new JWTReactiveAuthManager();
   private Function<ServerWebExchange, Mono<Authentication>> jwtAuthConverter;
@@ -44,18 +38,7 @@ public class JWTAuthWebFilter implements WebFilter {
         .flatMap(token -> authenticate(exchange, chain, token));
   }
 
-  private ServerWebExchangeMatcher getAuthMatcher() {
-    List<ServerWebExchangeMatcher> matchers = new ArrayList<>();
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/method-protected/**"));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/url-protected/games/**", HttpMethod.GET));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/url-protected/game/**", HttpMethod.POST));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.GET));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.POST));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/games/**", HttpMethod.GET));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/games/**", HttpMethod.POST));
-
-    return ServerWebExchangeMatchers.matchers(new OrServerWebExchangeMatcher(matchers));
-  }
+  protected abstract ServerWebExchangeMatcher getAuthMatcher();
 
   private Mono<Void> authenticate(ServerWebExchange exchange,
                                   WebFilterChain chain, Authentication token) {

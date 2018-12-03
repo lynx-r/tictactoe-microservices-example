@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="auth-module_main" target="1.10" />
-      <module name="auth-module_test" target="1.10" />
+      <module name="com.tictactoe-auth-module_main" target="1.10" />
+      <module name="com.tictactoe-auth-module_test" target="1.10" />
       <module name="com.tictactoe-domain-module_main" target="1.10" />
       <module name="com.tictactoe-domain-module_test" target="1.10" />
       <module name="com.tictactoe.admin-server.main" target="1.8" />

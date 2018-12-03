@@ -1,4 +1,4 @@
-package com.tictactoe.user;
+package com.tictactoe.userservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

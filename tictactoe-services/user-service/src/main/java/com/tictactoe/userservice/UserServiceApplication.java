@@ -1,4 +1,4 @@
-package com.tictactoe.user;
+package com.tictactoe.userservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

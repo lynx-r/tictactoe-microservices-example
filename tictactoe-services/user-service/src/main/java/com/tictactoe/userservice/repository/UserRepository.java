@@ -1,4 +1,4 @@
-package com.tictactoe.user.repository;
+package com.tictactoe.userservice.repository;
 
 import com.tictactoe.domain.User;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;

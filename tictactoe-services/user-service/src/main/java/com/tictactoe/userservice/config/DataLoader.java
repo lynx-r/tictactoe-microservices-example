@@ -1,7 +1,7 @@
-package com.tictactoe.user.config;
+package com.tictactoe.userservice.config;
 
 import com.tictactoe.domain.User;
-import com.tictactoe.user.repository.UserRepository;
+import com.tictactoe.userservice.repository.UserRepository;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

@@ -1,14 +1,14 @@
-subprojects {
-    apply plugin: 'java'
-    group = 'com.tictactoe'
-    version = '1.0-SNAPSHOT'
-}
-
-group = 'com.tictactoe'
-version = '1.0-SNAPSHOT'
-
-//project(':game-service') {
-//    dependencies {
-//       implementation project(':domain-module')
-//    }
+//subprojects {
+//    apply plugin: 'java'
+//    group = 'com.tictactoe'
+//    version = '1.0-SNAPSHOT'
 //}
+//
+//group = 'com.tictactoe'
+//version = '1.0-SNAPSHOT'
+//
+////project(':game-service') {
+////    dependencies {
+////       implementation project(':domain-module')
+////    }
+////}

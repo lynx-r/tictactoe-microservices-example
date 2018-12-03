@@ -1,5 +1,5 @@
 
-package com.tictactoe.user.config;
+package com.tictactoe.userservice.config;
 
 import com.tictactoe.authmodule.config.SpringSecurityWebFluxConfig;
 import com.tictactoe.authmodule.config.SpringWebFluxConfig;

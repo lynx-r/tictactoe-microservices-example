@@ -1,10 +1,11 @@
-package com.tictactoe.authmodule.config;
+package com.tictactoe.webapi.config;
 
 import com.tictactoe.authmodule.auth.JWTAuthSuccessHandler;
 import com.tictactoe.authmodule.service.JWTService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
@@ -55,10 +56,12 @@ public class SpringSecurityWebFluxConfig {
         .and()
         .authorizeExchange()
         .pathMatchers("/actuator/**").hasRole("ADMIN")
+        .pathMatchers(HttpMethod.GET, "/url-protected/games/**").hasRole("USER")
+        .pathMatchers(HttpMethod.POST, "/url-protected/game/**").hasRole("ADMIN")
         .anyExchange()
         .authenticated()
         .and()
-        .addFilterAt(new CommonJWTAuthWebFilter(jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
+        .addFilterAt(new WebApiJWTAuthWebFilter(jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
         .exceptionHandling();
 
     return http.build();

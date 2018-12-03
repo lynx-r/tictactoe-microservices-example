@@ -1,10 +1,10 @@
-projectRoot.name = 'spring-servers'
+rootProject.name = 'spring-servers'
 
-//include ':spring-servers:config-server'
-//project(':config-server').projectDir = file('./config-server')
-//include 'discovery-server'
-//project(':discovery-server').projectDir = file('./discovery-server')
-//include 'gateway-server'
-//project(':gateway-server').projectDir = file('./gateway-server')
-//include 'admin-server'
-//project(':admin-server').projectDir = file('./admin-server')
+include ':spring-servers:config-server'
+project(':spring-servers:config-server').projectDir = file('./config-server')
+include ':spring-servers:discovery-server'
+project(':spring-servers:discovery-server').projectDir = file('./discovery-server')
+include ':spring-servers:gateway-server'
+project(':spring-servers:gateway-server').projectDir = file('./gateway-server')
+include ':spring-servers:admin-server'
+project(':spring-servers:admin-server').projectDir = file('./admin-server')
