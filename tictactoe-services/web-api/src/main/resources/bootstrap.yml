@@ -19,7 +19,7 @@ eureka:
     preferIpAddress: true
     metadata-map:
       user.name: ${ACTUATOR_USERNAME:actuator}
-      user.password: ${ACTUATOR_PASSWORD:password}
+      user.password: ${ACTUATOR_PASSWORD:actuator}
   client:
     registerWithEureka: true
     fetchRegistry: true

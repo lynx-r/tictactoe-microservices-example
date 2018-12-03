@@ -2,24 +2,20 @@ package com.tictactoe.webapi.config;
 
 import com.tictactoe.authmodule.auth.JWTAuthSuccessHandler;
 import com.tictactoe.authmodule.service.JWTService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.authentication.AuthenticationWebFilter;
 
 @Configuration
-//@EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
-@ComponentScan("com.tictactoe.authmodule")
 public class SpringSecurityWebFluxConfig {
 
   private static final String[] WHITELISTED_AUTH_URLS = {
@@ -28,6 +24,14 @@ public class SpringSecurityWebFluxConfig {
       "/public/**",
       "/auth/**"
   };
+
+  private final ReactiveUserDetailsService userDetailsRepositoryInMemory;
+
+  public SpringSecurityWebFluxConfig(
+      @Qualifier("userDetailsRepositoryInMemory") ReactiveUserDetailsService userDetailsRepositoryInMemory
+  ) {
+    this.userDetailsRepositoryInMemory = userDetailsRepositoryInMemory;
+  }
 
   /**
    * The test defined in SampleApplicationTests class will only get executed
@@ -41,7 +45,7 @@ public class SpringSecurityWebFluxConfig {
   @Bean
   public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http, JWTService jwtService) {
 
-    AuthenticationWebFilter authenticationJWT = new AuthenticationWebFilter(new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepository()));
+    AuthenticationWebFilter authenticationJWT = new AuthenticationWebFilter(new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepositoryInMemory));
     authenticationJWT.setAuthenticationSuccessHandler(new JWTAuthSuccessHandler(jwtService));
 
     http.csrf().disable();
@@ -65,15 +69,6 @@ public class SpringSecurityWebFluxConfig {
         .exceptionHandling();
 
     return http.build();
-  }
-
-  @Bean
-  public MapReactiveUserDetailsService userDetailsRepository() {
-    UserDetails actuator = User.withUsername("actuator").password("{noop}password").roles("SYSTEM").build();
-    UserDetails anonymous = User.withUsername("anonymous").password("{noop}secret").roles("GUEST").build();
-    UserDetails user = User.withUsername("user").password("{noop}password").roles("USER").build();
-    UserDetails admin = User.withUsername("admin").password("{noop}password").roles("USER", "ADMIN").build();
-    return new MapReactiveUserDetailsService(actuator, anonymous, user, admin);
   }
 
 }

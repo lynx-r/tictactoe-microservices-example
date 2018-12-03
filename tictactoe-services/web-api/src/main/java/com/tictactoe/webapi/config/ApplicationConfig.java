@@ -1,6 +1,7 @@
 package com.tictactoe.webapi.config;
 
 import com.tictactoe.authmodule.config.SpringWebFluxConfig;
+import com.tictactoe.authmodule.config.WebApiClientsProperties;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ import org.springframework.context.annotation.Import;
  */
 @Data
 @Configuration
-@Import({SpringWebFluxConfig.class})
+@Import({WebApiClientsProperties.class, SpringWebFluxConfig.class})
 public class ApplicationConfig {
 
   @Value("${userservice-url}")
