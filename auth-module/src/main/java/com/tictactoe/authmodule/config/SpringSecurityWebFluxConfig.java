@@ -4,6 +4,7 @@ import com.tictactoe.authmodule.auth.JWTAuthSuccessHandler;
 import com.tictactoe.authmodule.auth.JWTAuthWebFilter;
 import com.tictactoe.authmodule.service.JWTService;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
@@ -19,6 +20,7 @@ import org.springframework.security.web.server.authentication.AuthenticationWebF
 @Configuration
 //@EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
+@ComponentScan("com.tictactoe.authmodule")
 public class SpringSecurityWebFluxConfig {
 
   private static final String[] WHITELISTED_AUTH_URLS = {
@@ -54,8 +56,7 @@ public class SpringSecurityWebFluxConfig {
         .exceptionHandling()
         .and()
         .authorizeExchange()
-//        .pathMatchers(HttpMethod.GET, "/users/**").hasRole("USER")
-//        .pathMatchers(HttpMethod.POST, "/user/**").hasRole("ADMIN")
+        .pathMatchers("/actuator/**").hasRole("ADMIN")
         .pathMatchers(HttpMethod.GET, "/url-protected/games/**").hasRole("USER")
         .pathMatchers(HttpMethod.POST, "/url-protected/game/**").hasRole("ADMIN")
         .pathMatchers(HttpMethod.GET, "/v1/users/**").hasRole("USER")

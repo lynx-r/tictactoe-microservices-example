@@ -15,7 +15,7 @@ spring:
         service-id: configserver
   security:
     user:
-      name: ${WEBAPI_USERNAME:user}
+      name: ${WEBAPI_USERNAME:admin}
       password: ${WEBAPI_PASSWORD:password}
 
 eureka:

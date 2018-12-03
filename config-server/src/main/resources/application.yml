@@ -36,6 +36,7 @@ spring:
     user:
       name: ${CONFIG_USERNAME:configUser}
       password: ${CONFIG_PASSWORD:configPassword}
+      roles: SYSTEM
   cloud:
     config:
       discovery:
