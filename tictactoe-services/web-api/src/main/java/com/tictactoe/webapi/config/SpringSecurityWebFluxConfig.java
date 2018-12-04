@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
@@ -22,7 +23,6 @@ public class SpringSecurityWebFluxConfig {
       "/login",
       "/",
       "/public/**",
-      "/auth/**"
   };
 
   private final ReactiveUserDetailsService userDetailsRepositoryInMemory;
@@ -31,6 +31,11 @@ public class SpringSecurityWebFluxConfig {
       @Qualifier("userDetailsRepositoryInMemory") ReactiveUserDetailsService userDetailsRepositoryInMemory
   ) {
     this.userDetailsRepositoryInMemory = userDetailsRepositoryInMemory;
+  }
+
+  @Bean
+  public ReactiveAuthenticationManager reactiveAuthenticationManager() {
+    return new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepositoryInMemory);
   }
 
   /**
@@ -59,6 +64,7 @@ public class SpringSecurityWebFluxConfig {
         .exceptionHandling()
         .and()
         .authorizeExchange()
+        .pathMatchers("/auth/**").authenticated()
         .pathMatchers("/actuator/**").hasRole("SYSTEM")
         .pathMatchers(HttpMethod.GET, "/url-protected/games/**").hasRole("USER")
         .pathMatchers(HttpMethod.POST, "/url-protected/game/**").hasRole("ADMIN")

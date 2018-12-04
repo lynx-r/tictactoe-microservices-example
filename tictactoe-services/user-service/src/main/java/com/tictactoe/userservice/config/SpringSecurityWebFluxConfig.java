@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
@@ -24,11 +25,13 @@ public class SpringSecurityWebFluxConfig {
   };
 
   private final ReactiveUserDetailsService userDetailsRepositoryInMemory;
+  private final ReactiveAuthenticationManager reactiveAuthManager;
 
   public SpringSecurityWebFluxConfig(
       @Qualifier("userDetailsRepositoryInMemory") ReactiveUserDetailsService userDetailsRepositoryInMemory
   ) {
     this.userDetailsRepositoryInMemory = userDetailsRepositoryInMemory;
+    reactiveAuthManager = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepositoryInMemory);
   }
 
   /**
@@ -63,7 +66,7 @@ public class SpringSecurityWebFluxConfig {
         .anyExchange()
         .authenticated()
         .and()
-        .addFilterAt(new WebApiJwtAuthWebFilter(jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
+        .addFilterAt(new WebApiJwtAuthWebFilter(reactiveAuthManager, jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
         .exceptionHandling();
 
     return http.build();

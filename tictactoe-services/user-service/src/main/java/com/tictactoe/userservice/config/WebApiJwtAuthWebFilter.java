@@ -3,6 +3,7 @@ package com.tictactoe.userservice.config;
 import com.tictactoe.authmodule.auth.JwtAuthWebFilter;
 import com.tictactoe.authmodule.service.JwtService;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.PathPatternParserServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class WebApiJwtAuthWebFilter extends JwtAuthWebFilter {
 
-  public WebApiJwtAuthWebFilter(JwtService jwtService) {
+  public WebApiJwtAuthWebFilter(ReactiveAuthenticationManager reactiveAuthManager, JwtService jwtService) {
     super(jwtService);
   }
 

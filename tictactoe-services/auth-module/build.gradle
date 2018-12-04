@@ -44,6 +44,7 @@ dependencies {
 
     implementation('org.springframework.security:spring-security-oauth2-core')
     implementation('org.springframework.security:spring-security-oauth2-jose')
+
     compileOnly('org.projectlombok:lombok')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('io.projectreactor:reactor-test')

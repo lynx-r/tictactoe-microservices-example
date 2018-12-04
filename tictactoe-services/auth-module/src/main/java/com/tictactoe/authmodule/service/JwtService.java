@@ -33,7 +33,7 @@ import static java.util.stream.Collectors.joining;
 @Service
 public class JwtService {
 
-  private static final String CLAIM = "auths";
+  private static final String AUTHORITIES_CLAIM = "auths";
 
   private static final String BEARER = "Bearer ";
   private static final Date TOKEN_EXPIRATION_TIME = new Date(new Date().getTime() + 30 * 1000);
@@ -60,7 +60,7 @@ public class JwtService {
         .subject(subjectName)
         .issuer(moduleConfig.getTokenIssuer())
         .expirationTime(TOKEN_EXPIRATION_TIME)
-        .claim(CLAIM,
+        .claim(AUTHORITIES_CLAIM,
             authorities
                 .parallelStream()
                 .map(auth -> (GrantedAuthority) auth)
@@ -109,7 +109,7 @@ public class JwtService {
         .map((signedJWT -> {
           try {
             String subject = signedJWT.getJWTClaimsSet().getSubject();
-            String auths = (String) signedJWT.getJWTClaimsSet().getClaim(CLAIM);
+            String auths = (String) signedJWT.getJWTClaimsSet().getClaim(AUTHORITIES_CLAIM);
             List<GrantedAuthority> authorities = Stream.of(auths.split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
