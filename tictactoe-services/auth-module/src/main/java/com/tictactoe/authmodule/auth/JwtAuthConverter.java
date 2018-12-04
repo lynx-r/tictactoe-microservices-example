@@ -1,6 +1,5 @@
 package com.tictactoe.authmodule.auth;
 
-import com.tictactoe.authmodule.service.JwtService;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;

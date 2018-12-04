@@ -1,7 +1,7 @@
 package com.tictactoe.gameservice.config;
 
 import com.tictactoe.authmodule.auth.JwtAuthWebFilter;
-import com.tictactoe.authmodule.service.JwtService;
+import com.tictactoe.authmodule.auth.JwtService;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;

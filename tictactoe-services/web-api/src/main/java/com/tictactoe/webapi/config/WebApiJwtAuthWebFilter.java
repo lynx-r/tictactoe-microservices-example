@@ -1,7 +1,7 @@
 package com.tictactoe.webapi.config;
 
 import com.tictactoe.authmodule.auth.JwtAuthWebFilter;
-import com.tictactoe.authmodule.service.JwtService;
+import com.tictactoe.authmodule.auth.JwtService;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.PathPatternParserServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher;

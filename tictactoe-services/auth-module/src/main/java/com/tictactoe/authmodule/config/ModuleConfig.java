@@ -15,6 +15,9 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:moduleConfig.yml")
 public class ModuleConfig {
 
+  @Value("${tokenExpirationMinutes:60}")
+  private Integer tokenExpirationMinutes;
+
   @Value("${tokenIssuer:tictactoe-example.com}")
   private String tokenIssuer;
 

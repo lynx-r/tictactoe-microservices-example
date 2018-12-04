@@ -1,7 +1,7 @@
 package com.tictactoe.gameservice.config;
 
 import com.tictactoe.authmodule.auth.JwtAuthSuccessHandler;
-import com.tictactoe.authmodule.service.JwtService;
+import com.tictactoe.authmodule.auth.JwtService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

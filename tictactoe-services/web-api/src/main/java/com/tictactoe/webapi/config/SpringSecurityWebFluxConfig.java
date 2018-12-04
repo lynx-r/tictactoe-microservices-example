@@ -1,7 +1,7 @@
 package com.tictactoe.webapi.config;
 
 import com.tictactoe.authmodule.auth.JwtAuthSuccessHandler;
-import com.tictactoe.authmodule.service.JwtService;
+import com.tictactoe.authmodule.auth.JwtService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,7 +64,7 @@ public class SpringSecurityWebFluxConfig {
         .exceptionHandling()
         .and()
         .authorizeExchange()
-        .pathMatchers("/auth/**").authenticated()
+        .pathMatchers("/auth/token").authenticated()
         .pathMatchers("/actuator/**").hasRole("SYSTEM")
         .pathMatchers(HttpMethod.GET, "/url-protected/games/**").hasRole("USER")
         .pathMatchers(HttpMethod.POST, "/url-protected/game/**").hasRole("ADMIN")

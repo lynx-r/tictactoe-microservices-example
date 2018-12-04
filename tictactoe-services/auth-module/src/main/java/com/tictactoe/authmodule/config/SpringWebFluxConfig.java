@@ -1,6 +1,6 @@
 package com.tictactoe.authmodule.config;
 
-import com.tictactoe.authmodule.service.JwtService;
+import com.tictactoe.authmodule.auth.JwtService;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

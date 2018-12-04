@@ -1,6 +1,5 @@
 package com.tictactoe.authmodule.auth;
 
-import com.tictactoe.authmodule.service.JwtService;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
