@@ -7,7 +7,7 @@ appclients:
       password: "{cipher}00c68fb022128dd8ed5ed0d293b8da661cdb0f2df60cf9bb1d8d384c90d55998" # admin
       roles: USER,ADMIN
     - username: user
-      password: "{cipher}976f5e00450a0d7053bbeda282b1012e4506341ed372566af83bfed8186919fc"
+      password: "{cipher}976f5e00450a0d7053bbeda282b1012e4506341ed372566af83bfed8186919fc" # user
       roles: USER
     - username: anonymous
       password: "{noop}anonymous"
