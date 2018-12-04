@@ -21,11 +21,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="165ad74f-78e5-4272-8dd8-589d55d56411" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/config/TestConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/DefaultControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/util/TestUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/application-test.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/logback-test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/DefaultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/DefaultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/MonoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/WebApiApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/WebApiApplicationTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -265,20 +269,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/application.yml">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/DefaultControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/SpringSecurityWebFluxConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="64" column="22" lean-forward="true" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
+            <state relative-caret-position="235">
+              <caret line="40" column="3" lean-forward="true" selection-start-line="40" selection-start-column="3" selection-end-line="40" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -287,77 +282,93 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/WebApiJwtAuthWebFilter.java">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.1.3.RELEASE/781285bd5b7724196893007b677cf237e67b4628/spring-webflux-5.1.3.RELEASE-sources.jar!/org/springframework/web/reactive/function/client/ExchangeFilterFunctions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.1.3.RELEASE/781285bd5b7724196893007b677cf237e67b4628/spring-webflux-5.1.3.RELEASE-sources.jar!/org/springframework/web/reactive/function/client/WebClient.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+              <caret line="302" column="39" lean-forward="true" selection-start-line="302" selection-start-column="39" selection-end-line="302" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.1.3.RELEASE/781285bd5b7724196893007b677cf237e67b4628/spring-webflux-5.1.3.RELEASE-sources.jar!/org/springframework/web/reactive/function/client/ExchangeFunction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.1.3.RELEASE/781285bd5b7724196893007b677cf237e67b4628/spring-webflux-5.1.3.RELEASE-sources.jar!/org/springframework/web/reactive/function/client/ExchangeFunctions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-315">
+              <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/util/TestUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#741#742#0" expanded="true" />
-                <element signature="e#768#769#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/SpringWebFluxConfig.java">
+        <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/ApplicationConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="47" column="48" lean-forward="true" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+            <state relative-caret-position="264">
+              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/config/TestConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#468#477#1" expanded="true" />
+                <element signature="e#330#331#0" expanded="true" />
+                <element signature="e#351#352#0" expanded="true" />
+                <element signature="e#389#390#0" expanded="true" />
+                <element signature="e#415#416#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tictactoe-services/user-service/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/5.1.2.RELEASE/b1392889ba1fcb39672da9592e056d506efc6ba1/spring-security-core-5.1.2.RELEASE-sources.jar!/org/springframework/security/core/userdetails/ReactiveUserDetailsService.java">
+        <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/application-test.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+            <state>
+              <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tictactoe-services/user-service/src/main/resources/bootstrap.yml">
+        <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/logback-test.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/resources/bootstrap.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="24" lean-forward="true" selection-start-line="16" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/bootstrap.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="84">
+              <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -368,15 +379,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="JUnit4 Test Class" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>route</find>
-      <find>error</find>
-      <find>zuul-server</find>
       <find>zuul</find>
       <find>secur</find>
       <find>service-registry</find>
@@ -404,6 +413,9 @@
       <find>headers</find>
       <find>applicationclients</find>
       <find>WebApiClientsConfig</find>
+      <find>header</find>
+      <find>auth</find>
+      <find>authorization</find>
     </findStrings>
     <replaceStrings>
       <replace>sourceCompatibility = 10</replace>
@@ -421,15 +433,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JWTAuthWebFilter.java" />
-        <option value="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/config/WebApiJWTAuthWebFilter.java" />
-        <option value="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config/WebApiJWTAuthWebFilter.java" />
-        <option value="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/CommonJWTAuthWebFilter.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/spring-servers/settings.gradle" />
-        <option value="$PROJECT_DIR$/tictactoe-services/settings.gradle" />
-        <option value="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/CommonJWTAuthWebFilter.java" />
-        <option value="$PROJECT_DIR$/spring-servers/gateway-server/build.gradle" />
         <option value="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/WebApiJWTAuthWebFilter.java" />
         <option value="$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/tictactoe/adminserver/config/WebSecurityConfig.java" />
         <option value="$PROJECT_DIR$/tictactoe-services/web-api/build.gradle" />
@@ -472,6 +475,15 @@
         <option value="$PROJECT_DIR$/tictactoe-services/user-service/src/main/resources/bootstrap.yml" />
         <option value="$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/bootstrap.yml" />
+        <option value="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/WebApiApplicationTests.java" />
+        <option value="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/DefaultController.java" />
+        <option value="$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/application.yml" />
+        <option value="$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/application-test.yml" />
+        <option value="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/config/TestConfig.java" />
+        <option value="$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/application-test.properties" />
+        <option value="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/util/TestUtils.java" />
+        <option value="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/DefaultControllerTest.java" />
+        <option value="$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/logback-test.xml" />
       </list>
     </option>
   </component>
@@ -498,41 +510,6 @@
             <path>
               <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
               <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spring-servers" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spring-servers" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="admin-server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spring-servers" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="admin-server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spring-servers" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="admin-server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spring-servers" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="admin-server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
@@ -563,34 +540,34 @@
               <item name="game-service" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
               <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="user-service" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="user-service" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="user-service" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="game-service" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gameservice" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
               <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="user-service" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="game-service" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gameservice" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="game-service" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
@@ -634,17 +611,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="webapi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="web-api" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="webapi" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
@@ -674,7 +640,56 @@
               <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="web-api" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="web-api" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="web-api" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="webapi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="web-api" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="webapi" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="web-api" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="webapi" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tictactoe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tictactoe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="tictactoe-services" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="web-api" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -693,7 +708,9 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543892108710" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543901174528" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
@@ -705,10 +722,18 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tictactoe-services/web-api/src/main/resources" />
-      <recent name="$PROJECT_DIR$/tictactoe-services" />
-      <recent name="$PROJECT_DIR$/spring-servers" />
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.tictactoe.webapi.controller" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config" />
+      <recent name="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/config" />
+      <recent name="$PROJECT_DIR$/web-api/src/main/resources" />
+      <recent name="$PROJECT_DIR$/user-service/src/main/java/com/tictactoecorp/user" />
+      <recent name="$PROJECT_DIR$/domain-module/src/main/java/com/tictactoecorp/domain" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.tictactoe.authmodule.auth" />
@@ -717,12 +742,10 @@
       <recent name="com.tictactoe.webapi.client" />
       <recent name="com.tictactoecorp.gameservice.config" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config" />
-      <recent name="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/config" />
-      <recent name="$PROJECT_DIR$/web-api/src/main/resources" />
-      <recent name="$PROJECT_DIR$/user-service/src/main/java/com/tictactoecorp/user" />
-      <recent name="$PROJECT_DIR$/domain-module/src/main/java/com/tictactoecorp/domain" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tictactoe-services/web-api/src/main/resources" />
+      <recent name="$PROJECT_DIR$/tictactoe-services" />
+      <recent name="$PROJECT_DIR$/spring-servers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -742,7 +765,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.tictactoe:tictactoe-services [build]">
+  <component name="RunManager" selected="JUnit.DefaultControllerTest.login">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -774,81 +797,88 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="tictactoe:spring-servers:admin-server [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-servers/admin-server" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
+    <configuration name="DefaultControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.tictactoe-web-api_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tictactoe.webapi.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tictactoe.webapi.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.tictactoe.webapi.controller.DefaultControllerTest" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="tictactoe:tictactoe-services [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/tictactoe-services" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="-x test" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
+    <configuration name="DefaultControllerTest.guestHome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.tictactoe-web-api_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tictactoe.webapi.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tictactoe.webapi.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.tictactoe.webapi.controller.DefaultControllerTest" />
+      <option name="METHOD_NAME" value="guestHome" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="tictactoe:tictactoe-services [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/tictactoe-services" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
+    <configuration name="DefaultControllerTest.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.tictactoe-web-api_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tictactoe.webapi.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tictactoe.webapi.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.tictactoe.webapi.controller.DefaultControllerTest" />
+      <option name="METHOD_NAME" value="login" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="tictactoe:tictactoe-services:web-api [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/tictactoe-services/web-api" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
+    <configuration name="DefaultControllerTest.loginFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.tictactoe-web-api_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tictactoe.webapi.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tictactoe.webapi.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.tictactoe.webapi.controller.DefaultControllerTest" />
+      <option name="METHOD_NAME" value="loginFail" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DefaultControllerTest.loginSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.tictactoe-web-api_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tictactoe.webapi.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tictactoe.webapi.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.tictactoe.webapi.controller.DefaultControllerTest" />
+      <option name="METHOD_NAME" value="loginSuccess" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -873,19 +903,6 @@
     <configuration name="DiscoveryServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="spring-servers">
       <module name="discovery-server_main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.tictactoe.discoveryserver.DiscoveryServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="tictactoe-services" temporary="true" nameIsGenerated="true">
-      <module name="com.tictactoe-game-service_main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tictactoe.gameservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tictactoe.gameservice.GameServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -922,25 +939,25 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.tictactoe [build]" />
-      <item itemvalue="Gradle.tictactoe:tictactoe-services [clean]" />
-      <item itemvalue="Gradle.tictactoe:tictactoe-services [build]" />
-      <item itemvalue="Gradle.tictactoe:spring-servers:admin-server [clean]" />
-      <item itemvalue="Gradle.tictactoe:tictactoe-services:web-api [clean]" />
-      <item itemvalue="Spring Boot.GameServiceApplication" />
       <item itemvalue="Spring Boot.ConfigServerApplication" />
       <item itemvalue="Spring Boot.DiscoveryServerApplication" />
       <item itemvalue="Spring Boot.GatewayServerApplication" />
       <item itemvalue="Spring Boot.AdminServerApplication" />
       <item itemvalue="Spring Boot.UserServiceApplication" />
       <item itemvalue="Spring Boot.WebApiApplication" />
+      <item itemvalue="JUnit.DefaultControllerTest.guestHome" />
+      <item itemvalue="JUnit.DefaultControllerTest.loginSuccess" />
+      <item itemvalue="JUnit.DefaultControllerTest.loginFail" />
+      <item itemvalue="JUnit.DefaultControllerTest" />
+      <item itemvalue="JUnit.DefaultControllerTest.login" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.GameServiceApplication" />
-        <item itemvalue="Gradle.tictactoe:tictactoe-services [build]" />
-        <item itemvalue="Gradle.tictactoe:tictactoe-services [clean]" />
-        <item itemvalue="Gradle.tictactoe:tictactoe-services:web-api [clean]" />
-        <item itemvalue="Gradle.tictactoe:spring-servers:admin-server [clean]" />
+        <item itemvalue="JUnit.DefaultControllerTest.login" />
+        <item itemvalue="JUnit.DefaultControllerTest.loginSuccess" />
+        <item itemvalue="JUnit.DefaultControllerTest.loginFail" />
+        <item itemvalue="JUnit.DefaultControllerTest" />
+        <item itemvalue="JUnit.DefaultControllerTest.guestHome" />
       </list>
     </recent_temporary>
   </component>
@@ -964,7 +981,7 @@
       <workItem from="1543447455910" duration="32847000" />
       <workItem from="1543632918497" duration="32469000" />
       <workItem from="1543729449972" duration="71160000" />
-      <workItem from="1543888330040" duration="3725000" />
+      <workItem from="1543888330040" duration="12943000" />
     </task>
     <task id="LOCAL-00001" summary="In progress">
       <created>1543386420685</created>
@@ -1197,37 +1214,50 @@
       <option name="project" value="LOCAL" />
       <updated>1543889947042</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="reconfigure">
+      <created>1543892145477</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1543892145477</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GameControllerApplicationTests - 2018.11.29 at 04h 36m 37s.xml">
-      <configuration name="GameControllerApplicationTests" configurationId="JUnit" />
+    <history-entry file="DefaultControllerTest_loginFail - 2018.12.04 at 07h 50m 57s.xml">
+      <configuration name="DefaultControllerTest.loginFail" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GameControllerApplicationTests - 2018.11.29 at 04h 41m 47s.xml">
-      <configuration name="GameControllerApplicationTests" configurationId="JUnit" />
+    <history-entry file="DefaultControllerTest_loginFail - 2018.12.04 at 07h 51m 45s.xml">
+      <configuration name="DefaultControllerTest.loginFail" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GameControllerApplicationTests - 2018.11.29 at 04h 42m 31s.xml">
-      <configuration name="GameControllerApplicationTests" configurationId="JUnit" />
+    <history-entry file="DefaultControllerTest_loginFail - 2018.12.04 at 07h 52m 25s.xml">
+      <configuration name="DefaultControllerTest.loginFail" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MonoTest_name - 2018.12.02 at 15h 26m 33s.xml">
-      <configuration name="MonoTest.name" configurationId="AndroidJUnit" />
+    <history-entry file="DefaultControllerTest_loginFail - 2018.12.04 at 07h 55m 39s.xml">
+      <configuration name="DefaultControllerTest.loginFail" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MonoTest_name - 2018.12.02 at 15h 27m 46s.xml">
-      <configuration name="MonoTest.name" configurationId="AndroidJUnit" />
+    <history-entry file="DefaultControllerTest_loginFail - 2018.12.04 at 08h 04m 23s.xml">
+      <configuration name="DefaultControllerTest.loginFail" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MonoTest_name - 2018.12.02 at 15h 28m 05s.xml">
-      <configuration name="MonoTest.name" configurationId="AndroidJUnit" />
+    <history-entry file="DefaultControllerTest_loginFail - 2018.12.04 at 08h 06m 08s.xml">
+      <configuration name="DefaultControllerTest.loginFail" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MonoTest_name - 2018.12.02 at 15h 29m 57s.xml">
-      <configuration name="MonoTest.name" configurationId="AndroidJUnit" />
+    <history-entry file="DefaultControllerTest_loginFail - 2018.12.04 at 08h 07m 31s.xml">
+      <configuration name="DefaultControllerTest.loginFail" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MonoTest_name - 2018.12.02 at 15h 30m 53s.xml">
-      <configuration name="MonoTest.name" configurationId="AndroidJUnit" />
+    <history-entry file="DefaultControllerTest_loginFail - 2018.12.04 at 08h 17m 47s.xml">
+      <configuration name="DefaultControllerTest.loginFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DefaultControllerTest_loginFail - 2018.12.04 at 08h 31m 02s.xml">
+      <configuration name="DefaultControllerTest.loginFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DefaultControllerTest_loginSuccess - 2018.12.04 at 08h 31m 42s.xml">
+      <configuration name="DefaultControllerTest.loginSuccess" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153756000" />
+    <option name="totallyTimeSpent" value="162974000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -1244,8 +1274,8 @@
       <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32769832" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32769832" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32769832" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39921975" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1258,7 +1288,7 @@
       <window_info anchor="bottom" id="Spring" order="13" weight="0.32899868" />
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="15" weight="0.32769832" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="16" visible="true" weight="0.32639793" />
+      <window_info anchor="bottom" id="Run Dashboard" order="16" weight="0.32639793" />
       <window_info anchor="bottom" id="Flutter Performance" order="17" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="18" />
       <window_info anchor="bottom" id="Inspection Results" order="19" weight="0.32899868" />
@@ -1329,7 +1359,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Zipkin" />
     <MESSAGE value="zuul" />
     <MESSAGE value="JWT auth" />
     <MESSAGE value="JWT auth fix" />
@@ -1354,7 +1383,8 @@
     <MESSAGE value="actuator for webapi" />
     <MESSAGE value="configured sba" />
     <MESSAGE value="order" />
-    <option name="LAST_COMMIT_MESSAGE" value="order" />
+    <MESSAGE value="reconfigure" />
+    <option name="LAST_COMMIT_MESSAGE" value="reconfigure" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1405,6 +1435,16 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
+        <expression-string>headers</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;Basic &quot; + base64encodedUsernameAndPassword</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>users</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
@@ -1439,150 +1479,9 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>exchange.getRequest().getPath()§</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>exchange.getRequest().getPath()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/ApplicationClients.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtAuthConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding>
-            <element signature="e#463#464#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtAuthSuccessHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtAuthWebFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtReactiveAuthManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/ModuleConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/ApplicationClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/WebApiClientsProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.nimbusds/nimbus-jose-jwt/6.0.2/3100be5e72ec47065824d8d896a758230e5653de/nimbus-jose-jwt-6.0.2-sources.jar!/com/nimbusds/jose/JWSObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="304" column="52" selection-start-line="304" selection-start-column="52" selection-end-line="304" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/service/JwtService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="107" column="28" lean-forward="true" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1622#1623#0" expanded="true" />
-            <element signature="e#1664#1665#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/resources/moduleConfig.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="53" lean-forward="true" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-115">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/JwtAuthRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/JwtAuthResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/domain-module/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-661" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/domain-module/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/client/UserWebClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-31">
@@ -1594,13 +1493,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config/ApplicationConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1677,20 +1569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/ApplicationConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/DefaultController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/WebApiMethodProtectedController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-10">
@@ -1709,13 +1587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/WebApiApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1806,17 +1677,188 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/application.yml">
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/bootstrap.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="284">
+          <caret line="22" column="15" lean-forward="true" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/bootstrap.yml">
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/MonoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="158">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/WebApiApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/DefaultController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#494#495#0" expanded="true" />
+            <element signature="e#532#533#0" expanded="true" />
+            <element signature="e#618#619#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib/src.zip!/java.base/java/util/function/Consumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.1.3.RELEASE/781285bd5b7724196893007b677cf237e67b4628/spring-webflux-5.1.3.RELEASE-sources.jar!/org/springframework/web/reactive/function/client/DefaultWebClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="234" column="18" lean-forward="true" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/5.1.3.RELEASE/c5c56bc081d89e2929ffd335b9feb5ac31d7bbf8/spring-test-5.1.3.RELEASE-sources.jar!/org/springframework/test/web/reactive/server/WebTestClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="600" column="17" selection-start-line="600" selection-start-column="17" selection-end-line="600" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.10/35dcae32cc1c3bfb62546e64b90fc6359183b3b5/httpcore-4.4.10-sources.jar!/org/apache/http/HttpHeaders.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="62" column="31" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/GameServiceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config/ApplicationConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/WebApiApplicationTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/2.1.1.RELEASE/84849f2b14ea0adfeb326031ede938c468b053c8/spring-boot-autoconfigure-2.1.1.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/http/HttpProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
+          <folding>
+            <element signature="e#1459#1460#0" expanded="true" />
+            <element signature="e#1508#1509#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/ApplicationConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/config/TestConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#468#477#1" expanded="true" />
+            <element signature="e#330#331#0" expanded="true" />
+            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
+            <element signature="e#415#416#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.1.3.RELEASE/781285bd5b7724196893007b677cf237e67b4628/spring-webflux-5.1.3.RELEASE-sources.jar!/org/springframework/web/reactive/function/client/ExchangeFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-315">
+          <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.1.3.RELEASE/781285bd5b7724196893007b677cf237e67b4628/spring-webflux-5.1.3.RELEASE-sources.jar!/org/springframework/web/reactive/function/client/ExchangeFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.1.3.RELEASE/781285bd5b7724196893007b677cf237e67b4628/spring-webflux-5.1.3.RELEASE-sources.jar!/org/springframework/web/reactive/function/client/WebClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="302" column="39" lean-forward="true" selection-start-line="302" selection-start-column="39" selection-end-line="302" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.1.3.RELEASE/781285bd5b7724196893007b677cf237e67b4628/spring-webflux-5.1.3.RELEASE-sources.jar!/org/springframework/web/reactive/function/client/ExchangeFilterFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/util/TestUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/application-test.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/logback-test.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/DefaultControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="40" column="3" lean-forward="true" selection-start-line="40" selection-start-column="3" selection-end-line="40" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

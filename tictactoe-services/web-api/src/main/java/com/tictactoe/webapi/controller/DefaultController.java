@@ -1,20 +1,21 @@
 package com.tictactoe.webapi.controller;
 
-import org.apache.logging.log4j.message.FormattedMessage;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.Map;
 
 @RestController
 public class DefaultController {
 
   @GetMapping("/")
-  public Flux<FormattedMessage> guestHome() {
-    return Flux.just(new FormattedMessage("Welcome Guest"));
+  public Mono<Map> guestHome() {
+    return Mono.just(Map.of("greet", "Welcome Guest"));
   }
 
   @GetMapping("/login")
-  public Flux<FormattedMessage> login() {
-    return Flux.just(new FormattedMessage("Welcome Guest, its Basic Authentication"));
+  public Mono<Map> login() {
+    return Mono.just(Map.of("greet", "Welcome Guest, its Basic Authentication"));
   }
 }
