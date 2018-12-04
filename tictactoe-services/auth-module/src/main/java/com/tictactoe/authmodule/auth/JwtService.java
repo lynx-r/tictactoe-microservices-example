@@ -118,7 +118,6 @@ public class JwtService {
           return List.of(key);
         });
         JWTClaimsSet claimsSet = jwtProcessor.process(signedJWT, null);
-        Date expirationTime = claimsSet.getExpirationTime();
         return Mono.just(claimsSet);
       } else {
         logger.error("TOKEN invalid " + signedJWT.serialize());
@@ -133,7 +132,6 @@ public class JwtService {
   Mono<Authentication> getUsernamePasswordAuthenticationToken(Mono<JWTClaimsSet> claimsSetMono) {
     return claimsSetMono
         .map((claimsSet -> {
-          Date expirationTime = claimsSet.getExpirationTime();
           String subject = claimsSet.getSubject();
           String auths = (String) claimsSet.getClaim(AUTHORITIES_CLAIM);
           List<GrantedAuthority> authorities = Stream.of(auths.split(","))
