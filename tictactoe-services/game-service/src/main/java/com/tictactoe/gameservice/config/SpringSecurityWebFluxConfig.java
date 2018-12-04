@@ -1,7 +1,7 @@
 package com.tictactoe.gameservice.config;
 
-import com.tictactoe.authmodule.auth.JWTAuthSuccessHandler;
-import com.tictactoe.authmodule.service.JWTService;
+import com.tictactoe.authmodule.auth.JwtAuthSuccessHandler;
+import com.tictactoe.authmodule.service.JwtService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,10 +19,8 @@ import org.springframework.security.web.server.authentication.AuthenticationWebF
 public class SpringSecurityWebFluxConfig {
 
   private static final String[] WHITELISTED_AUTH_URLS = {
-      "/login",
       "/",
       "/public/**",
-      "/auth/**"
   };
 
   private final ReactiveUserDetailsService userDetailsRepositoryInMemory;
@@ -43,10 +41,10 @@ public class SpringSecurityWebFluxConfig {
    * @throws Exception
    */
   @Bean
-  public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http, JWTService jwtService) {
+  public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http, JwtService jwtService) {
 
     AuthenticationWebFilter authenticationJWT = new AuthenticationWebFilter(new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepositoryInMemory));
-    authenticationJWT.setAuthenticationSuccessHandler(new JWTAuthSuccessHandler(jwtService));
+    authenticationJWT.setAuthenticationSuccessHandler(new JwtAuthSuccessHandler(jwtService));
 
     http.csrf().disable();
 
@@ -65,7 +63,7 @@ public class SpringSecurityWebFluxConfig {
         .anyExchange()
         .authenticated()
         .and()
-        .addFilterAt(new WebApiJWTAuthWebFilter(jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
+        .addFilterAt(new WebApiJwtAuthWebFilter(jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
         .exceptionHandling();
 
     return http.build();

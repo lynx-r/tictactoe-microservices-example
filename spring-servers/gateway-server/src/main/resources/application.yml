@@ -1,15 +1,2 @@
 server:
   port: ${PORT:5555}
-
-  #Setting logging levels
-logging:
-  level:
-    com.netflix: DEBUG
-    org.springframework.web: DEBUG
-    com.thoughtmechanix: DEBUG
-
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: routes,filters

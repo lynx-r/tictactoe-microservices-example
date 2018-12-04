@@ -36,6 +36,15 @@ public class GameWebClient {
         .bodyToFlux(Game.class);
   }
 
+  public Mono<Game> createGame(Map<String, Object> uriVariables) {
+    return webClientBuilder
+        .build()
+        .post()
+        .uri(applicationConfig.getGameServiceUrl() + "/v1/games/{userFirst}/{userSecond}?black={black}", uriVariables)
+        .retrieve()
+        .bodyToMono(Game.class);
+  }
+
   public Mono<Game> getGame(String gameId) {
     return webClientBuilder
         .build()
@@ -44,15 +53,6 @@ public class GameWebClient {
         .retrieve()
         .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
         .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))
-        .bodyToMono(Game.class);
-  }
-
-  public Mono<Game> createGame(Map<String, Object> uriVariables) {
-    return webClientBuilder
-        .build()
-        .post()
-        .uri(applicationConfig.getGameServiceUrl() + "/v1/games/{userFirst}/{userSecond}?black={black}", uriVariables)
-        .retrieve()
         .bodyToMono(Game.class);
   }
 }

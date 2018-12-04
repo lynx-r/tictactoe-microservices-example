@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class JWTAuthRequest implements Serializable {
+public class JwtAuthRequest implements Serializable {
   private String username;
   private String password;
 }

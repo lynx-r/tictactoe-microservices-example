@@ -21,6 +21,7 @@ spring:
 eureka:
   instance:
     preferIpAddress: true
+    # to allow SBA access itself
     metadata-map:
       startup: ${random.int}    #needed to trigger info and endpoint update after restart
       user.name: ${spring.security.user.name}

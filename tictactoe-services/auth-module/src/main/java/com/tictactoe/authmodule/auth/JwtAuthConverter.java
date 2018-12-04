@@ -1,17 +1,17 @@
 package com.tictactoe.authmodule.auth;
 
-import com.tictactoe.authmodule.service.JWTService;
+import com.tictactoe.authmodule.service.JwtService;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
 
-public class JWTAuthConverter implements Function<ServerWebExchange, Mono<Authentication>> {
+public class JwtAuthConverter implements Function<ServerWebExchange, Mono<Authentication>> {
 
-  private final JWTService jwtService;
+  private final JwtService jwtService;
 
-  public JWTAuthConverter(JWTService jwtService) {
+  public JwtAuthConverter(JwtService jwtService) {
     this.jwtService = jwtService;
   }
 

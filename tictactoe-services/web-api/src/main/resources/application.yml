@@ -1,23 +1,5 @@
-#spring:
-#  boot:
-#    admin:
-#      client:
-#        username: admin
-#        password: adminpassword
-#        instance:
-#          metadata:
-#            user.name: system
-#            user.password: secret
-
-management:
-  endpoints:
-    web.exposure.include: "*"
-  endpoint:
-    health:
-      show-details: ALWAYS
-
-userservice-url: "http://userservice"
-gameservice-url: "http://gameservice"
+userserviceUrl: "http://userservice"
+gameserviceUrl: "http://gameservice"
 
 appclients:
   clients:

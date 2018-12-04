@@ -1,8 +1,8 @@
 package com.tictactoe.webapi.controller;
 
-import com.tictactoe.authmodule.service.JWTService;
-import com.tictactoe.domain.JWTAuthRequest;
-import com.tictactoe.domain.JWTAuthResponse;
+import com.tictactoe.authmodule.service.JwtService;
+import com.tictactoe.domain.JwtAuthRequest;
+import com.tictactoe.domain.JwtAuthResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
@@ -27,17 +27,17 @@ public class AuthController {
   private MapReactiveUserDetailsService userDetailsRepository;
 
   @Autowired
-  private JWTService jwtService;
+  private JwtService jwtService;
 
   @RequestMapping(method = POST, value = "/token")
   @CrossOrigin("*")
-  public Mono<ResponseEntity<JWTAuthResponse>> token(@RequestBody JWTAuthRequest jwtAuthRequest) throws AuthenticationException {
+  public Mono<ResponseEntity<JwtAuthResponse>> token(@RequestBody JwtAuthRequest jwtAuthRequest) throws AuthenticationException {
     String username = jwtAuthRequest.getUsername();
     String password = jwtAuthRequest.getPassword();
 
     return userDetailsRepository.findByUsername(username)
         .map(user -> ok().contentType(APPLICATION_JSON_UTF8).body(
-            new JWTAuthResponse(jwtService.generateToken(user.getUsername(), user.getAuthorities()), user.getUsername()))
+            new JwtAuthResponse(jwtService.generateToken(user.getUsername(), user.getAuthorities()), user.getUsername()))
         )
         .defaultIfEmpty(notFound().build());
   }

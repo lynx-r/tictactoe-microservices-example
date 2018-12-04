@@ -1,6 +1,6 @@
 package com.tictactoe.authmodule.auth;
 
-import com.tictactoe.authmodule.service.JWTService;
+import com.tictactoe.authmodule.service.JwtService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.server.WebFilterExchange;
@@ -8,11 +8,11 @@ import org.springframework.security.web.server.authentication.ServerAuthenticati
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-public class JWTAuthSuccessHandler implements ServerAuthenticationSuccessHandler {
+public class JwtAuthSuccessHandler implements ServerAuthenticationSuccessHandler {
 
-  private final JWTService jwtService;
+  private final JwtService jwtService;
 
-  public JWTAuthSuccessHandler(JWTService jwtService) {
+  public JwtAuthSuccessHandler(JwtService jwtService) {
     this.jwtService = jwtService;
   }
 

@@ -1,8 +1,7 @@
-package com.tictactoe.userservice.config;
+package com.tictactoe.webapi.config;
 
-import com.tictactoe.authmodule.auth.JWTAuthWebFilter;
-import com.tictactoe.authmodule.service.JWTService;
-import org.springframework.http.HttpMethod;
+import com.tictactoe.authmodule.auth.JwtAuthWebFilter;
+import com.tictactoe.authmodule.service.JwtService;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.PathPatternParserServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher;
@@ -16,17 +15,17 @@ import java.util.List;
  * Date: 2018-12-03
  * Time: 09:29
  */
-public class WebApiJWTAuthWebFilter extends JWTAuthWebFilter {
+public class WebApiJwtAuthWebFilter extends JwtAuthWebFilter {
 
-  public WebApiJWTAuthWebFilter(JWTService jwtService) {
+  public WebApiJwtAuthWebFilter(JwtService jwtService) {
     super(jwtService);
   }
 
   @Override
   protected ServerWebExchangeMatcher getAuthMatcher() {
     List<ServerWebExchangeMatcher> matchers = new ArrayList<>();
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.GET));
-    matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.POST));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/method-protected/**"));
+    matchers.add(new PathPatternParserServerWebExchangeMatcher("/url-protected/**"));
     return ServerWebExchangeMatchers.matchers(new OrServerWebExchangeMatcher(matchers));
   }
 }

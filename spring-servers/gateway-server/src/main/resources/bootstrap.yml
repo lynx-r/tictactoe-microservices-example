@@ -13,26 +13,22 @@ spring:
       discovery:
         enabled: true
         service-id: configserver
-#  security:
-#    user:
-#      name: ${GATEWAY_USERNAME:gatewayUser}
-#      password: ${GATEWAY_PASSWORD:gatewayPassword}
 
 eureka:
   instance:
     preferIpAddress: true
-  #    metadata-map:
-  #      user.name: ${spring.security.user.name}
-  #      user.password: ${spring.security.user.password}
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
       defaultZone: ${DISCOVERY_SERVER_URL:http://eureka:password@localhost:8761/eureka/}
 
-#management:
-#  endpoints:
-#    web.exposure.include: "*"
-#  endpoint:
-#    health:
-#      show-details: ALWAYS
+---
+spring:
+  profiles: dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: routes,filters

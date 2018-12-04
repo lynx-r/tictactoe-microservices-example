@@ -1,6 +1,6 @@
 package com.tictactoe.authmodule.config;
 
-import com.tictactoe.authmodule.service.JWTService;
+import com.tictactoe.authmodule.service.JwtService;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -50,12 +50,12 @@ public class SpringWebFluxConfig {
 
   @Bean
   @LoadBalanced
-  public WebClient.Builder loadBalancedWebClientBuilder(JWTService jwtService) {
+  public WebClient.Builder loadBalancedWebClientBuilder(JwtService jwtService) {
     return WebClient.builder()
         .filter(authorizationFilter(jwtService));
   }
 
-  private ExchangeFilterFunction authorizationFilter(JWTService jwtService) {
+  private ExchangeFilterFunction authorizationFilter(JwtService jwtService) {
     return ExchangeFilterFunction
         .ofRequestProcessor(clientRequest ->
             ReactiveSecurityContextHolder.getContext()

@@ -1,11 +1,14 @@
 package com.tictactoe.authmodule.service;
 
-import com.nimbusds.jose.*;
+import com.nimbusds.jose.JOSEException;
+import com.nimbusds.jose.JWSAlgorithm;
+import com.nimbusds.jose.JWSHeader;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.tictactoe.authmodule.config.ModuleConfig;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,12 +31,18 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.joining;
 
 @Service
-public class JWTService {
-  private static final String BEARER = "Bearer ";
-  public static final String CLAIM = "auths";
+public class JwtService {
 
-  @Autowired
-  private ModuleConfig moduleConfig;
+  private static final String CLAIM = "auths";
+
+  private static final String BEARER = "Bearer ";
+  private static final Date TOKEN_EXPIRATION_TIME = new Date(new Date().getTime() + 30 * 1000);
+  private final Logger logger = LoggerFactory.getLogger(JwtService.class);
+  private final ModuleConfig moduleConfig;
+
+  public JwtService(ModuleConfig moduleConfig) {
+    this.moduleConfig = moduleConfig;
+  }
 
   public String getHttpAuthHeaderValue(Authentication authentication) {
     return String.join(" ", "Bearer", tokenFromAuthentication(authentication));
@@ -50,7 +59,7 @@ public class JWTService {
     JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
         .subject(subjectName)
         .issuer(moduleConfig.getTokenIssuer())
-        .expirationTime(new Date(new Date().getTime() + 30 * 1000))
+        .expirationTime(TOKEN_EXPIRATION_TIME)
         .claim(CLAIM,
             authorities
                 .parallelStream()
@@ -62,22 +71,13 @@ public class JWTService {
     SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);
 
     try {
-      signedJWT.sign(getJWTSigner());
+      signedJWT.sign(new MACSigner(moduleConfig.getTokenSecret()));
     } catch (JOSEException e) {
-      e.printStackTrace();
+      logger.error("ERROR while signing JWT", e);
+      return null;
     }
 
     return signedJWT.serialize();
-  }
-
-  private JWSSigner getJWTSigner() {
-    JWSSigner jwsSigner;
-    try {
-      jwsSigner = new MACSigner(moduleConfig.getTokenSecret());
-    } catch (KeyLengthException e) {
-      jwsSigner = null;
-    }
-    return jwsSigner;
   }
 
   public String getAuthorizationPayload(ServerWebExchange serverWebExchange) {
@@ -99,6 +99,7 @@ public class JWTService {
     try {
       return Mono.just(SignedJWT.parse(token));
     } catch (ParseException e) {
+      logger.error("ERROR while verify JWT", e);
       return Mono.empty();
     }
   }
@@ -114,12 +115,13 @@ public class JWTService {
                 .collect(Collectors.toList());
             return new UsernamePasswordAuthenticationToken(subject, null, authorities);
           } catch (ParseException e) {
+            logger.error("ERROR while parse JWT login user as anonymous", e);
             return getAnonymousAuthentication();
           }
         }));
   }
 
-  AnonymousAuthenticationToken getAnonymousAuthentication() {
+  private AnonymousAuthenticationToken getAnonymousAuthentication() {
     List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("GUEST"));
     return new AnonymousAuthenticationToken(
         generateToken("anonymous", authorities),

@@ -18,6 +18,6 @@ public class ModuleConfig {
   @Value("${tokenIssuer:tictactoe-example.com}")
   private String tokenIssuer;
 
-  @Value("${tokenSecret:secret}")
+  @Value("${tokenSecret:secret}") // length minimum 256 bites
   private String tokenSecret;
 }

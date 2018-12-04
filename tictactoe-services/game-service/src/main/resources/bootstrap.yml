@@ -17,6 +17,7 @@ spring:
 eureka:
   instance:
     preferIpAddress: true
+    # to allow SBA access this service
     metadata-map:
       user.name: ${ACTUATOR_USERNAME:actuator}
       user.password: ${ACTUATOR_PASSWORD:actuator}
@@ -25,3 +26,10 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: ${DISCOVERY_SERVER_URL:http://eureka:password@localhost:8761/eureka/}
+
+management:
+  endpoints:
+    web.exposure.include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

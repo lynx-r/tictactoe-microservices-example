@@ -17,10 +17,10 @@ import org.springframework.context.annotation.Import;
 @Import({WebApiClientsProperties.class, SpringWebFluxConfig.class})
 public class ApplicationConfig {
 
-  @Value("${userservice-url}")
+  @Value("${userserviceUrl}")
   private String userServiceUrl;
 
-  @Value("${gameservice-url}")
+  @Value("${gameserviceUrl}")
   private String gameServiceUrl;
 
 }
