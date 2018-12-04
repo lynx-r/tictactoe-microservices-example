@@ -1,5 +1,7 @@
 package com.tictactoe.webapi.controller;
 
+import com.tictactoe.domain.Game;
+import com.tictactoe.domain.User;
 import com.tictactoe.webapi.config.TestConfig;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,69 +11,61 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.web.reactive.function.BodyInserters;
 
 import static com.tictactoe.webapi.util.TestUtils.basicAuthHeaders;
 
 /**
  * User: aleksey
  * Date: 2018-12-04
- * Time: 06:07
+ * Time: 08:37
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Import(TestConfig.class)
-public class DefaultControllerTest {
+public class WebApiUrlProtectedControllerTest {
 
   @Autowired
   private TestConfig testConfig;
-  @Autowired
-  private DefaultController defaultController;
   private WebTestClient webTestClient;
 
   @Before
   public void setUp() throws Exception {
-    webTestClient = WebTestClient.bindToController(defaultController).build();
+    webTestClient = WebTestClient.bindToServer().baseUrl("http://localhost:40010").build();
   }
 
   @Test
-  public void guestHome() {
+  public void getAllGamesAuth() {
     webTestClient
         .get()
-        .uri("/")
-        .exchange()
-        .expectStatus().isOk()
-        .expectBody().json("{\"greet\":\"Welcome Guest\"}");
-  }
-
-  @Test
-  public void login() {
-    webTestClient
-        .get()
-        .uri("/login")
-        .exchange()
-        .expectStatus().isOk()
-        .expectBody().json("{\"greet\":\"Welcome Guest, its Basic Authentication\"}");
-  }
-
-  @Test
-  public void loginSuccess() {
-    webTestClient
-        .get()
-        .uri("/login")
+        .uri("/url-protected/games")
         .headers(basicAuthHeaders(testConfig.getAdminName(), testConfig.getAdminPassword()))
         .exchange()
-        .expectStatus().isOk()
-        .expectBody().json("{\"greet\":\"Welcome Guest, its Basic Authentication\"}");
+        .expectStatus().isOk();
   }
 
   @Test
-  public void loginFail() {
+  public void getAllGamesNotAuth() {
     webTestClient
         .get()
-        .uri("/login")
+        .uri("/url-protected/games")
         .headers(basicAuthHeaders(testConfig.getAdminName(), ""))
         .exchange()
-        .expectStatus().isOk()
-        .expectBody().json("{\"greet\":\"Welcome Guest, its Basic Authentication\"}");
+        .expectStatus().isUnauthorized();
+  }
+
+  @Test
+  public void createGamesAuth() {
+    webTestClient
+        .post()
+        .uri("/url-protected/game")
+        .body(BodyInserters.fromObject(new Game(new User("userBlack", 0), new User("userWhite", 0))))
+        .headers(basicAuthHeaders(testConfig.getAdminName(), testConfig.getAdminPassword()))
+        .exchange()
+        .expectStatus().isOk();
+  }
+
+  @Test
+  public void createGame() {
   }
 }

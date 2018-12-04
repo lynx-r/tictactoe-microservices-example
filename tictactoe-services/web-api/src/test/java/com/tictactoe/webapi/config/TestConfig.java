@@ -14,14 +14,47 @@ import org.springframework.test.context.ActiveProfiles;
 @PropertySource("classpath:application-test.properties")
 @ActiveProfiles("test")
 public class TestConfig {
-  @Value("${prop}")
-  private String prop;
+  @Value("${adminName}")
+  private String adminName;
 
-  public String getProp() {
-    return prop;
+  @Value("${adminPassword}")
+  private String adminPassword;
+
+  @Value("${userName}")
+  private String userName;
+
+  @Value("${userPassword}")
+  private String userPassword;
+
+  public String getAdminName() {
+    return adminName;
   }
 
-  public void setProp(String prop) {
-    this.prop = prop;
+  public void setAdminName(String adminName) {
+    this.adminName = adminName;
+  }
+
+  public String getAdminPassword() {
+    return adminPassword;
+  }
+
+  public void setAdminPassword(String adminPassword) {
+    this.adminPassword = adminPassword;
+  }
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
+
+  public String getUserPassword() {
+    return userPassword;
+  }
+
+  public void setUserPassword(String userPassword) {
+    this.userPassword = userPassword;
   }
 }

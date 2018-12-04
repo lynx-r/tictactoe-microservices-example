@@ -24,7 +24,7 @@ public class WebApiMethodProtectedController {
     this.webApiService = webApiService;
   }
 
-  @GetMapping("users/greetAdmin")
+  @GetMapping("greetAdmin")
   @PreAuthorize("hasRole('ADMIN')")
   public Mono<Map> greetAdmin() {
     return Mono.just(Map.of("greet", "Hi admin"));

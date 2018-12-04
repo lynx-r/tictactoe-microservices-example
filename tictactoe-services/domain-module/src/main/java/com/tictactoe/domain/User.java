@@ -2,7 +2,10 @@ package com.tictactoe.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,6 +15,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Time: 05:05
  */
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Document("user")
 public class User {
 
@@ -22,7 +28,6 @@ public class User {
 
   @JsonCreator
   public User(@JsonProperty("name") String name, @JsonProperty("score") Integer score) {
-    this.name = name;
     this.score = score;
   }
 }
