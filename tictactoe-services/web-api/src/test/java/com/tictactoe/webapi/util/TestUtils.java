@@ -6,6 +6,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import static com.tictactoe.webapi.config.TestConstants.AUTH_TOKEN_URL;
+
 /**
  * User: aleksey
  * Date: 2018-12-04
@@ -16,7 +18,7 @@ public class TestUtils {
     return (headers) -> {
       Map token = webTestClient
           .post()
-          .uri("/auth/token")
+          .uri(AUTH_TOKEN_URL)
           .headers(basicAuthHeaders(username, password))
           .exchange()
           .returnResult(Map.class)

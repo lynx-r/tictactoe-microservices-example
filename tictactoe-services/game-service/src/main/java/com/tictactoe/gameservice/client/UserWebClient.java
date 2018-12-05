@@ -16,19 +16,17 @@ import reactor.core.publisher.Mono;
 public class UserWebClient {
 
   private final WebClient.Builder webClientBuilder;
-  private final ApplicationConfig applicationConfig;
 
   public UserWebClient(WebClient.Builder webClientBuilder,
                        ApplicationConfig applicationConfig) {
-    this.webClientBuilder = webClientBuilder;
-    this.applicationConfig = applicationConfig;
+    this.webClientBuilder = webClientBuilder.baseUrl(applicationConfig.getUserServiceUrl());
   }
 
   public Mono<User> getUser(String userId) {
     return webClientBuilder
         .build()
         .get()
-        .uri(applicationConfig.getUserServiceUrl() + "/v1/users/{userId}", userId)
+        .uri("/v1/users/{userId}", userId)
         .retrieve()
         .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
         .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))

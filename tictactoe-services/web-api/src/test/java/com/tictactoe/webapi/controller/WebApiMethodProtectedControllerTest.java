@@ -2,6 +2,7 @@ package com.tictactoe.webapi.controller;
 
 import com.tictactoe.domain.User;
 import com.tictactoe.webapi.config.TestConfig;
+import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 
+import static com.tictactoe.webapi.config.TestConstants.*;
 import static com.tictactoe.webapi.util.TestUtils.basicAuthHeaders;
 import static com.tictactoe.webapi.util.TestUtils.tokenAuthHeaders;
 
@@ -31,15 +33,15 @@ public class WebApiMethodProtectedControllerTest {
   private WebTestClient webTestClient;
 
   @Before
-  public void setUp() throws Exception {
-    webTestClient = WebTestClient.bindToServer().baseUrl("http://localhost:40010").build();
+  public void setUp() {
+    webTestClient = WebTestClient.bindToServer().baseUrl(WEB_API_BASE_URL).build();
   }
 
   @Test
   public void greetAdmin_BaseAuth__Admin_Ok() {
     webTestClient
         .get()
-        .uri("/method-protected/greetAdmin")
+        .uri(GREET_ADMIN_URL)
         .headers(basicAuthHeaders(testConfig.getAdminName(), testConfig.getAdminPassword()))
         .exchange()
         .expectStatus().isOk();
@@ -49,7 +51,7 @@ public class WebApiMethodProtectedControllerTest {
   public void greetAdmin_BaseAuth_User_Forbidden() {
     webTestClient
         .get()
-        .uri("/method-protected/greetAdmin")
+        .uri(GREET_ADMIN_URL)
         .headers(basicAuthHeaders(testConfig.getUserName(), testConfig.getUserPassword()))
         .exchange()
         .expectStatus().isForbidden();
@@ -59,7 +61,7 @@ public class WebApiMethodProtectedControllerTest {
   public void getAllUsers_BaseAuth_Admin_Ok() {
     webTestClient
         .get()
-        .uri("/method-protected/users")
+        .uri(USERS_URL)
         .headers(basicAuthHeaders(testConfig.getAdminName(), testConfig.getAdminPassword()))
         .exchange()
         .expectStatus().isOk();
@@ -69,7 +71,7 @@ public class WebApiMethodProtectedControllerTest {
   public void getAllUsers_BaseAuth_Anonymous_Unauthorized() {
     webTestClient
         .get()
-        .uri("/method-protected/users")
+        .uri(USERS_URL)
         .headers(basicAuthHeaders(testConfig.getAdminName(), ""))
         .exchange()
         .expectStatus().isUnauthorized();
@@ -79,8 +81,8 @@ public class WebApiMethodProtectedControllerTest {
   public void createUser_BaseAuth_Admin_Ok() {
     webTestClient
         .post()
-        .uri("/method-protected/user")
-        .body(BodyInserters.fromObject(getUser("user1")))
+        .uri(USER_URL)
+        .body(BodyInserters.fromObject(getUser()))
         .headers(basicAuthHeaders(testConfig.getAdminName(), testConfig.getAdminPassword()))
         .exchange()
         .expectStatus().isOk();
@@ -90,9 +92,9 @@ public class WebApiMethodProtectedControllerTest {
   public void createUser_BaseAuth_User_Forbidden() {
     webTestClient
         .post()
-        .uri("/method-protected/user")
+        .uri(USER_URL)
         .contentType(MediaType.APPLICATION_JSON_UTF8)
-        .body(BodyInserters.fromObject(getUser("user1")))
+        .body(BodyInserters.fromObject(getUser()))
         .headers(basicAuthHeaders(testConfig.getUserName(), testConfig.getUserPassword()))
         .exchange()
         .expectStatus().isForbidden();
@@ -102,7 +104,7 @@ public class WebApiMethodProtectedControllerTest {
   public void greetAdmin_TokenAuth__Admin_Ok() {
     webTestClient
         .get()
-        .uri("/method-protected/greetAdmin")
+        .uri(GREET_ADMIN_URL)
         .headers(tokenAuthHeaders(webTestClient, testConfig.getAdminName(), testConfig.getAdminPassword()))
         .exchange()
         .expectStatus().isOk();
@@ -112,7 +114,7 @@ public class WebApiMethodProtectedControllerTest {
   public void greetAdmin_TokenAuth_User_Forbidden() {
     webTestClient
         .get()
-        .uri("/method-protected/greetAdmin")
+        .uri(GREET_ADMIN_URL)
         .headers(tokenAuthHeaders(webTestClient, testConfig.getUserName(), testConfig.getUserPassword()))
         .exchange()
         .expectStatus().isForbidden();
@@ -122,7 +124,7 @@ public class WebApiMethodProtectedControllerTest {
   public void getAllUsers_TokenAuth_Admin_Ok() {
     webTestClient
         .get()
-        .uri("/method-protected/users")
+        .uri(USERS_URL)
         .headers(tokenAuthHeaders(webTestClient, testConfig.getAdminName(), testConfig.getAdminPassword()))
         .exchange()
         .expectStatus().isOk();
@@ -132,7 +134,7 @@ public class WebApiMethodProtectedControllerTest {
   public void getAllUsers_TokenAuth_Anonymous_Unauthorized() {
     webTestClient
         .get()
-        .uri("/method-protected/users")
+        .uri(USERS_URL)
         .headers(tokenAuthHeaders(webTestClient, testConfig.getAdminName(), ""))
         .exchange()
         .expectStatus().isUnauthorized();
@@ -142,8 +144,8 @@ public class WebApiMethodProtectedControllerTest {
   public void createUser_TokenAuth_Admin_Ok() {
     webTestClient
         .post()
-        .uri("/method-protected/user")
-        .body(BodyInserters.fromObject(getUser("user1")))
+        .uri(USER_URL)
+        .body(BodyInserters.fromObject(getUser()))
         .headers(tokenAuthHeaders(webTestClient, testConfig.getAdminName(), testConfig.getAdminPassword()))
         .exchange()
         .expectStatus().isOk();
@@ -153,15 +155,15 @@ public class WebApiMethodProtectedControllerTest {
   public void createUser_TokenAuth_User_Forbidden() {
     webTestClient
         .post()
-        .uri("/method-protected/user")
+        .uri(USER_URL)
         .contentType(MediaType.APPLICATION_JSON_UTF8)
-        .body(BodyInserters.fromObject(getUser("user1")))
+        .body(BodyInserters.fromObject(getUser()))
         .headers(tokenAuthHeaders(webTestClient, testConfig.getUserName(), testConfig.getUserPassword()))
         .exchange()
         .expectStatus().isForbidden();
   }
 
-  private User getUser(String userName) {
-    return User.builder().name(userName).build();
+  private User getUser() {
+    return User.builder().name(RandomStringUtils.random(10)).build();
   }
 }

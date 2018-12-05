@@ -19,28 +19,30 @@ import java.util.Map;
 public class GameWebClient {
 
   private final WebClient.Builder webClientBuilder;
-  private final ApplicationConfig applicationConfig;
 
   public GameWebClient(WebClient.Builder webClientBuilder,
                        ApplicationConfig applicationConfig) {
-    this.webClientBuilder = webClientBuilder;
-    this.applicationConfig = applicationConfig;
+    this.webClientBuilder = webClientBuilder.baseUrl(applicationConfig.getGameServiceUrl());
   }
 
   public Flux<Game> getAllGames() {
     return webClientBuilder
         .build()
         .get()
-        .uri(applicationConfig.getGameServiceUrl() + "/v1/games")
+        .uri("/v1/games")
         .retrieve()
         .bodyToFlux(Game.class);
   }
 
-  public Mono<Game> createGame(Map<String, Object> uriVariables) {
+  public Mono<Game> createGame(Map<String, Object> params) {
+    Boolean black = (Boolean) params.remove("black");
     return webClientBuilder
         .build()
         .post()
-        .uri(applicationConfig.getGameServiceUrl() + "/v1/games/{userFirst}/{userSecond}?black={black}", uriVariables)
+        .uri(uriBuilder ->
+            uriBuilder.path("/v1/games/{userFirst}/{userSecond}")
+                .queryParam("black", black)
+                .build(params))
         .retrieve()
         .bodyToMono(Game.class);
   }
@@ -49,7 +51,7 @@ public class GameWebClient {
     return webClientBuilder
         .build()
         .get()
-        .uri(applicationConfig.getGameServiceUrl() + "/v1/games/{gameId}", gameId)
+        .uri("/v1/games/{gameId}", gameId)
         .retrieve()
         .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
         .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))

@@ -64,7 +64,7 @@ public class SpringSecurityWebFluxConfig {
         .exceptionHandling()
         .and()
         .authorizeExchange()
-        .pathMatchers("/auth/token").authenticated()
+        .pathMatchers(HttpMethod.POST, "/auth/token").authenticated()
         .pathMatchers("/actuator/**").hasRole("SYSTEM")
         .pathMatchers(HttpMethod.GET, "/url-protected/games/**").hasRole("USER")
         .pathMatchers(HttpMethod.POST, "/url-protected/game/**").hasRole("ADMIN")
