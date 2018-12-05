@@ -5,6 +5,7 @@ import com.tictactoe.webapi.config.ApplicationConfig;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.util.DefaultUriBuilderFactory;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -19,17 +20,19 @@ import java.util.Map;
 public class GameWebClient {
 
   private final WebClient.Builder webClientBuilder;
+  private final String gameServiceUrl;
 
   public GameWebClient(WebClient.Builder webClientBuilder,
                        ApplicationConfig applicationConfig) {
-    this.webClientBuilder = webClientBuilder.baseUrl(applicationConfig.getGameServiceUrl());
+    this.webClientBuilder = webClientBuilder;
+    this.gameServiceUrl = applicationConfig.getGameServiceUrl();
   }
 
   public Flux<Game> getAllGames() {
     return webClientBuilder
         .build()
         .get()
-        .uri("/v1/games")
+        .uri(gameServiceUrl + "/v1/games")
         .retrieve()
         .bodyToFlux(Game.class);
   }
@@ -40,9 +43,12 @@ public class GameWebClient {
         .build()
         .post()
         .uri(uriBuilder ->
-            uriBuilder.path("/v1/games/{userFirst}/{userSecond}")
+            new DefaultUriBuilderFactory(gameServiceUrl)
+                .builder()
+                .path("/v1/games/{userFirst}/{userSecond}")
                 .queryParam("black", black)
-                .build(params))
+                .build(params)
+        )
         .retrieve()
         .bodyToMono(Game.class);
   }
@@ -51,7 +57,7 @@ public class GameWebClient {
     return webClientBuilder
         .build()
         .get()
-        .uri("/v1/games/{gameId}", gameId)
+        .uri(gameServiceUrl + "/v1/games/{gameId}", gameId)
         .retrieve()
         .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
         .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))

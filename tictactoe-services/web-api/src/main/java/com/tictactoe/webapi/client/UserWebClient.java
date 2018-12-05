@@ -17,17 +17,19 @@ import reactor.core.publisher.Mono;
 public class UserWebClient {
 
   private final WebClient.Builder webClientBuilder;
+  private final String userServiceUrl;
 
   public UserWebClient(WebClient.Builder webClientBuilder,
                        ApplicationConfig applicationConfig) {
-    this.webClientBuilder = webClientBuilder.baseUrl(applicationConfig.getUserServiceUrl());
+    this.webClientBuilder = webClientBuilder;
+    this.userServiceUrl = applicationConfig.getUserServiceUrl();
   }
 
   public Flux<User> getAllUsers() {
     return webClientBuilder
         .build()
         .get()
-        .uri("/v1/users")
+        .uri(userServiceUrl + "/v1/users")
         .retrieve()
         .bodyToFlux(User.class);
   }
@@ -36,7 +38,7 @@ public class UserWebClient {
     return webClientBuilder
         .build()
         .post()
-        .uri("/v1/users")
+        .uri(userServiceUrl + "/v1/users")
         .body(BodyInserters.fromObject(userRequest))
         .retrieve()
         .bodyToMono(User.class);
@@ -46,7 +48,7 @@ public class UserWebClient {
     return webClientBuilder
         .build()
         .get()
-        .uri("/v1/users/{userId}", userId)
+        .uri(userServiceUrl + "/v1/users/{userId}", userId)
         .retrieve()
         .bodyToMono(User.class);
   }

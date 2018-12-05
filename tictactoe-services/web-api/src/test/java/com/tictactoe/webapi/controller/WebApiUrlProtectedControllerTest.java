@@ -86,7 +86,7 @@ public class WebApiUrlProtectedControllerTest {
   }
 
   @Test
-  public void createGame_BaseAuth_User_Unauthorized() {
+  public void createGame_BaseAuth_User_Forbidden() {
     List<User> users = webClient
         .get()
         .uri(USERS_URL)
@@ -101,9 +101,9 @@ public class WebApiUrlProtectedControllerTest {
         .post()
         .uri(GAME_URL)
         .body(BodyInserters.fromObject(createGame(users.get(0), users.get(1))))
-        .headers(basicAuthHeaders(testConfig.getAdminName(), testConfig.getAdminPassword()))
+        .headers(basicAuthHeaders(testConfig.getUserName(), testConfig.getUserPassword()))
         .exchange()
-        .expectStatus().isUnauthorized();
+        .expectStatus().isForbidden();
   }
 
   private Map createGame(User userBlack, User userWhite) {

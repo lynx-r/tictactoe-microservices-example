@@ -4,8 +4,11 @@ import com.tictactoe.domain.User;
 import com.tictactoe.gameservice.config.ApplicationConfig;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyExtractors;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+
+import java.util.Map;
 
 /**
  * User: aleksey
@@ -16,19 +19,21 @@ import reactor.core.publisher.Mono;
 public class UserWebClient {
 
   private final WebClient.Builder webClientBuilder;
+  private final String userServiceUrl;
 
   public UserWebClient(WebClient.Builder webClientBuilder,
                        ApplicationConfig applicationConfig) {
-    this.webClientBuilder = webClientBuilder.baseUrl(applicationConfig.getUserServiceUrl());
+    this.webClientBuilder = webClientBuilder;
+    this.userServiceUrl = applicationConfig.getUserServiceUrl();
   }
 
   public Mono<User> getUser(String userId) {
     return webClientBuilder
         .build()
         .get()
-        .uri("/v1/users/{userId}", userId)
+        .uri("{userServiceUrl}/v1/users/{userId}", userServiceUrl, userId)
         .retrieve()
-        .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
+        .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("ERROR 4xx: " + resp.body(BodyExtractors.toMono(Map.class)).toString())))
         .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))
         .bodyToMono(User.class);
   }
