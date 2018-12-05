@@ -2,13 +2,9 @@ package com.tictactoe.gameservice.client;
 
 import com.tictactoe.domain.User;
 import com.tictactoe.gameservice.config.ApplicationConfig;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.BodyExtractors;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-
-import java.util.Map;
 
 /**
  * User: aleksey
@@ -31,10 +27,10 @@ public class UserWebClient {
     return webClientBuilder
         .build()
         .get()
-        .uri("{userServiceUrl}/v1/users/{userId}", userServiceUrl, userId)
+        .uri(userServiceUrl + "/v1/users/{userId}", userId)
         .retrieve()
-        .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("ERROR 4xx: " + resp.body(BodyExtractors.toMono(Map.class)).toString())))
-        .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))
+//        .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("ERROR 4xx: " + resp.body(BodyExtractors.toMono(Map.class)).toString())))
+//        .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))
         .bodyToMono(User.class);
   }
 }

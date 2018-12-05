@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 import static com.tictactoe.webapi.config.TestConstants.*;
 import static com.tictactoe.webapi.util.TestUtils.basicAuthHeaders;
+import static com.tictactoe.webapi.util.TestUtils.tokenAuthHeaders;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -102,6 +103,68 @@ public class WebApiUrlProtectedControllerTest {
         .uri(GAME_URL)
         .body(BodyInserters.fromObject(createGame(users.get(0), users.get(1))))
         .headers(basicAuthHeaders(testConfig.getUserName(), testConfig.getUserPassword()))
+        .exchange()
+        .expectStatus().isForbidden();
+  }
+
+  @Test
+  public void getAllGames_TokenAuth_Admin_Ok() {
+    webTestClient
+        .get()
+        .uri(GAMES_URL)
+        .headers(tokenAuthHeaders(webTestClient, testConfig.getAdminName(), testConfig.getAdminPassword()))
+        .exchange()
+        .expectStatus().isOk();
+  }
+
+  @Test
+  public void getAllGames_TokenAuth_Anonymous_Unauthorized() {
+    webTestClient
+        .get()
+        .uri(GAMES_URL)
+        .headers(tokenAuthHeaders(webTestClient, testConfig.getAdminName(), ""))
+        .exchange()
+        .expectStatus().isUnauthorized();
+  }
+
+  @Test
+  public void createGame_TokenAuth_Admin_Ok() {
+    List<User> users = webClient
+        .get()
+        .uri(USERS_URL)
+        .headers(tokenAuthHeaders(webTestClient, testConfig.getAdminName(), testConfig.getAdminPassword()))
+        .retrieve()
+        .bodyToFlux(User.class)
+        .collect(Collectors.toList())
+        .block();
+    assertNotNull(users);
+    assertTrue(users.size() > 3);
+    webTestClient
+        .post()
+        .uri(GAME_URL)
+        .body(BodyInserters.fromObject(createGame(users.get(0), users.get(1))))
+        .headers(tokenAuthHeaders(webTestClient, testConfig.getAdminName(), testConfig.getAdminPassword()))
+        .exchange()
+        .expectStatus().isOk();
+  }
+
+  @Test
+  public void createGame_TokenAuth_User_Forbidden() {
+    List<User> users = webClient
+        .get()
+        .uri(USERS_URL)
+        .headers(tokenAuthHeaders(webTestClient, testConfig.getAdminName(), testConfig.getAdminPassword()))
+        .retrieve()
+        .bodyToFlux(User.class)
+        .collect(Collectors.toList())
+        .block();
+    assertNotNull(users);
+    assertTrue(users.size() > 3);
+    webTestClient
+        .post()
+        .uri(GAME_URL)
+        .body(BodyInserters.fromObject(createGame(users.get(0), users.get(1))))
+        .headers(tokenAuthHeaders(webTestClient, testConfig.getUserName(), testConfig.getUserPassword()))
         .exchange()
         .expectStatus().isForbidden();
   }

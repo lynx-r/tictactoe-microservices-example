@@ -2,7 +2,6 @@ package com.tictactoe.webapi.client;
 
 import com.tictactoe.domain.Game;
 import com.tictactoe.webapi.config.ApplicationConfig;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.DefaultUriBuilderFactory;
@@ -59,8 +58,8 @@ public class GameWebClient {
         .get()
         .uri(gameServiceUrl + "/v1/games/{gameId}", gameId)
         .retrieve()
-        .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
-        .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))
+//        .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
+//        .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))
         .bodyToMono(Game.class);
   }
 }
