@@ -4,9 +4,13 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
     }
 }
 
@@ -14,10 +18,20 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.palantir.docker'
 
 group = 'com.tictactoe'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 10
+
+bootJar {
+    baseName = 'config-server'
+    version =  '0.1.0'
+}
+
+docker {
+    name "${project.group}/${bootJar.baseName}"
+    buildArgs(['JAR_FILE': "${project.buildFile}"])
+}
 
 repositories {
     mavenCentral()

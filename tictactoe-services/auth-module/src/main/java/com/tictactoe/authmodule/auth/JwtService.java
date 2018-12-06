@@ -46,6 +46,7 @@ public class JwtService {
 
   private static final String BEARER = "Bearer ";
   private static final JWSAlgorithm JWS_ALGORITHM = JWSAlgorithm.HS256;
+  private static final String SECRET_KEY_ALGORITHM = "HMAC";
   private final Logger logger = LoggerFactory.getLogger(JwtService.class);
   private final ModuleConfig moduleConfig;
 
@@ -81,7 +82,7 @@ public class JwtService {
     SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWS_ALGORITHM), claimsSet);
 
     try {
-      final SecretKey key = new SecretKeySpec(moduleConfig.getTokenSecret().getBytes(), "HMAC");
+      final SecretKey key = new SecretKeySpec(moduleConfig.getTokenSecret().getBytes(), SECRET_KEY_ALGORITHM);
       signedJWT.sign(new MACSigner(key));
     } catch (JOSEException e) {
       logger.error("ERROR while signing JWT", e);
@@ -114,7 +115,7 @@ public class JwtService {
       if (valid) {
         ConfigurableJWTProcessor<SimpleSecurityContext> jwtProcessor = new DefaultJWTProcessor<>();
         jwtProcessor.setJWSKeySelector((header, context) -> {
-          final SecretKey key = new SecretKeySpec(moduleConfig.getTokenSecret().getBytes(), "HMAC");
+          final SecretKey key = new SecretKeySpec(moduleConfig.getTokenSecret().getBytes(), SECRET_KEY_ALGORITHM);
           return List.of(key);
         });
         JWTClaimsSet claimsSet = jwtProcessor.process(signedJWT, null);
