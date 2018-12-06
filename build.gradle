@@ -1,6 +1,7 @@
 buildscript {
     ext {
         springBootVersion = '2.1.1.RELEASE'
+        gradleDockerVersion = '0.20.1'
     }
     repositories {
         mavenCentral()
@@ -8,7 +9,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
+        classpath("gradle.plugin.com.palantir.gradle.docker:gradle-docker:${gradleDockerVersion}")
     }
 }
 
@@ -21,6 +22,7 @@ allprojects {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'com.palantir.docker'
     apply plugin: 'com.palantir.docker-run'
+    apply plugin: 'com.palantir.docker-compose'
 }
 
 docker.name = 'com.tictactoe'
@@ -50,6 +52,11 @@ subprojects {
 
 project(':spring-servers') {
     bootJar.enabled = false
+
+    dockerCompose {
+        template 'docker-compose.spring-servers.template.yml'
+        dockerComposeFile 'docker-compose.spring-servers.yml'
+    }
 }
 
 project(':tictactoe-services') {
@@ -83,6 +90,8 @@ project(':spring-servers:config-server') {
     }
 
     dependencies {
+        docker project(':spring-servers:discovery-server')
+
         implementation('org.springframework.boot:spring-boot-starter-security')
 
         implementation('org.springframework.cloud:spring-cloud-config-server')
@@ -101,6 +110,9 @@ project(':spring-servers:gateway-server') {
     }
 
     dependencies {
+        docker project(':spring-servers:config-server')
+        docker project(':spring-servers:discovery-server')
+
         implementation('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
         implementation('org.springframework.cloud:spring-cloud-starter-config')
         implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
@@ -119,6 +131,9 @@ project(':spring-servers:admin-server') {
     }
 
     dependencies {
+        docker project(':spring-servers:config-server')
+        docker project(':spring-servers:discovery-server')
+
         implementation('org.springframework.boot:spring-boot-starter-web')
         implementation('org.springframework.boot:spring-boot-starter-security')
 
