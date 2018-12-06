@@ -12,4 +12,4 @@ echo "******* Eureka Server has started"
 echo "********************************************************"
 echo "Starting Config Server"
 echo "********************************************************"
-./app.jar
+/app/app.jar

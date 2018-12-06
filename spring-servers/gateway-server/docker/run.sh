@@ -18,4 +18,4 @@ echo "*******  Configuration Server has started"
 echo "********************************************************"
 echo "Starting Zuul Server with $CONFIG_SERVER_URI"
 echo "********************************************************"
-./app.jar
+/app/app.jar
