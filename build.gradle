@@ -1,14 +1,162 @@
-//subprojects {
-//    apply plugin: 'java'
-//    group = 'com.tictactoe'
-//    version = '1.0-SNAPSHOT'
-//}
-//
-//group = 'com.tictactoe'
-//version = '1.0-SNAPSHOT'
-//
-////project(':game-service') {
-////    dependencies {
-////       implementation project(':domain-module')
-////    }
-////}
+buildscript {
+    ext {
+        springBootVersion = '2.1.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
+    }
+}
+
+allprojects {
+    group = 'com.tictactoe'
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'com.palantir.docker'
+    apply plugin: 'com.palantir.docker-run'
+}
+
+docker.name = 'com.tictactoe'
+bootJar.enabled = false
+
+sourceCompatibility = 10
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+subprojects {
+    ext['springCloudVersion'] = 'Greenwich.M3'
+
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+}
+
+project(':spring-servers') {
+    bootJar.enabled = false
+}
+
+project(':tictactoe-services') {
+    bootJar.enabled = false
+}
+
+project(':spring-servers:discovery-server') {
+    bootJar {
+        launchScript()
+        baseName = 'discovery-server'
+        version = '0.1.0'
+    }
+
+    dependencies {
+        implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+        implementation('org.springframework.boot:spring-boot-starter-security')
+
+        compile('javax.xml.bind:jaxb-api:2.3.0')
+        compile('javax.activation:activation:1.1')
+        compile('org.glassfish.jaxb:jaxb-runtime:2.3.0')
+
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+    }
+}
+
+project(':spring-servers:config-server') {
+    bootJar {
+        launchScript()
+        baseName = 'config-server'
+        version = '0.1.0'
+    }
+
+    dependencies {
+        implementation('org.springframework.boot:spring-boot-starter-security')
+
+        implementation('org.springframework.cloud:spring-cloud-config-server')
+        implementation('org.springframework.cloud:spring-cloud-starter-config')
+        implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+    }
+}
+
+project(':spring-servers:gateway-server') {
+    bootJar {
+        launchScript()
+        baseName = 'gateway-server'
+        version = '0.1.0'
+    }
+
+    dependencies {
+        implementation('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
+        implementation('org.springframework.cloud:spring-cloud-starter-config')
+        implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+    }
+}
+
+project(':spring-servers:admin-server') {
+    ext['springBootAdminVersion'] = '2.1.1'
+
+    bootJar {
+        launchScript()
+        baseName = 'admin-server'
+        version = '0.1.0'
+    }
+
+    dependencies {
+        implementation('org.springframework.boot:spring-boot-starter-web')
+        implementation('org.springframework.boot:spring-boot-starter-security')
+
+        implementation('de.codecentric:spring-boot-admin-starter-server')
+
+        implementation('org.springframework.cloud:spring-cloud-starter-config')
+        implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+        testImplementation('org.springframework.security:spring-security-test')
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+        }
+    }
+}
+
+subprojects { subproject ->
+    if (file("${subproject.projectDir}/docker/Dockerfile").exists()) {
+        println "Building Docker image ${subproject.group}.${subproject.bootJar.baseName}"
+        docker {
+            name "workingbit/${subproject.group}.${subproject.bootJar.baseName}"
+            tags subproject.version, 'latest'
+            dockerfile file("${subproject.projectDir}/docker/Dockerfile")
+            files tasks.bootJar.archivePath, 'docker/run.sh'
+            buildArgs "JAR_FILE": "${subproject.bootJar.baseName}-${subproject.bootJar.version}.jar",
+                    "RUN_SH": "run.sh"
+            noCache true
+        }
+
+        dockerRun {
+            name "${subproject.bootJar.baseName}"
+            image "workingbit/${subproject.group}.${subproject.bootJar.baseName}"
+            ports '8080:8080'
+        }
+    } else {
+        docker.name = 'noop'
+    }
+}

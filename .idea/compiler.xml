@@ -24,8 +24,6 @@
       <module name="game-service_test" target="1.10" />
       <module name="infrastructure_main" target="1.10" />
       <module name="infrastructure_test" target="1.10" />
-      <module name="tictactoe_main" target="11" />
-      <module name="tictactoe_test" target="11" />
       <module name="user-server_main" target="11" />
       <module name="user-server_test" target="11" />
       <module name="user-service_main" target="1.10" />

@@ -5,5 +5,5 @@ server:
 spring:
   security:
     user:
-      name: ${EUREKA_NAME:eureka}
+      name: ${EUREKA_USERNAME:eureka}
       password: ${EUREKA_PASSWORD:password}
