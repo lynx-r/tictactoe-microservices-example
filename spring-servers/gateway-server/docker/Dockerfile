@@ -1,5 +1,5 @@
 FROM openjdk:11
-RUN apt-get install netcat-openbsd
+RUN apt-get update && apt-get -y install netcat-traditional
 RUN mkdir app
 ARG JAR_FILE
 ARG RUN_SH
