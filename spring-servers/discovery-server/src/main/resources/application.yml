@@ -1,6 +1,6 @@
 #Default port is 8761
 server:
-  port: ${EUREKASERVER_PORT:8761}
+  port: ${DISCOVERY_SERVER_PORT:8761}
 
 spring:
   security:
