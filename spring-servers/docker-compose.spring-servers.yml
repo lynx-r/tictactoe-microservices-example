@@ -1,24 +1,32 @@
-discovery-server:
+discoveryserver:
   image: 'workingbit/com.tictactoe.discovery-server'
   ports:
-    - 8761:8080
+    - "8761:8761"
   env_file:
     - ${HOME}/Docker/tictactoe-shared.env
-config-server:
+configserver:
   image: 'workingbit/com.tictactoe.config-server'
+  links:
+    - "discoveryserver:discoveryserver"
   ports:
-    - 8080
+    - "8881:8881"
   env_file:
     - ${HOME}/Docker/tictactoe-shared.env
-gateway-server:
+gatewayserver:
   image: 'workingbit/com.tictactoe.gateway-server'
+  links:
+    - "discoveryserver:discoveryserver"
+    - "configserver:configserver"
   ports:
-    - 5555:8080
+    - "5555:5555"
   env_file:
     - ${HOME}/Docker/tictactoe-shared.env
-admin-server:
+adminserver:
   image: 'workingbit/com.tictactoe.admin-server'
+  links:
+    - "discoveryserver:discoveryserver"
+    - "configserver:configserver"
   ports:
-    - 9999:8080
+    - "9999:9999"
   env_file:
     - ${HOME}/Docker/tictactoe-shared.env
