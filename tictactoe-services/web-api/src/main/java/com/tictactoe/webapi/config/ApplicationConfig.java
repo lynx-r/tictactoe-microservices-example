@@ -4,6 +4,9 @@ import com.tictactoe.authmodule.config.SpringWebFluxConfig;
 import com.tictactoe.authmodule.config.WebApiClientsProperties;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.mongo.MongoReactiveAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -14,6 +17,7 @@ import org.springframework.context.annotation.Import;
  */
 @Data
 @Configuration
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, MongoReactiveAutoConfiguration.class})
 @Import({WebApiClientsProperties.class, SpringWebFluxConfig.class})
 public class ApplicationConfig {
 

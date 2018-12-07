@@ -232,12 +232,15 @@ project(':tictactoe-services:web-api') {
     }
 
     dependencies {
-        implementation project(':tictactoe-services:domain-module')
-        implementation project(':tictactoe-services:auth-module')
+        implementation(project(':tictactoe-services:domain-module')) {
+            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-data-mongodb-reactive'
+        }
+        implementation(project(':tictactoe-services:auth-module')) {
+            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-data-mongodb-reactive'
+        }
 
         implementation('org.springframework.boot:spring-boot-starter-actuator')
         implementation('org.springframework.boot:spring-boot-starter-webflux')
-        implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
         implementation('org.springframework.boot:spring-boot-starter-security')
 
         implementation('org.springframework.security:spring-security-oauth2-core')
@@ -250,6 +253,7 @@ project(':tictactoe-services:web-api') {
         implementation('org.springframework.cloud:spring-cloud-starter-sleuth')
         implementation('org.springframework.cloud:spring-cloud-starter-zipkin')
 
+        implementation('io.projectreactor:reactor-core')
         runtimeOnly('org.springframework.boot:spring-boot-devtools')
         compileOnly('org.projectlombok:lombok')
 
