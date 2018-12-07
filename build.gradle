@@ -167,10 +167,10 @@ project(':tictactoe-services:user-service') {
         implementation('org.springframework.boot:spring-boot-starter-webflux')
         implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
         implementation('org.springframework.boot:spring-boot-starter-security')
-        
+
         implementation('org.springframework.security:spring-security-oauth2-core')
         implementation('org.springframework.security:spring-security-oauth2-jose')
-        
+
         implementation('org.springframework.cloud:spring-cloud-starter-config')
         implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
         implementation('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
@@ -178,11 +178,11 @@ project(':tictactoe-services:user-service') {
         implementation('org.springframework.cloud:spring-cloud-starter-sleuth')
         implementation('org.springframework.cloud:spring-cloud-starter-zipkin')
         implementation('org.springframework.security:spring-security-rsa')
-        
+
         implementation('org.apache.commons:commons-lang3:3.8.1')
         runtimeOnly('org.springframework.boot:spring-boot-devtools')
         compileOnly('org.projectlombok:lombok')
-        
+
         testImplementation('org.springframework.boot:spring-boot-starter-test')
         testImplementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
         testImplementation('io.projectreactor:reactor-test')
@@ -249,9 +249,59 @@ project(':tictactoe-services:web-api') {
 
         runtimeOnly('org.springframework.boot:spring-boot-devtools')
         compileOnly('org.projectlombok:lombok')
-        
+
         testImplementation('org.springframework.boot:spring-boot-starter-test')
         testImplementation('io.projectreactor:reactor-test')
+    }
+}
+
+project(':tictactoe-services:auth-module') {
+    bootJar.enabled = false
+
+    jar {
+        enabled = true
+        group 'com.tictactoe'
+        baseName = 'auth-module'
+        version = '1.0'
+    }
+    
+    dependencies {
+        implementation project(':tictactoe-services:domain-module')
+
+        implementation('org.springframework.boot:spring-boot-starter-webflux')
+        implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+        implementation('org.springframework.boot:spring-boot-starter-security')
+
+        implementation('org.springframework.cloud:spring-cloud-starter-netflix-ribbon')
+
+        implementation('org.springframework.security:spring-security-oauth2-core')
+        implementation('org.springframework.security:spring-security-oauth2-jose')
+
+        compileOnly('org.projectlombok:lombok')
+
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+        testImplementation('io.projectreactor:reactor-test')
+        testImplementation('org.springframework.security:spring-security-test')
+    }
+}
+
+project(':tictactoe-services:domain-module') {
+    bootJar.enabled = false
+
+    jar {
+        enabled = true
+        group 'com.tictactoe'
+        baseName = 'domain-module'
+        version = '1.0'
+    }
+
+    dependencies {
+        implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+        implementation('com.fasterxml.jackson.core:jackson-annotations:2.9.3')
+
+        compileOnly('org.projectlombok:lombok')
+
+        testCompile group: 'junit', name: 'junit', version: '4.12'
     }
 }
 
