@@ -1,9 +1,9 @@
 rootProject.name = 'spring-servers'
 
-include ':spring-servers:config-server'
-project(':spring-servers:config-server').projectDir = file('./config-server')
 include ':spring-servers:discovery-server'
 project(':spring-servers:discovery-server').projectDir = file('./discovery-server')
+include ':spring-servers:config-server'
+project(':spring-servers:config-server').projectDir = file('./config-server')
 include ':spring-servers:gateway-server'
 project(':spring-servers:gateway-server').projectDir = file('./gateway-server')
 include ':spring-servers:admin-server'
