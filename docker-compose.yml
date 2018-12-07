@@ -39,7 +39,7 @@ userservice:
     - "configserver:configserver"
     - "mongo:mongo"
   ports:
-    - "14001"
+    - "14001:14001"
   env_file:
     - ${HOME}/Docker/tictactoe-shared.env
 gameservice:
@@ -51,11 +51,11 @@ gameservice:
     - "mongo:mongo"
     - "userservice:userservice"
   ports:
-    - "14002"
+    - "14002:14002"
   env_file:
     - ${HOME}/Docker/tictactoe-shared.env
 webapi:
-  image: 'workingbit/com.tictactoe.webapi-service'
+  image: 'workingbit/com.tictactoe.web-api'
   links:
     - "zipkin:zipkin"
     - "discoveryserver:discoveryserver"
@@ -63,7 +63,7 @@ webapi:
     - "userservice:userservice"
     - "gameservice:gameservice"
   ports:
-    - "14010"
+    - "14010:14010"
   env_file:
     - ${HOME}/Docker/tictactoe-shared.env
 
@@ -74,5 +74,8 @@ zipkin:
 
 mongo:
   image: 'mongo'
+  ports:
+    - "27017:27017"
   env_file:
     - ${HOME}/Docker/tictactoe-shared.env
+
