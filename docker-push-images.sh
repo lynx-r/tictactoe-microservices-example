@@ -7,3 +7,4 @@ echo ./gradlew :spring-servers:gateway-server:dockerPush
 ./gradlew :spring-servers:gateway-server:dockerPush
 echo ./gradlew :spring-servers:admin-server:dockerPush
 ./gradlew :spring-servers:admin-server:dockerPush
+
