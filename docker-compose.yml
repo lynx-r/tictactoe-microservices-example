@@ -1,81 +1,108 @@
-discoveryserver:
-  image: 'workingbit/com.tictactoe.discovery-server'
-  ports:
-    - "8761:8761"
-  env_file:
-    - ${HOME}/Docker/tictactoe-shared.env
-configserver:
-  image: 'workingbit/com.tictactoe.config-server'
-  links:
-    - "discoveryserver:discoveryserver"
-  ports:
-    - "8881:8881"
-  env_file:
-    - ${HOME}/Docker/tictactoe-shared.env
-gatewayserver:
-  image: 'workingbit/com.tictactoe.gateway-server'
-  links:
-    - "discoveryserver:discoveryserver"
-    - "configserver:configserver"
-  ports:
-    - "5555:5555"
-  env_file:
-    - ${HOME}/Docker/tictactoe-shared.env
-adminserver:
-  image: 'workingbit/com.tictactoe.admin-server'
-  links:
-    - "discoveryserver:discoveryserver"
-    - "configserver:configserver"
-  ports:
-    - "9999:9999"
-  env_file:
-    - ${HOME}/Docker/tictactoe-shared.env
+version: '3'
 
-userservice:
-  image: 'workingbit/com.tictactoe.user-service'
-  links:
-    - "zipkin:zipkin"
-    - "discoveryserver:discoveryserver"
-    - "configserver:configserver"
-    - "mongo:mongo"
-  ports:
-    - "14001:14001"
-  env_file:
-    - ${HOME}/Docker/tictactoe-shared.env
-gameservice:
-  image: 'workingbit/com.tictactoe.game-service'
-  links:
-    - "zipkin:zipkin"
-    - "discoveryserver:discoveryserver"
-    - "configserver:configserver"
-    - "mongo:mongo"
-    - "userservice:userservice"
-  ports:
-    - "14002:14002"
-  env_file:
-    - ${HOME}/Docker/tictactoe-shared.env
-webapi:
-  image: 'workingbit/com.tictactoe.web-api'
-  links:
-    - "zipkin:zipkin"
-    - "discoveryserver:discoveryserver"
-    - "configserver:configserver"
-    - "userservice:userservice"
-    - "gameservice:gameservice"
-  ports:
-    - "14010:14010"
-  env_file:
-    - ${HOME}/Docker/tictactoe-shared.env
-
-zipkin:
-  image: 'openzipkin/zipkin'
-  ports:
-    - "9411:9411"
-
-mongo:
-  image: 'mongo'
-  ports:
-    - "27017:27017"
-  env_file:
-    - ${HOME}/Docker/tictactoe-shared.env
-
+services:
+  discoveryserver:
+    image: 'workingbit/com.tictactoe.discovery-server'
+    container_name: discoveryserver
+    ports:
+      - "8761:8761"
+    env_file:
+      - ${HOME}/Docker/tictactoe-shared.env
+  configserver:
+    image: 'workingbit/com.tictactoe.config-server'
+    container_name: configserver
+    links:
+      - "discoveryserver:discoveryserver"
+    ports:
+      - "8881:8881"
+    env_file:
+      - ${HOME}/Docker/tictactoe-shared.env
+  gatewayserver:
+    image: 'workingbit/com.tictactoe.gateway-server'
+    container_name: gatewayserver
+    links:
+      - "discoveryserver:discoveryserver"
+      - "configserver:configserver"
+    ports:
+      - "5555:5555"
+    env_file:
+      - ${HOME}/Docker/tictactoe-shared.env
+  adminserver:
+    image: 'workingbit/com.tictactoe.admin-server'
+    container_name: adminserver
+    links:
+      - "discoveryserver:discoveryserver"
+      - "configserver:configserver"
+    ports:
+      - "9999:9999"
+    env_file:
+      - ${HOME}/Docker/tictactoe-shared.env
+  
+  userservice:
+    image: 'workingbit/com.tictactoe.user-service'
+    container_name: userservice
+    links:
+      - "zipkin:zipkin"
+      - "discoveryserver:discoveryserver"
+      - "configserver:configserver"
+      - "mongo:mongo"
+    ports:
+      - "14001:14001"
+    env_file:
+      - ${HOME}/Docker/tictactoe-shared.env
+  gameservice:
+    image: 'workingbit/com.tictactoe.game-service'
+    container_name: gameservice
+    links:
+      - "zipkin:zipkin"
+      - "discoveryserver:discoveryserver"
+      - "configserver:configserver"
+      - "mongo:mongo"
+      - "userservice:userservice"
+    ports:
+      - "14002:14002"
+    env_file:
+      - ${HOME}/Docker/tictactoe-shared.env
+  webapi:
+    image: 'workingbit/com.tictactoe.web-api'
+    container_name: webapi
+    links:
+      - "zipkin:zipkin"
+      - "discoveryserver:discoveryserver"
+      - "configserver:configserver"
+      - "userservice:userservice"
+      - "gameservice:gameservice"
+    ports:
+      - "14010:14010"
+    env_file:
+      - ${HOME}/Docker/tictactoe-shared.env
+  
+  zipkin:
+    image: 'openzipkin/zipkin'
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+        
+  zipkin-ui:
+    image: openzipkin/zipkin-ui
+    container_name: zipkin-ui
+    environment:
+      # Change this if connecting to a different zipkin server
+      - ZIPKIN_BASE_URL=http://zipkin:9411
+    ports:
+      - 9410:80
+    depends_on:
+      - zipkin
+  
+  mongo:
+    image: 'mongo'
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    env_file:
+      - ${HOME}/Docker/tictactoe-shared.env
+    volumes:
+      - 'mongo:/data/db'
+  
+volumes:
+  mongo:
