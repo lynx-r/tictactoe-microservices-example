@@ -1,10 +1,10 @@
 appclients:
   clients:
     - username: actuator
-      password: "{cipher}9480c2a7e8a282f010227e1642010e627ea529575363fda2002d387d1f71ca2a" # actuator
+      password: "{cipher}9480c2a7e8a282f010227e1642010e627ea529575363fda2002d387d1f71ca2a"
       roles: SYSTEM
     - username: admin
-      password: "{cipher}00c68fb022128dd8ed5ed0d293b8da661cdb0f2df60cf9bb1d8d384c90d55998" # admin
+      password: "{cipher}00c68fb022128dd8ed5ed0d293b8da661cdb0f2df60cf9bb1d8d384c90d55998"
       roles: USER,ADMIN
     - username: user
       password: "{cipher}976f5e00450a0d7053bbeda282b1012e4506341ed372566af83bfed8186919fc"
