@@ -1,7 +1,7 @@
 discovery-server:
   image: 'workingbit/com.tictactoe.discovery-server'
   ports:
-    - 8080
+    - 8761:8080
   env_file:
     - ${HOME}/Docker/tictactoe-shared.env
 config-server:

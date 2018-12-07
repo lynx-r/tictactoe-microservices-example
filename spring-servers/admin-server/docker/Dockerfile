@@ -1,5 +1,5 @@
 FROM openjdk:11
-RUN apt-get update && apt-get -y install netcat-traditional
+RUN apt-get -y update && apt-get -y upgrade && apt-get -y install netcat
 RUN mkdir app
 ARG JAR_FILE
 ARG RUN_SH

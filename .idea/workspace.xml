@@ -22,6 +22,11 @@
   <component name="ChangeListManager">
     <list default="true" id="165ad74f-78e5-4272-8dd8-589d55d56411" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/admin-server/docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/config-server/docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.template.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.template.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/gateway-server/docker/Dockerfile" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -305,17 +310,8 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/spring-servers/config-server/docker/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-servers/admin-server/docker/Dockerfile">
+        <entry file="file://$PROJECT_DIR$/spring-servers/config-server/docker/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="42">
               <caret line="2" selection-start-line="2" selection-end-line="2" />
@@ -324,15 +320,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-servers/gateway-server/docker/Dockerfile">
+        <entry file="file://$PROJECT_DIR$/spring-servers/admin-server/docker/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="21">
-              <caret line="1" selection-start-line="1" selection-end-line="2" />
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-servers/gateway-server/docker/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" selection-start-line="1" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.template.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
@@ -342,10 +347,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-servers/discovery-server/src/main/resources/bootstrap.yml">
+        <entry file="file://$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="189">
+              <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -456,7 +461,6 @@
         <option value="$PROJECT_DIR$/spring-servers/admin-server/Dockerfile" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.yml" />
-        <option value="$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.template.yml" />
         <option value="$PROJECT_DIR$/spring-servers/discovery-server/src/main/resources/bootstrap.yml" />
         <option value="$PROJECT_DIR$/spring-servers/gateway-server/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/spring-servers/discovery-server/src/main/resources/application.yml" />
@@ -466,8 +470,9 @@
         <option value="$PROJECT_DIR$/spring-servers/config-server/docker/run.sh" />
         <option value="$PROJECT_DIR$/spring-servers/gateway-server/docker/run.sh" />
         <option value="$PROJECT_DIR$/spring-servers/gateway-server/docker/Dockerfile" />
-        <option value="$PROJECT_DIR$/spring-servers/admin-server/docker/Dockerfile" />
         <option value="$PROJECT_DIR$/spring-servers/config-server/docker/Dockerfile" />
+        <option value="$PROJECT_DIR$/spring-servers/admin-server/docker/Dockerfile" />
+        <option value="$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.template.yml" />
       </list>
     </option>
   </component>
@@ -781,7 +786,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544124102101" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544155689349" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
@@ -1137,14 +1142,7 @@
       <workItem from="1543729449972" duration="71160000" />
       <workItem from="1543888330040" duration="57219000" />
       <workItem from="1544069729717" duration="109000" />
-      <workItem from="1544069969037" duration="28610000" />
-    </task>
-    <task id="LOCAL-00003" summary="Multiservices communication">
-      <created>1543467294091</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1543467294092</updated>
+      <workItem from="1544069969037" duration="29489000" />
     </task>
     <task id="LOCAL-00004" summary="Readme">
       <created>1543470154662</created>
@@ -1482,7 +1480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544123594261</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="docker netcat">
+      <created>1544124128197</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1544124128197</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1518,12 +1523,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235969000" />
+    <option name="totallyTimeSpent" value="236848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4980695" visible="true" weight="0.2746781" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4980695" visible="true" weight="0.2746781" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1541,7 +1547,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32639793" />
       <window_info anchor="bottom" id="sbt-shell-toolwindow" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32769832" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32769832" />
       <window_info anchor="bottom" id="Docker" order="10" weight="0.32769832" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
@@ -1987,13 +1993,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spring-servers/gateway-server/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -2032,13 +2031,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.template.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spring-servers/admin-server/docker/run.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="358">
@@ -2067,20 +2059,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spring-servers/gateway-server/docker/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" selection-start-line="1" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-servers/admin-server/docker/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spring-servers/discovery-server/docker/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -2088,10 +2066,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spring-servers/gateway-server/docker/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" selection-start-line="1" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/spring-servers/config-server/docker/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="42">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-servers/admin-server/docker/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-servers/docker-compose.spring-servers.template.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
