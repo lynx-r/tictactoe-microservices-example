@@ -1,59 +1,53 @@
 # An example of a simple microservices application
 
-# Users
+# Run in Postman
 
-## Authenticate
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3d22b6efe9ada28ae2de)
 
-![Login with Basic Auth](https://monosnap.com/file/d0ugMpb6iKuP9nvOcooCp5zCzJegYi)
+Or import `tictactoe-postman_collection.json`
 
-## View users
+Services and Credential (**login/password**):
 
-`http://localhost:5555/api/user/v1/users`
+user/user
 
-![View all Users](https://monosnap.com/file/9Hf3p6prihdKGQH66jvUtI6bAhKGSo)
+admin/admin
 
-# Games
+actuator/actuator
 
-## Authenticate
+# Involved Spring Cloud and other services
 
-![Login with Basic Auth](https://monosnap.com/file/uEEytZf4QcySoEJtmfOh8dKTrlUJji)
+[Service discovery Eureka](http://eurekatictactoe.shashki.online)
+eureka/password
 
-There are two users:
+[Cloud Config](http://configtictactoe.shashki.online/webapi/default)
+configuser/123
 
-user / password
-admin / password
+[Spring Boot Admin](http://admintictactoe.shashki.online/#/applications)
+admin/adminpassword
 
-User can view games. Admin can create games.
+[Zipkin](http://zipkintictactoe.shashki.online/zipkin/)
+zipkin/zipkin
 
-## View games
+# Run and scripts
 
-`http://localhost:5555/api/game/v1/games`
+Run `docker-compose` via `gradle plugin`:
 
-![Request all Games](https://monosnap.com/file/PpfDWVpa6QwAHTFC7Z9xaftLvTobwC)
-
-## Create game
-
-`http://localhost:5555/api/game/v1/games/5bff786c6d0ae45f786b622d/5bff786c6d0ae45f786b622c?black=true`
-
-![Create a Game](https://monosnap.com/file/5GikwzspvziRf67LrLXGhTi9tQCXHL)
-
-Where `5bff786c6d0ae45f786b622d` - the first user, `5bff786c6d0ae45f786b622c` - the second user 
-and `black` marks the first like the black
-
-    Only user authenticated as admin can create a game.
-
-## Run Zipkin server
-
-See this [Zipkin quickstart](https://github.com/openzipkin/zipkin#quick-start)
-
-I run it like this:
+    Before run `docker-compose` copy `tictactoe-shared.env` into `${HOME}/Docker/tictactoe-shared.env`.
 
 ```
-docker run -d -p 9411:9411 openzipkin/zipkin
+./docker-compose-up.sh
 ```
- 
-And I added this line to my `/etc/hosts`:
+
+Create images via `gradle plugin`:
 
 ```
-192.168.1.2     mydomain
+./spring-create-images.sh
+./tictactoe-create-images.sh
+```
+
+Push images via `gradle plugin`:
+
+```
+./spring-push-images.sh
+./tictactoe-push-images.sh
 ```
