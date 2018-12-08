@@ -317,7 +317,7 @@ subprojects { subproject ->
         println "Building Docker image ${subproject.group}.${subproject.bootJar.baseName}"
         docker {
             name "workingbit/${subproject.group}.${subproject.bootJar.baseName}"
-            tags subproject.version, 'latest'
+            tags subproject.bootJar.version, 'latest'
             dockerfile file("${subproject.projectDir}/docker/Dockerfile")
             files tasks.bootJar.archivePath, 'docker/run.sh'
             buildArgs "JAR_FILE": "${subproject.bootJar.baseName}-${subproject.bootJar.version}.jar",
