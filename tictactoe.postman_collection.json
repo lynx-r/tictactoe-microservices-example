@@ -1,0 +1,493 @@
+{
+	"info": {
+		"_postman_id": "60f64c61-2ce8-4e2f-99d1-114cfaad36ee",
+		"name": "tictactoe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "encrypt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "123"
+				},
+				"url": {
+					"raw": "http://localhost:8888/encrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"encrypt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewconfig",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "configPassword",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "configUser",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "123"
+				},
+				"url": {
+					"raw": "{{HOST}}/webapi/default",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"webapi",
+						"default"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webapi login gw",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/auth/token",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webapi users basicauth gw",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/method-protected/users",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"method-protected",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webapi users tokenauth gw",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/method-protected/users",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"method-protected",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webapi create user basicauth gw",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"alex\",\n\t\"score\": 0\n}\t"
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/method-protected/user",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"method-protected",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webapi create user tokenauth gw",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"alex\",\n\t\"score\": 0\n}\t"
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/method-protected/user",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"method-protected",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webapi games basicauth gw",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/url-protected/games",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"url-protected",
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webapi games tokenauth gw",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/url-protected/games",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"url-protected",
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webapi create game basicauth gw",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userFirst\": \"5c038d736d0ae46b670c81b9\",\n\t\"userSecond\": \"5c00bca46d0ae4a28e844027\",\n\t\"black\": true\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/url-protected/game",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"url-protected",
+						"game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webapi create game tokenauth gw",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userFirst\": \"5c038d736d0ae46b670c81b9\",\n\t\"userSecond\": \"5c00bca46d0ae4a28e844027\",\n\t\"black\": true\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/url-protected/game",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"url-protected",
+						"game"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
