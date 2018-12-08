@@ -121,11 +121,11 @@ public class JwtService {
         JWTClaimsSet claimsSet = jwtProcessor.process(signedJWT, null);
         return Mono.just(claimsSet);
       } else {
-        logger.error("TOKEN invalid " + signedJWT.serialize());
+        logger.error("ERROR TOKEN invalid " + token);
         return Mono.empty();
       }
     } catch (ParseException | JOSEException | BadJOSEException e) {
-      logger.error("ERROR while verify JWT", e);
+      logger.error("ERROR while verify JWT: " + token);
       return Mono.empty();
     }
   }

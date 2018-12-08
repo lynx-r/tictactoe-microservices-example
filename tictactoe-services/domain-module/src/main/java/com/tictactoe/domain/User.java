@@ -28,6 +28,7 @@ public class User {
 
   @JsonCreator
   public User(@JsonProperty("name") String name, @JsonProperty("score") Integer score) {
+    this.name = name;
     this.score = score;
   }
 }
