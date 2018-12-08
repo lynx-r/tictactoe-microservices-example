@@ -51,3 +51,10 @@ Push images via `gradle plugin`:
 ./spring-push-images.sh
 ./tictactoe-push-images.sh
 ```
+
+# Links
+
+* [Spring Microservices in Action](https://www.manning.com/books/spring-microservices-in-action)
+* [Hands-On Spring 5 Security for Reactive Applications](https://www.packtpub.com/application-development/hands-spring-security-5-reactive-applications)
+* [The code for the book Spring Microservices in Action](https://github.com/carnellj?tab=repositories)
+* [The code for the book Hands-On Spring 5 Security for Reactive Applications](https://github.com/lynx-r/Hands-On-Spring-Security-5-for-Reactive-Applications)
