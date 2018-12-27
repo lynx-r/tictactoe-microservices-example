@@ -20,5 +20,4 @@ eureka:
     serviceUrl:
       defaultZone: ${DISCOVERY_SERVER_URL:http://eureka:password@localhost:8761/eureka}
   server:
-    peer-node-read-timeout-ms: 1500
     waitTimeInMsWhenSyncEmpty: 5

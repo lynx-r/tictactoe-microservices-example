@@ -34,9 +34,9 @@ import java.util.List;
  * Date: 2018-12-03
  * Time: 09:29
  */
-public class WebApiJwtAuthWebFilter extends JwtAuthWebFilter {
+public class WebApiServiceJwtAuthWebFilter extends JwtAuthWebFilter {
 
-    public WebApiJwtAuthWebFilter(JwtService jwtService) {
+    public WebApiServiceJwtAuthWebFilter(JwtService jwtService) {
         super(jwtService);
     }
 

@@ -24,6 +24,7 @@ import com.workingbit.authmodule.auth.JwtService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
@@ -42,7 +43,7 @@ public class SpringSecurityWebFluxConfig {
     private static final String[] WHITELISTED_AUTH_URLS = {
             "/",
             "/auth/**",
-            "/user/**",
+            "/method-protected/**",
             "/public/**",
     };
 
@@ -81,7 +82,7 @@ public class SpringSecurityWebFluxConfig {
         );
         tokenWebFilter.setAuthenticationSuccessHandler(new JwtAuthSuccessHandler(jwtService));
 
-        WebApiJwtAuthWebFilter editServiceWebFilter = new WebApiJwtAuthWebFilter(jwtService);
+        WebApiServiceJwtAuthWebFilter webApiJwtServiceWebFilter = new WebApiServiceJwtAuthWebFilter(jwtService);
         http.csrf().disable();
 
         http
@@ -91,13 +92,15 @@ public class SpringSecurityWebFluxConfig {
                 .and()
                 .authorizeExchange()
                 .pathMatchers("/actuator/**").hasRole("SYSTEM")
+                .pathMatchers(HttpMethod.GET, "/url-protected/**").hasRole("USER")
+                .pathMatchers(HttpMethod.POST, "/url-protected/**").hasRole("ADMIN")
                 .and()
                 .httpBasic()
                 .and()
                 .authorizeExchange()
                 .pathMatchers("/auth/token").authenticated()
                 .and()
-                .addFilterAt(editServiceWebFilter, SecurityWebFiltersOrder.AUTHENTICATION)
+                .addFilterAt(webApiJwtServiceWebFilter, SecurityWebFiltersOrder.AUTHENTICATION)
                 .addFilterAt(tokenWebFilter, SecurityWebFiltersOrder.AUTHENTICATION);
 
         return http.build();
