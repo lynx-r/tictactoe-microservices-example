@@ -1,3 +1,6 @@
+
+
+
 /*
  * © Copyright 2018 aleksey
  *
@@ -8,16 +11,19 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-rootProject.name = 'spring-servers'
+package com.workingbit.configserver;
 
-include ':spring-servers:discovery-server'
-project(':spring-servers:discovery-server').projectDir = file('./discovery-server')
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-include ':spring-servers:config-server'
-project(':spring-servers:config-server').projectDir = file('./config-server')
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ConfigServerApplicationTests {
 
-include ':spring-servers:gateway-server'
-project(':spring-servers:gateway-server').projectDir = file('./gateway-server')
+    @Test
+    public void contextLoads() {
+    }
 
-include ':spring-servers:admin-server'
-project(':spring-servers:admin-server').projectDir = file('./admin-server')
+}

@@ -1,32 +1,18 @@
 server:
   port: ${CONFIG_SERVER_PORT:8888}
+
 spring:
-  security:
-    user:
-      name: ${CONFIG_USERNAME:configUser}
-      password: ${CONFIG_PASSWORD:configPassword}
+  profiles:
+    active: default
   cloud:
     config:
       discovery:
         enabled: true
       server:
         git:
-          uri: ${CONFIG_GIT_URL:https://github.com/lynx-r/tictactoe-config-repo.git}
-#          username: ${GITHUB_USERNAME}
-#          password: ${GITHUB_PASSWORD}
-
-eureka:
-  instance:
-    preferIpAddress: true
-    # to allow SBA access this service
-    metadata-map:
-      user.name: ${spring.security.user.name}
-      user.password: ${spring.security.user.password}
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: ${DISCOVERY_SERVER_URL:http://eureka:password@localhost:8761/eureka}
+          uri: ${CONFIG_GIT_URL}
+          username: ${CONFIG_GIT_USERNAME}
+          password: ${CONFIG_GIT_PASSWORD}
 
 management:
   endpoints:
@@ -34,3 +20,18 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+
+---
+
+spring:
+  profiles:
+    dev
+  cloud:
+    config:
+      discovery:
+        enabled: true
+      server:
+        git:
+          uri: ${CONFIG_GIT_URL}
+          username: ${CONFIG_GIT_USERNAME}
+          password: ${CONFIG_GIT_PASSWORD}

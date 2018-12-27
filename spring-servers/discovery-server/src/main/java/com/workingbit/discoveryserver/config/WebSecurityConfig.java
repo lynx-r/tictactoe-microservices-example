@@ -1,3 +1,6 @@
+
+
+
 /*
  * © Copyright 2018 aleksey
  *
@@ -8,16 +11,21 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-rootProject.name = 'spring-servers'
+package com.workingbit.discoveryserver.config;
 
-include ':spring-servers:discovery-server'
-project(':spring-servers:discovery-server').projectDir = file('./discovery-server')
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-include ':spring-servers:config-server'
-project(':spring-servers:config-server').projectDir = file('./config-server')
+@EnableWebSecurity
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-include ':spring-servers:gateway-server'
-project(':spring-servers:gateway-server').projectDir = file('./gateway-server')
-
-include ':spring-servers:admin-server'
-project(':spring-servers:admin-server').projectDir = file('./admin-server')
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic();
+    }
+}

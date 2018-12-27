@@ -2,7 +2,7 @@ encrypt.key: ${ENCRYPT_KEY:12345}
 
 spring:
   application:
-    name: gatewayserver
+    name: gatewayserver-shashki
   profiles:
     active:
       default
@@ -12,7 +12,7 @@ spring:
       password: ${CONFIG_PASSWORD:configPassword}
       discovery:
         enabled: true
-        service-id: configserver
+        service-id: configserver-shashki
 
 eureka:
   instance:
@@ -22,13 +22,3 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: ${DISCOVERY_SERVER_URL:http://eureka:password@localhost:8761/eureka}
-
----
-spring:
-  profiles: dev
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: routes,filters
