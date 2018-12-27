@@ -1,6 +1,6 @@
 spring:
   application:
-    name: discoveryserver-shashki
+    name: discoveryserver
   security:
     user:
       name: ${EUREKA_USERNAME:eureka}

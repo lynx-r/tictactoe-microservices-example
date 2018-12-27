@@ -1,3 +1,22 @@
+/*
+ * © Copyright 2018 Aleksey Popryadukhin
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions
+ * of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ * BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
 package com.tictactoe.authmodule.auth;
 
 import com.nimbusds.jose.JOSEException;
@@ -61,23 +80,23 @@ public class JwtService {
 
   public String getTokenFromAuthentication(Authentication authentication) {
     return generateToken(
-        authentication.getName(),
-        authentication.getAuthorities());
+            authentication.getName(),
+            authentication.getAuthorities());
   }
 
   private String generateToken(String subjectName, Collection<? extends GrantedAuthority> authorities) {
     Date expirationTime = Date.from(Instant.now().plus(moduleConfig.getTokenExpirationMinutes(), ChronoUnit.MINUTES));
     JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
-        .subject(subjectName)
-        .issuer(moduleConfig.getTokenIssuer())
-        .expirationTime(expirationTime)
-        .claim(AUTHORITIES_CLAIM,
-            authorities
-                .parallelStream()
-                .map(auth -> (GrantedAuthority) auth)
-                .map(GrantedAuthority::getAuthority)
-                .collect(joining(",")))
-        .build();
+            .subject(subjectName)
+            .issuer(moduleConfig.getTokenIssuer())
+            .expirationTime(expirationTime)
+            .claim(AUTHORITIES_CLAIM,
+                    authorities
+                            .parallelStream()
+                            .map(auth -> (GrantedAuthority) auth)
+                            .map(GrantedAuthority::getAuthority)
+                            .collect(joining(",")))
+            .build();
 
     SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWS_ALGORITHM), claimsSet);
 
@@ -94,8 +113,8 @@ public class JwtService {
 
   String getAuthorizationPayload(ServerWebExchange serverWebExchange) {
     String token = serverWebExchange.getRequest()
-        .getHeaders()
-        .getFirst(HttpHeaders.AUTHORIZATION);
+            .getHeaders()
+            .getFirst(HttpHeaders.AUTHORIZATION);
     return token == null ? "" : token;
   }
 
@@ -132,13 +151,13 @@ public class JwtService {
 
   Mono<Authentication> getUsernamePasswordAuthenticationToken(Mono<JWTClaimsSet> claimsSetMono) {
     return claimsSetMono
-        .map((claimsSet -> {
-          String subject = claimsSet.getSubject();
-          String auths = (String) claimsSet.getClaim(AUTHORITIES_CLAIM);
-          List<GrantedAuthority> authorities = Stream.of(auths.split(","))
-              .map(SimpleGrantedAuthority::new)
-              .collect(Collectors.toList());
-          return new UsernamePasswordAuthenticationToken(subject, null, authorities);
-        }));
+            .map((claimsSet -> {
+              String subject = claimsSet.getSubject();
+              String auths = (String) claimsSet.getClaim(AUTHORITIES_CLAIM);
+              List<GrantedAuthority> authorities = Stream.of(auths.split(","))
+                      .map(SimpleGrantedAuthority::new)
+                      .collect(Collectors.toList());
+              return new UsernamePasswordAuthenticationToken(subject, null, authorities);
+            }));
   }
 }

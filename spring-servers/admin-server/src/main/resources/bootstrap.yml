@@ -2,7 +2,7 @@ encrypt.key: ${ENCRYPT_KEY:12345}
 
 spring:
   application:
-    name: adminserver-shashki
+    name: adminserver
   profiles:
     active:
       default
@@ -12,7 +12,7 @@ spring:
       password: ${CONFIG_PASSWORD:configPassword}
       discovery:
         enabled: true
-        service-id: configserver-shashki
+        service-id: configserver
   security:
     user:
       name: ${ADMIN_NAME:admin}

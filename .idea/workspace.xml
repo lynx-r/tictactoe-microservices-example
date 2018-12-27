@@ -1,8 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c041220a-d0da-40de-9336-f5d0ab45efba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/src/main/resources/bootstrap.yml" beforeDir="false" />
+    <list default="true" id="c041220a-d0da-40de-9336-f5d0ab45efba" name="Default Changelist" comment="update license">
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/admin-server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/admin-server/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/admin-server/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/workingbit/adminserver/AdminServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/workingbit/adminserver/AdminServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/workingbit/adminserver/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/workingbit/adminserver/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/src/test/java/com/workingbit/adminserver/AdminServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/admin-server/src/test/java/com/workingbit/adminserver/AdminServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/config-server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/config-server/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/config-server/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/src/main/java/com/workingbit/configserver/ConfigServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/config-server/src/main/java/com/workingbit/configserver/ConfigServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/src/main/java/com/workingbit/configserver/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/config-server/src/main/java/com/workingbit/configserver/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/src/test/java/com/workingbit/configserver/ConfigServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/config-server/src/test/java/com/workingbit/configserver/ConfigServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/discovery-server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/discovery-server/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/discovery-server/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/workingbit/discoveryserver/DiscoveryServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/workingbit/discoveryserver/DiscoveryServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/workingbit/discoveryserver/config/SessionConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/workingbit/discoveryserver/config/SessionConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/workingbit/discoveryserver/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/workingbit/discoveryserver/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/src/test/java/com/workingbit/discoveryserver/DiscoveryServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/discovery-server/src/test/java/com/workingbit/discoveryserver/DiscoveryServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/gateway-server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/gateway-server/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/gateway-server/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/src/main/java/com/workingbit/gatewayserver/GatewayServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/gateway-server/src/main/java/com/workingbit/gatewayserver/GatewayServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/src/test/java/com/workingbit/gatewayserver/ZuulServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/gateway-server/src/test/java/com/workingbit/gatewayserver/ZuulServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtAuthConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtAuthConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtAuthSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtAuthSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtAuthWebFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtAuthWebFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtReactiveAuthManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtReactiveAuthManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/ApplicationClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/ApplicationClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/ModuleConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/ModuleConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/SpringWebFluxConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/SpringWebFluxConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/WebApiClientsProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/config/WebApiClientsProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/domain-module/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/domain-module/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/domain-module/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/domain-module/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/JwtAuthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/JwtAuthRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/JwtAuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/JwtAuthResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/GameServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/GameServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/client/UserWebClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/client/UserWebClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config/SpringSecurityWebFluxConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config/SpringSecurityWebFluxConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config/WebApiJwtAuthWebFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/config/WebApiJwtAuthWebFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/repository/GameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/repository/GameRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/service/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/game-service/src/test/java/com/tictactoe/gameservice/GameControllerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/game-service/src/test/java/com/tictactoe/gameservice/GameControllerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/UserServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/config/SpringSecurityWebFluxConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/config/SpringSecurityWebFluxConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/config/WebApiJwtAuthWebFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/config/WebApiJwtAuthWebFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/user-service/src/test/java/com/tictactoe/userservice/UserServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/user-service/src/test/java/com/tictactoe/userservice/UserServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/WebApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/WebApiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/client/GameWebClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/client/GameWebClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/client/UserWebClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/client/UserWebClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/SpringSecurityWebFluxConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/SpringSecurityWebFluxConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/WebApiJwtAuthWebFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/config/WebApiJwtAuthWebFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/DefaultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/DefaultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/WebApiMethodProtectedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/WebApiMethodProtectedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/WebApiPublicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/WebApiPublicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/WebApiUrlProtectedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/controller/WebApiUrlProtectedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/service/WebApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/service/WebApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/WebApiApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/WebApiApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/config/TestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/config/TestConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/config/TestConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/config/TestConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/DefaultControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/DefaultControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/WebApiMethodProtectedControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/WebApiMethodProtectedControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/WebApiPublicControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/WebApiPublicControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/WebApiUrlProtectedControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/controller/WebApiUrlProtectedControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/util/TestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/java/com/tictactoe/webapi/util/TestUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/logback-test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe-services/web-api/src/test/resources/logback-test.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -191,8 +287,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/workingbit/adminserver/config/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="3" column="88" selection-start-line="3" selection-start-column="88" selection-end-line="3" selection-end-column="88" />
+            <state relative-caret-position="225">
+              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#2587#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -201,7 +300,7 @@
         <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/WebApiApplication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
             </state>
           </provider>
         </entry>
@@ -210,7 +309,7 @@
         <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1230">
-              <caret line="125" column="7" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
+              <caret line="142" column="7" selection-start-line="142" selection-start-column="7" selection-end-line="142" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -219,7 +318,7 @@
         <entry file="file://$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
-              <caret line="36" column="3" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
+              <caret line="53" column="3" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="3" />
               <folding>
                 <element signature="e#843#844#0" expanded="true" />
                 <element signature="e#887#888#0" expanded="true" />
@@ -232,7 +331,7 @@
         <entry file="file://$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
-              <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
+              <caret line="49" column="3" selection-start-line="49" selection-start-column="3" selection-end-line="49" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -401,7 +500,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544259487804" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545927079078" />
     <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -617,7 +716,7 @@
       <option name="presentableId" value="Default" />
       <updated>1544206231309</updated>
       <workItem from="1544206233497" duration="9688000" />
-      <workItem from="1545924617586" duration="2068000" />
+      <workItem from="1545924617586" duration="2244000" />
     </task>
     <task id="LOCAL-00001" summary="exclude mongo from webapi">
       <created>1544211329688</created>
@@ -654,11 +753,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545926767627</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update license">
+      <created>1545926897759</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1545926897759</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11756000" />
+    <option name="totallyTimeSpent" value="11932000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -721,7 +827,8 @@
     <MESSAGE value="docker tag version" />
     <MESSAGE value="fixes" />
     <MESSAGE value="update spring servers.&#10;applying MIT license" />
-    <option name="LAST_COMMIT_MESSAGE" value="update spring servers.&#10;applying MIT license" />
+    <MESSAGE value="update license" />
+    <option name="LAST_COMMIT_MESSAGE" value="update license" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -808,21 +915,21 @@
     <entry file="file://$PROJECT_DIR$/tictactoe-services/web-api/src/main/java/com/tictactoe/webapi/WebApiApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/tictactoe/authmodule/auth/JwtService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1230">
-          <caret line="125" column="7" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
+          <caret line="142" column="7" selection-start-line="142" selection-start-column="7" selection-end-line="142" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
-          <caret line="36" column="3" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
+          <caret line="53" column="3" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="3" />
           <folding>
             <element signature="e#843#844#0" expanded="true" />
             <element signature="e#887#888#0" expanded="true" />
@@ -833,7 +940,7 @@
     <entry file="file://$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
-          <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
+          <caret line="49" column="3" selection-start-line="49" selection-start-column="3" selection-end-line="49" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -877,8 +984,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/workingbit/adminserver/config/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="3" column="88" selection-start-line="3" selection-start-column="88" selection-end-line="3" selection-end-column="88" />
+        <state relative-caret-position="225">
+          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#2587#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
