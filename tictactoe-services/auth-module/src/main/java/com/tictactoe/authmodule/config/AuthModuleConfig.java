@@ -1,3 +1,6 @@
+
+
+
 /*
  * © Copyright 2018 Aleksey Popryadukhin
  *
@@ -20,29 +23,26 @@
 package com.tictactoe.authmodule.config;
 
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * User: aleksey
- * Date: 2018-12-03
- * Time: 13:17
+ * Date: 2018-12-02
+ * Time: 11:59
  */
 @Data
-@Component
-@ConfigurationProperties("appclients")
-public class WebApiClientsProperties {
-    private List<ApplicationClient> clients = new ArrayList<>();
+@Configuration
+@PropertySource("classpath:moduleConfig.yml")
+public class AuthModuleConfig {
 
-    @Data
-    public static class ApplicationClient {
-        private String username;
-        private String password;
-        private String[] roles;
-    }
+    @Value("${tokenExpirationMinutes:60}")
+    private Integer tokenExpirationMinutes;
 
+    @Value("${tokenIssuer:workingbit-example.com}")
+    private String tokenIssuer;
+
+    @Value("${tokenSecret:secret}") // length minimum 256 bites
+    private String tokenSecret;
 }
-

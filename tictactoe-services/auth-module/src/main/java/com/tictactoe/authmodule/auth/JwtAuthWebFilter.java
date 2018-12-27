@@ -1,3 +1,6 @@
+
+
+
 /*
  * © Copyright 2018 Aleksey Popryadukhin
  *
@@ -38,40 +41,40 @@ import java.util.function.Function;
 
 public abstract class JwtAuthWebFilter implements WebFilter {
 
-    private final ReactiveAuthenticationManager reactiveAuthManager = new JwtReactiveAuthManager();
-    private Function<ServerWebExchange, Mono<Authentication>> jwtAuthConverter;
-    private ServerAuthenticationSuccessHandler authSuccessHandler = new WebFilterChainServerAuthenticationSuccessHandler();
-    private ServerSecurityContextRepository securityContextRepository = NoOpServerSecurityContextRepository.getInstance();
+  private final ReactiveAuthenticationManager reactiveAuthManager = new JwtReactiveAuthManager();
+  private Function<ServerWebExchange, Mono<Authentication>> jwtAuthConverter;
+  private ServerAuthenticationSuccessHandler authSuccessHandler = new WebFilterChainServerAuthenticationSuccessHandler();
+  private ServerSecurityContextRepository securityContextRepository = NoOpServerSecurityContextRepository.getInstance();
 
-    public JwtAuthWebFilter(JwtService jwtService) {
-        jwtAuthConverter = new JwtAuthConverter(jwtService);
-    }
+  public JwtAuthWebFilter(JwtService jwtService) {
+    jwtAuthConverter = new JwtAuthConverter(jwtService);
+  }
 
-    @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        return this.getAuthMatcher().matches(exchange)
-                .filter(ServerWebExchangeMatcher.MatchResult::isMatch)
-                .flatMap(matchResult -> this.jwtAuthConverter.apply(exchange))
-                .switchIfEmpty(chain.filter(exchange).then(Mono.empty()))
-                .flatMap(token -> authenticate(exchange, chain, token));
-    }
+  @Override
+  public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+    return getAuthMatcher().matches(exchange)
+            .filter(ServerWebExchangeMatcher.MatchResult::isMatch)
+            .flatMap(matchResult -> this.jwtAuthConverter.apply(exchange))
+            .switchIfEmpty(chain.filter(exchange).then(Mono.empty()))
+            .flatMap(token -> authenticate(exchange, chain, token));
+  }
 
-    protected abstract ServerWebExchangeMatcher getAuthMatcher();
+  protected abstract ServerWebExchangeMatcher getAuthMatcher();
 
-    private Mono<Void> authenticate(ServerWebExchange exchange,
-                                    WebFilterChain chain, Authentication token) {
-        WebFilterExchange webFilterExchange = new WebFilterExchange(exchange, chain);
-        return reactiveAuthManager.authenticate(token)
-                .flatMap(authentication -> onAuthSuccess(authentication, webFilterExchange));
-    }
+  private Mono<Void> authenticate(ServerWebExchange exchange,
+                                  WebFilterChain chain, Authentication token) {
+    WebFilterExchange webFilterExchange = new WebFilterExchange(exchange, chain);
+    return reactiveAuthManager.authenticate(token)
+            .flatMap(authentication -> onAuthSuccess(authentication, webFilterExchange));
+  }
 
-    private Mono<Void> onAuthSuccess(Authentication authentication, WebFilterExchange webFilterExchange) {
-        ServerWebExchange exchange = webFilterExchange.getExchange();
-        SecurityContextImpl securityContext = new SecurityContextImpl();
-        securityContext.setAuthentication(authentication);
-        return securityContextRepository.save(exchange, securityContext)
-                .then(authSuccessHandler
-                        .onAuthenticationSuccess(webFilterExchange, authentication))
-                .subscriberContext(ReactiveSecurityContextHolder.withSecurityContext(Mono.just(securityContext)));
-    }
+  private Mono<Void> onAuthSuccess(Authentication authentication, WebFilterExchange webFilterExchange) {
+    ServerWebExchange exchange = webFilterExchange.getExchange();
+    SecurityContextImpl securityContext = new SecurityContextImpl();
+    securityContext.setAuthentication(authentication);
+    return securityContextRepository.save(exchange, securityContext)
+            .then(authSuccessHandler
+                    .onAuthenticationSuccess(webFilterExchange, authentication))
+            .subscriberContext(ReactiveSecurityContextHolder.withSecurityContext(Mono.just(securityContext)));
+  }
 }

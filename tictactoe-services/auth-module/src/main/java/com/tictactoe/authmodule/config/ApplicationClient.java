@@ -1,3 +1,6 @@
+
+
+
 /*
  * © Copyright 2018 Aleksey Popryadukhin
  *
@@ -23,7 +26,7 @@ import lombok.Data;
 
 @Data
 public class ApplicationClient {
-    private String username;
+    private String email;
     private String password;
     private String[] roles;
 }

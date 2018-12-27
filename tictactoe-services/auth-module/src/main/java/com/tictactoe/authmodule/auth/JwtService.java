@@ -31,15 +31,17 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.nimbusds.jwt.proc.ConfigurableJWTProcessor;
 import com.nimbusds.jwt.proc.DefaultJWTProcessor;
-import com.tictactoe.authmodule.config.ModuleConfig;
+import com.tictactoe.authmodule.config.AuthModuleConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -53,8 +55,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
 
@@ -67,10 +67,10 @@ public class JwtService {
   private static final JWSAlgorithm JWS_ALGORITHM = JWSAlgorithm.HS256;
   private static final String SECRET_KEY_ALGORITHM = "HMAC";
   private final Logger logger = LoggerFactory.getLogger(JwtService.class);
-  private final ModuleConfig moduleConfig;
+  private final AuthModuleConfig authModuleConfig;
 
-  public JwtService(ModuleConfig moduleConfig) {
-    this.moduleConfig = moduleConfig;
+  public JwtService(AuthModuleConfig authModuleConfig) {
+    this.authModuleConfig = authModuleConfig;
   }
 
   public String getHttpAuthHeaderValue(Authentication authentication) {
@@ -84,11 +84,11 @@ public class JwtService {
             authentication.getAuthorities());
   }
 
-  private String generateToken(String subjectName, Collection<? extends GrantedAuthority> authorities) {
-    Date expirationTime = Date.from(Instant.now().plus(moduleConfig.getTokenExpirationMinutes(), ChronoUnit.MINUTES));
+  public String generateToken(String subjectName, Collection<? extends GrantedAuthority> authorities) {
+    Date expirationTime = Date.from(Instant.now().plus(authModuleConfig.getTokenExpirationMinutes(), ChronoUnit.MINUTES));
     JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
             .subject(subjectName)
-            .issuer(moduleConfig.getTokenIssuer())
+            .issuer(authModuleConfig.getTokenIssuer())
             .expirationTime(expirationTime)
             .claim(AUTHORITIES_CLAIM,
                     authorities
@@ -101,7 +101,7 @@ public class JwtService {
     SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWS_ALGORITHM), claimsSet);
 
     try {
-      final SecretKey key = new SecretKeySpec(moduleConfig.getTokenSecret().getBytes(), SECRET_KEY_ALGORITHM);
+      final SecretKey key = new SecretKeySpec(authModuleConfig.getTokenSecret().getBytes(), SECRET_KEY_ALGORITHM);
       signedJWT.sign(new MACSigner(key));
     } catch (JOSEException e) {
       logger.error("ERROR while signing JWT", e);
@@ -129,23 +129,23 @@ public class JwtService {
   Mono<JWTClaimsSet> verifySignedJWT(String token) {
     try {
       SignedJWT signedJWT = SignedJWT.parse(token);
-      JWSVerifier verifier = new MACVerifier(moduleConfig.getTokenSecret());
+      JWSVerifier verifier = new MACVerifier(authModuleConfig.getTokenSecret());
       boolean valid = signedJWT.verify(verifier);
       if (valid) {
         ConfigurableJWTProcessor<SimpleSecurityContext> jwtProcessor = new DefaultJWTProcessor<>();
         jwtProcessor.setJWSKeySelector((header, context) -> {
-          final SecretKey key = new SecretKeySpec(moduleConfig.getTokenSecret().getBytes(), SECRET_KEY_ALGORITHM);
+          final SecretKey key = new SecretKeySpec(authModuleConfig.getTokenSecret().getBytes(), SECRET_KEY_ALGORITHM);
           return List.of(key);
         });
         JWTClaimsSet claimsSet = jwtProcessor.process(signedJWT, null);
         return Mono.just(claimsSet);
       } else {
         logger.error("ERROR TOKEN invalid " + token);
-        return Mono.empty();
+        return Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid token"));
       }
     } catch (ParseException | JOSEException | BadJOSEException e) {
       logger.error("ERROR while verify JWT: " + token);
-      return Mono.empty();
+      return Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, "unable to verify token"));
     }
   }
 
@@ -154,9 +154,7 @@ public class JwtService {
             .map((claimsSet -> {
               String subject = claimsSet.getSubject();
               String auths = (String) claimsSet.getClaim(AUTHORITIES_CLAIM);
-              List<GrantedAuthority> authorities = Stream.of(auths.split(","))
-                      .map(SimpleGrantedAuthority::new)
-                      .collect(Collectors.toList());
+              List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(auths.split(","));
               return new UsernamePasswordAuthenticationToken(subject, null, authorities);
             }));
   }
