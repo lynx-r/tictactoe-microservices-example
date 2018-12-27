@@ -22,7 +22,6 @@ package com.tictactoe.userservice.config;
 import com.workingbit.authmodule.auth.JwtAuthWebFilter;
 import com.workingbit.authmodule.auth.JwtService;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.PathPatternParserServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher;
@@ -36,9 +35,9 @@ import java.util.List;
  * Date: 2018-12-03
  * Time: 09:29
  */
-public class WebApiJwtAuthWebFilter extends JwtAuthWebFilter {
+public class UserServiceJwtAuthWebFilter extends JwtAuthWebFilter {
 
-    public WebApiJwtAuthWebFilter(ReactiveAuthenticationManager reactiveAuthManager, JwtService jwtService) {
+    public UserServiceJwtAuthWebFilter(JwtService jwtService) {
         super(jwtService);
     }
 

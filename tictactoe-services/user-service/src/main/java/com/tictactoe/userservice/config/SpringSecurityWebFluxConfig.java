@@ -19,20 +19,17 @@
 
 package com.tictactoe.userservice.config;
 
-import com.workingbit.authmodule.auth.JwtAuthSuccessHandler;
 import com.workingbit.authmodule.auth.JwtService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-import org.springframework.security.web.server.authentication.AuthenticationWebFilter;
 
 @Configuration
 @EnableReactiveMethodSecurity
@@ -42,16 +39,6 @@ public class SpringSecurityWebFluxConfig {
             "/",
             "/public/**",
     };
-
-    private final ReactiveUserDetailsService userDetailsRepositoryInMemory;
-    private final ReactiveAuthenticationManager reactiveAuthManager;
-
-    public SpringSecurityWebFluxConfig(
-            @Qualifier("userDetailsRepositoryInMemory") ReactiveUserDetailsService userDetailsRepositoryInMemory
-    ) {
-        this.userDetailsRepositoryInMemory = userDetailsRepositoryInMemory;
-        reactiveAuthManager = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepositoryInMemory);
-    }
 
     /**
      * The test defined in SampleApplicationTests class will only get executed
@@ -63,10 +50,15 @@ public class SpringSecurityWebFluxConfig {
      * @throws Exception
      */
     @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http, JwtService jwtService) {
+    public SecurityWebFilterChain springSecurityFilterChain(
+            ServerHttpSecurity http, JwtService jwtService,
+            @Qualifier("userDetailsRepositoryInMemory") ReactiveUserDetailsService userDetailsServiceInMemory
+    ) {
 
-        AuthenticationWebFilter authenticationJWT = new AuthenticationWebFilter(new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepositoryInMemory));
-        authenticationJWT.setAuthenticationSuccessHandler(new JwtAuthSuccessHandler(jwtService));
+        UserDetailsRepositoryReactiveAuthenticationManager authenticationManagerInMemory
+                = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsServiceInMemory);
+
+        UserServiceJwtAuthWebFilter articleServiceJwtAuthWebFilter = new UserServiceJwtAuthWebFilter(jwtService);
 
         http.csrf().disable();
 
@@ -75,17 +67,15 @@ public class SpringSecurityWebFluxConfig {
                 .pathMatchers(WHITELISTED_AUTH_URLS)
                 .permitAll()
                 .and()
-                .addFilterAt(authenticationJWT, SecurityWebFiltersOrder.FIRST)
-                .exceptionHandling()
-                .and()
                 .authorizeExchange()
                 .pathMatchers("/actuator/**").hasRole("SYSTEM")
                 .pathMatchers(HttpMethod.GET, "/v1/users/**").hasRole("USER")
                 .pathMatchers(HttpMethod.POST, "/v1/users/**").hasRole("ADMIN")
-                .anyExchange()
-                .authenticated()
                 .and()
-                .addFilterAt(new WebApiJwtAuthWebFilter(reactiveAuthManager, jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
+                .httpBasic()
+                .authenticationManager(authenticationManagerInMemory)
+                .and()
+                .addFilterAt(articleServiceJwtAuthWebFilter, SecurityWebFiltersOrder.AUTHENTICATION)
                 .exceptionHandling();
 
         return http.build();

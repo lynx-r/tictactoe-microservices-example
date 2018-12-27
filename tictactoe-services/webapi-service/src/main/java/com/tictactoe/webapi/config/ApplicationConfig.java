@@ -23,9 +23,6 @@ import com.workingbit.authmodule.config.ApplicationClientsProperties;
 import com.workingbit.authmodule.config.SpringWebFluxConfig;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.mongo.MongoReactiveAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -36,7 +33,6 @@ import org.springframework.context.annotation.Import;
  */
 @Data
 @Configuration
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, MongoReactiveAutoConfiguration.class})
 @Import({ApplicationClientsProperties.class, SpringWebFluxConfig.class})
 public class ApplicationConfig {
 

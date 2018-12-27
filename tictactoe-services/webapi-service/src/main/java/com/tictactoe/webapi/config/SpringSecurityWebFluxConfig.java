@@ -24,38 +24,27 @@ import com.workingbit.authmodule.auth.JwtService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.authentication.AuthenticationWebFilter;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
 
 @Configuration
 @EnableReactiveMethodSecurity
 public class SpringSecurityWebFluxConfig {
 
     private static final String[] WHITELISTED_AUTH_URLS = {
-            "/login",
             "/",
+            "/auth/**",
+            "/user/**",
             "/public/**",
     };
-
-    private final ReactiveUserDetailsService userDetailsRepositoryInMemory;
-
-    public SpringSecurityWebFluxConfig(
-            @Qualifier("userDetailsRepositoryInMemory") ReactiveUserDetailsService userDetailsRepositoryInMemory
-    ) {
-        this.userDetailsRepositoryInMemory = userDetailsRepositoryInMemory;
-    }
-
-    @Bean
-    public ReactiveAuthenticationManager reactiveAuthenticationManager() {
-        return new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepositoryInMemory);
-    }
 
     /**
      * The test defined in SampleApplicationTests class will only get executed
@@ -67,11 +56,32 @@ public class SpringSecurityWebFluxConfig {
      * @throws Exception
      */
     @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http, JwtService jwtService) {
+    public SecurityWebFilterChain systemSecurityFilterChain(
+            ServerHttpSecurity http, JwtService jwtService,
+            @Qualifier("userDetailsRepositoryInMemory") ReactiveUserDetailsService userDetailsServiceInMemory,
+            @Qualifier("userDetailsRepository") ReactiveUserDetailsService userDetailsService
+    ) {
+        UserDetailsRepositoryReactiveAuthenticationManager authenticationManagerInMemory
+                = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsServiceInMemory);
 
-        AuthenticationWebFilter authenticationJWT = new AuthenticationWebFilter(new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepositoryInMemory));
-        authenticationJWT.setAuthenticationSuccessHandler(new JwtAuthSuccessHandler(jwtService));
+        UserDetailsRepositoryReactiveAuthenticationManager authenticationManager
+                = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsService);
 
+        AuthenticationWebFilter tokenWebFilter = new AuthenticationWebFilter(authenticationManager);
+        tokenWebFilter.setServerAuthenticationConverter(exchange ->
+                Mono.justOrEmpty(exchange)
+                        .filter(ex -> ex.getRequest().getPath().value().equalsIgnoreCase("/auth/token"))
+                        .flatMap(ServerWebExchange::getFormData)
+                        .filter(formData -> !formData.isEmpty())
+                        .map((formData) -> {
+                            String email = formData.getFirst("email");
+                            String password = formData.getFirst("password");
+                            return new UsernamePasswordAuthenticationToken(email, password);
+                        })
+        );
+        tokenWebFilter.setAuthenticationSuccessHandler(new JwtAuthSuccessHandler(jwtService));
+
+        WebApiJwtAuthWebFilter editServiceWebFilter = new WebApiJwtAuthWebFilter(jwtService);
         http.csrf().disable();
 
         http
@@ -79,19 +89,16 @@ public class SpringSecurityWebFluxConfig {
                 .pathMatchers(WHITELISTED_AUTH_URLS)
                 .permitAll()
                 .and()
-                .addFilterAt(authenticationJWT, SecurityWebFiltersOrder.FIRST)
-                .exceptionHandling()
+                .authorizeExchange()
+                .pathMatchers("/actuator/**").hasRole("SYSTEM")
+                .and()
+                .httpBasic()
                 .and()
                 .authorizeExchange()
-                .pathMatchers(HttpMethod.POST, "/auth/token").authenticated()
-                .pathMatchers("/actuator/**").hasRole("SYSTEM")
-                .pathMatchers(HttpMethod.GET, "/url-protected/games/**").hasRole("USER")
-                .pathMatchers(HttpMethod.POST, "/url-protected/game/**").hasRole("ADMIN")
-                .anyExchange()
-                .authenticated()
+                .pathMatchers("/auth/token").authenticated()
                 .and()
-                .addFilterAt(new WebApiJwtAuthWebFilter(jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
-                .exceptionHandling();
+                .addFilterAt(editServiceWebFilter, SecurityWebFiltersOrder.AUTHENTICATION)
+                .addFilterAt(tokenWebFilter, SecurityWebFiltersOrder.AUTHENTICATION);
 
         return http.build();
     }
