@@ -26,6 +26,6 @@ include ':spring-servers:admin-server'
 
 include ':tictactoe-services:domain-module'
 include ':tictactoe-services:auth-module'
-include ':tictactoe-services:web-api'
+include ':tictactoe-services:webapi-service'
 include ':tictactoe-services:user-service'
 include ':tictactoe-services:game-service'

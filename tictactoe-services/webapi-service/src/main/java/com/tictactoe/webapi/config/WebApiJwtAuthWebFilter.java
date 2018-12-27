@@ -17,12 +17,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.tictactoe.gameservice.config;
+package com.tictactoe.webapi.config;
 
 import com.workingbit.authmodule.auth.JwtAuthWebFilter;
 import com.workingbit.authmodule.auth.JwtService;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.PathPatternParserServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher;
@@ -38,15 +36,15 @@ import java.util.List;
  */
 public class WebApiJwtAuthWebFilter extends JwtAuthWebFilter {
 
-    public WebApiJwtAuthWebFilter(ReactiveAuthenticationManager reactiveAuthManager, JwtService jwtService) {
+    public WebApiJwtAuthWebFilter(JwtService jwtService) {
         super(jwtService);
     }
 
     @Override
     protected ServerWebExchangeMatcher getAuthMatcher() {
         List<ServerWebExchangeMatcher> matchers = new ArrayList<>();
-        matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/games/**", HttpMethod.GET));
-        matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/games/**", HttpMethod.POST));
+        matchers.add(new PathPatternParserServerWebExchangeMatcher("/method-protected/**"));
+        matchers.add(new PathPatternParserServerWebExchangeMatcher("/url-protected/**"));
         return ServerWebExchangeMatchers.matchers(new OrServerWebExchangeMatcher(matchers));
     }
 }

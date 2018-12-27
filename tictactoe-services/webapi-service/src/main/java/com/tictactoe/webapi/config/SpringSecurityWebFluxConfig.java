@@ -17,7 +17,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.tictactoe.userservice.config;
+package com.tictactoe.webapi.config;
 
 import com.workingbit.authmodule.auth.JwtAuthSuccessHandler;
 import com.workingbit.authmodule.auth.JwtService;
@@ -39,18 +39,22 @@ import org.springframework.security.web.server.authentication.AuthenticationWebF
 public class SpringSecurityWebFluxConfig {
 
     private static final String[] WHITELISTED_AUTH_URLS = {
+            "/login",
             "/",
             "/public/**",
     };
 
     private final ReactiveUserDetailsService userDetailsRepositoryInMemory;
-    private final ReactiveAuthenticationManager reactiveAuthManager;
 
     public SpringSecurityWebFluxConfig(
             @Qualifier("userDetailsRepositoryInMemory") ReactiveUserDetailsService userDetailsRepositoryInMemory
     ) {
         this.userDetailsRepositoryInMemory = userDetailsRepositoryInMemory;
-        reactiveAuthManager = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepositoryInMemory);
+    }
+
+    @Bean
+    public ReactiveAuthenticationManager reactiveAuthenticationManager() {
+        return new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsRepositoryInMemory);
     }
 
     /**
@@ -79,13 +83,14 @@ public class SpringSecurityWebFluxConfig {
                 .exceptionHandling()
                 .and()
                 .authorizeExchange()
+                .pathMatchers(HttpMethod.POST, "/auth/token").authenticated()
                 .pathMatchers("/actuator/**").hasRole("SYSTEM")
-                .pathMatchers(HttpMethod.GET, "/v1/users/**").hasRole("USER")
-                .pathMatchers(HttpMethod.POST, "/v1/users/**").hasRole("ADMIN")
+                .pathMatchers(HttpMethod.GET, "/url-protected/games/**").hasRole("USER")
+                .pathMatchers(HttpMethod.POST, "/url-protected/game/**").hasRole("ADMIN")
                 .anyExchange()
                 .authenticated()
                 .and()
-                .addFilterAt(new WebApiJwtAuthWebFilter(reactiveAuthManager, jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
+                .addFilterAt(new WebApiJwtAuthWebFilter(jwtService), SecurityWebFiltersOrder.HTTP_BASIC)
                 .exceptionHandling();
 
         return http.build();

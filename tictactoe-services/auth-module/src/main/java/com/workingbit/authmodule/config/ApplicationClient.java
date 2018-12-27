@@ -1,3 +1,6 @@
+
+
+
 /*
  * © Copyright 2018 Aleksey Popryadukhin
  *
@@ -17,3 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.workingbit.authmodule.config;
+
+import lombok.Data;
+
+@Data
+public class ApplicationClient {
+    private String email;
+    private String password;
+    private String[] roles;
+}

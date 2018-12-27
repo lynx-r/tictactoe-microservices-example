@@ -10,9 +10,9 @@ spring:
         enabled: true
       server:
         git:
-          uri: ${CONFIG_GIT_URL}
-          username: ${CONFIG_GIT_USERNAME}
-          password: ${CONFIG_GIT_PASSWORD}
+          uri: ${CONFIG_GIT_URL:https://github.com/lynx-r/tictactoe-config-repo.git}
+#          username: ${CONFIG_GIT_USERNAME}
+#          password: ${CONFIG_GIT_PASSWORD}
 
 management:
   endpoints:

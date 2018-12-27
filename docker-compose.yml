@@ -63,9 +63,9 @@ services:
       - "14002:14002"
     env_file:
       - ${HOME}/Docker/tictactoe-shared.env
-  webapi:
-    image: 'workingbit/com.tictactoe.web-api'
-    container_name: webapi
+  webapiservice:
+    image: 'workingbit/com.tictactoe.webapi-service'
+    container_name: webapiservice
     links:
       - "zipkin:zipkin"
       - "discoveryserver:discoveryserver"

@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import javax.ws.rs.QueryParam;
 
 /**
  * User: aleksey
@@ -56,7 +55,7 @@ public class GameController {
     public Mono<?> createGame(
             @PathVariable("userId") String userId,
             @PathVariable("opponentId") String opponentId,
-            @QueryParam("black") Boolean black
+            @RequestParam("black") Boolean black
     ) {
         return gameService.createGame(userId, opponentId, black);
     }

@@ -17,3 +17,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.tictactoe.domain.repo;
+
+import com.tictactoe.domain.User;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
+
+@Component
+public interface UserRepository extends ReactiveMongoRepository<User, String> {
+
+    Mono<User> findByEmail(String email);
+
+    Mono<User> findByEmailAndFingerprint(String email, String fingerprint);
+
+    Mono<User> findByFingerprint(String fingerprint);
+
+    Mono<User> findByFingerprintAndGuestFalse(String fingerprint);
+
+    Mono<User> findByFingerprintAndGuestTrue(String fingerprint);
+
+    Mono<Boolean> existsByEmail(String email);
+
+    Mono<Void> deleteByFingerprint(String fingerprint);
+
+}

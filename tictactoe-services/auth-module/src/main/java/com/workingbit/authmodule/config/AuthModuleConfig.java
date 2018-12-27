@@ -1,3 +1,6 @@
+
+
+
 /*
  * © Copyright 2018 Aleksey Popryadukhin
  *
@@ -17,3 +20,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.workingbit.authmodule.config;
+
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+/**
+ * User: aleksey
+ * Date: 2018-12-02
+ * Time: 11:59
+ */
+@Data
+@Configuration
+@PropertySource("classpath:moduleConfig.yml")
+public class AuthModuleConfig {
+
+    @Value("${tokenExpirationMinutes:60}")
+    private Integer tokenExpirationMinutes;
+
+    @Value("${tokenIssuer:workingbit-example.com}")
+    private String tokenIssuer;
+
+    @Value("${tokenSecret:secret}") // length minimum 256 bites
+    private String tokenSecret;
+}

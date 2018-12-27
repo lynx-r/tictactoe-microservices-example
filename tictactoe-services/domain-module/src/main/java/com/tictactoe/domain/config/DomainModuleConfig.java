@@ -17,3 +17,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.tictactoe.domain.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
+
+@Configuration
+@EnableReactiveMongoRepositories("com.tictactoe.domain.repo")
+public class DomainModuleConfig {
+}

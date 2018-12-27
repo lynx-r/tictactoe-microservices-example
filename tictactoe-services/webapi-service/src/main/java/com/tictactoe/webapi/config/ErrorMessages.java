@@ -17,3 +17,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.tictactoe.webapi.config;
+
+public class ErrorMessages {
+
+    public static final String ERROR_HEADER_NAME = "errors";
+
+    public static final String USER_NOT_FOUND = "user_not_found";
+    public static final String USERNAME_BUSY = "email_busy";
+}

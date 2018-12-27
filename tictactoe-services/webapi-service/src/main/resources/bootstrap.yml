@@ -1,0 +1,24 @@
+encrypt.key: ${ENCRYPT_KEY:12345}
+
+spring:
+  application:
+    name: webapiservice
+  profiles:
+    active:
+      default
+  cloud:
+    config:
+      username: ${CONFIG_USERNAME:configUser}
+      password: ${CONFIG_PASSWORD:configPassword}
+      discovery:
+        enabled: true
+        service-id: configserver
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${DISCOVERY_SERVER_URL:http://eureka:password@localhost:8761/eureka}

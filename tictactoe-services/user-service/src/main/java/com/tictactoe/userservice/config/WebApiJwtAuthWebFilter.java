@@ -19,8 +19,8 @@
 
 package com.tictactoe.userservice.config;
 
-import com.tictactoe.authmodule.auth.JwtAuthWebFilter;
-import com.tictactoe.authmodule.auth.JwtService;
+import com.workingbit.authmodule.auth.JwtAuthWebFilter;
+import com.workingbit.authmodule.auth.JwtService;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
