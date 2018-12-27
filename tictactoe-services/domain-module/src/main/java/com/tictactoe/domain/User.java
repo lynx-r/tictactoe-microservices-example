@@ -71,9 +71,10 @@ public class User implements UserDetails {
   private List<String> authorities = new ArrayList<>();
 
   @JsonCreator
-  public User(@JsonProperty("email") String email, @JsonProperty("score") Integer score) {
+  public User(@JsonProperty("email") String email, @JsonProperty("password") String password,
+              @JsonProperty("authorities") List<String> authorities) {
     this.email = email;
-    this.score = score;
+      this.password = password;
     this.authorities = Objects.requireNonNullElseGet(authorities, ArrayList::new);
   }
 

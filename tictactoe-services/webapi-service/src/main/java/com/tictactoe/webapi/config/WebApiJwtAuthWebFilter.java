@@ -43,6 +43,7 @@ public class WebApiJwtAuthWebFilter extends JwtAuthWebFilter {
     @Override
     protected ServerWebExchangeMatcher getAuthMatcher() {
         List<ServerWebExchangeMatcher> matchers = new ArrayList<>();
+        matchers.add(new PathPatternParserServerWebExchangeMatcher("/auth/**"));
         matchers.add(new PathPatternParserServerWebExchangeMatcher("/method-protected/**"));
         matchers.add(new PathPatternParserServerWebExchangeMatcher("/url-protected/**"));
         return ServerWebExchangeMatchers.matchers(new OrServerWebExchangeMatcher(matchers));

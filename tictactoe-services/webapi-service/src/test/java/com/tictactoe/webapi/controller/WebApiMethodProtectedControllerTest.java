@@ -183,6 +183,6 @@ public class WebApiMethodProtectedControllerTest {
     }
 
     private User getUser() {
-        return User.builder().name(RandomStringUtils.random(10)).build();
+        return User.builder().email(RandomStringUtils.random(10)).build();
     }
 }

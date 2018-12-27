@@ -32,6 +32,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -121,8 +122,8 @@ public class GameService {
     }
 
     private Flux<Game> buildFallbackAllGames() {
-        User fakeUserBlack = new User("fakeUserBlack", 0);
-        User fakeUserWhite = new User("fakeUserWhite", 0);
+        User fakeUserBlack = new User("fakeUserBlack", "password", Collections.emptyList());
+        User fakeUserWhite = new User("fakeUserBlack", "password", Collections.emptyList());
         Game game = new Game(fakeUserBlack, fakeUserWhite);
         List<Game> games = List.of(game);
         return Flux.fromIterable(games);
