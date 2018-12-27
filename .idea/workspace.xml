@@ -2,48 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c041220a-d0da-40de-9336-f5d0ab45efba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/workingbit/adminserver/AdminServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/workingbit/adminserver/config/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/admin-server/src/test/java/com/workingbit/adminserver/AdminServerApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/config-server/src/main/java/com/workingbit/configserver/ConfigServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/config-server/src/main/java/com/workingbit/configserver/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/config-server/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/config-server/src/test/java/com/workingbit/configserver/ConfigServerApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/workingbit/discoveryserver/DiscoveryServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/workingbit/discoveryserver/config/SessionConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/workingbit/discoveryserver/config/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/discovery-server/src/test/java/com/workingbit/discoveryserver/DiscoveryServerApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/gateway-server/src/main/java/com/workingbit/gatewayserver/GatewayServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-servers/gateway-server/src/test/java/com/workingbit/gatewayserver/ZuulServerApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/docker/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/admin-server/docker/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/tictactoe/adminserver/AdminServerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/tictactoe/adminserver/config/WebSecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/admin-server/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/admin-server/src/test/java/com/tictactoe/adminserver/AdminServerApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/docker/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/config-server/docker/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/src/main/java/com/tictactoe/configserver/ConfigServerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/src/main/java/com/tictactoe/configserver/WebSecurityConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/config-server/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/src/test/java/com/tictactoe/configserver/ConfigServerApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/tictactoe/discoveryserver/DiscoveryServerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/java/com/tictactoe/discoveryserver/config/WebSecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/discovery-server/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/discovery-server/src/test/java/com/tictactoe/discoveryserver/DiscoveryServerApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/docker/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/gateway-server/docker/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/src/main/java/com/tictactoe/gatewayserver/GatewayServerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/gateway-server/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/gateway-server/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/gateway-server/src/test/java/com/tictactoe/gatewayserver/ZuulServerApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-servers/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-servers/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-servers/config-server/src/main/resources/bootstrap.yml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -232,8 +191,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/workingbit/adminserver/config/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+            <state relative-caret-position="28">
+              <caret line="3" column="88" selection-start-line="3" selection-start-column="88" selection-end-line="3" selection-end-column="88" />
             </state>
           </provider>
         </entry>
@@ -449,7 +408,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="copyright" />
+    <property name="settings.editor.selected.configurable" value="copyright.profiles" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -658,7 +617,7 @@
       <option name="presentableId" value="Default" />
       <updated>1544206231309</updated>
       <workItem from="1544206233497" duration="9688000" />
-      <workItem from="1545924617586" duration="1912000" />
+      <workItem from="1545924617586" duration="2068000" />
     </task>
     <task id="LOCAL-00001" summary="exclude mongo from webapi">
       <created>1544211329688</created>
@@ -688,11 +647,18 @@
       <option name="project" value="LOCAL" />
       <updated>1544252454555</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update spring servers.&#10;applying MIT license">
+      <created>1545926767627</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1545926767627</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11600000" />
+    <option name="totallyTimeSpent" value="11756000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -754,7 +720,8 @@
     <MESSAGE value="exclude mongo from webapi" />
     <MESSAGE value="docker tag version" />
     <MESSAGE value="fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
+    <MESSAGE value="update spring servers.&#10;applying MIT license" />
+    <option name="LAST_COMMIT_MESSAGE" value="update spring servers.&#10;applying MIT license" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -910,8 +877,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spring-servers/admin-server/src/main/java/com/workingbit/adminserver/config/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+        <state relative-caret-position="28">
+          <caret line="3" column="88" selection-start-line="3" selection-start-column="88" selection-end-line="3" selection-end-column="88" />
         </state>
       </provider>
     </entry>
