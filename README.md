@@ -50,6 +50,10 @@ Push images via `gradle plugin`:
 ./tictactoe-push-images.sh
 ```
 
+# Spring Cloud Config
+
+I use [this](https://github.com/lynx-r/tictactoe-config-repo) git repository to config application
+
 # Links
 
 * [Spring Microservices in Action](https://www.manning.com/books/spring-microservices-in-action)
