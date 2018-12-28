@@ -20,9 +20,6 @@ services:
   gatewayserver:
     image: 'workingbit/com.tictactoe.gateway-server'
     container_name: gatewayserver
-    links:
-      - "discoveryserver:discoveryserver"
-      - "configserver:configserver"
     ports:
       - "5555:5555"
     env_file:
@@ -30,9 +27,6 @@ services:
   adminserver:
     image: 'workingbit/com.tictactoe.admin-server'
     container_name: adminserver
-    links:
-      - "discoveryserver:discoveryserver"
-      - "configserver:configserver"
     ports:
       - "9999:9999"
     env_file:
@@ -41,11 +35,6 @@ services:
   userservice:
     image: 'workingbit/com.tictactoe.user-service'
     container_name: userservice
-    links:
-      - "zipkin:zipkin"
-      - "discoveryserver:discoveryserver"
-      - "configserver:configserver"
-      - "mongo:mongo"
     ports:
       - "14001:14001"
     env_file:
@@ -53,12 +42,6 @@ services:
   gameservice:
     image: 'workingbit/com.tictactoe.game-service'
     container_name: gameservice
-    links:
-      - "zipkin:zipkin"
-      - "discoveryserver:discoveryserver"
-      - "configserver:configserver"
-      - "mongo:mongo"
-      - "userservice:userservice"
     ports:
       - "14002:14002"
     env_file:
@@ -66,12 +49,6 @@ services:
   webapiservice:
     image: 'workingbit/com.tictactoe.webapi-service'
     container_name: webapiservice
-    links:
-      - "zipkin:zipkin"
-      - "discoveryserver:discoveryserver"
-      - "configserver:configserver"
-      - "userservice:userservice"
-      - "gameservice:gameservice"
     ports:
       - "14010:14010"
     env_file:

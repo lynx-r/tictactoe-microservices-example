@@ -6,30 +6,265 @@
 	},
 	"item": [
 		{
-			"name": "encrypt",
+			"name": "Get guest token",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "123"
+					"raw": "{\n\t\"fingerprint\": \"123\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8888/encrypt",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/web/auth/guest",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "8888",
 					"path": [
-						"encrypt"
+						"api",
+						"web",
+						"auth",
+						"guest"
 					]
-				}
+				},
+				"description": "A guest token required to register or get user token."
 			},
 			"response": []
 		},
 		{
-			"name": "viewconfig",
+			"name": "Register user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjMiLCJhdXRocyI6IlJPTEVfR1VFU1QiLCJpc3MiOiJ3b3JraW5nYml0LmNvbSIsImV4cCI6MTU0NTk2Nzg5OX0.XYmgiNwCbnFK-OoVKfhnMh4ghALuMW4grR5i-bTi2W8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"alex@mail.ru\",\n\t\"password\": \"alex\"\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/auth/register",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"auth",
+						"register"
+					]
+				},
+				"description": "Can be accomplish only using guest token.\nAfter registration the method returns an user token."
+			},
+			"response": []
+		},
+		{
+			"name": "Get user token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4QG1haWwucnUiLCJhdXRocyI6IlJPTEVfVVNFUixST0xFX0dVRVNUIiwiaXNzIjoid29ya2luZ2JpdC5jb20iLCJleHAiOjE1NDYwMDUzNzF9.TTaL6w30IgxM94qzFJr06BCUPzyMJObpFRwtSPpKoEc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "alex@mail.ru",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "alex",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/auth/token",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"auth",
+						"token"
+					]
+				},
+				"description": "An user token can be acquired via guest token.\nIt is used for creating a game."
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/method-protected/users",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"method-protected",
+						"users"
+					]
+				},
+				"description": "Get users who are registerd in system and can play.\nMay be acquired using a guest or user tokens."
+			},
+			"response": []
+		},
+		{
+			"name": "Games",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/url-protected/games",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"url-protected",
+						"games"
+					]
+				},
+				"description": "Get created games.\nMay be acquired using a guest or user tokens."
+			},
+			"response": []
+		},
+		{
+			"name": "Create game",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userFirst\": \"5c250c354bcb3838b570e159\",\n\t\"userSecond\": \"5c250e484bcb38390c11a1e2\",\n\t\"black\": true\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/api/web/url-protected/game",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"url-protected",
+						"game"
+					]
+				},
+				"description": "Creates a game with passed userIds.\nMay be acquired using only user tokens."
+			},
+			"response": []
+		},
+		{
+			"name": "Viewconfig",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -56,436 +291,42 @@
 					"raw": "123"
 				},
 				"url": {
-					"raw": "{{HOST}}/webapi/default",
+					"raw": "http://localhost:8888/webapiservice/default",
+					"protocol": "http",
 					"host": [
-						"{{HOST}}"
+						"localhost"
 					],
+					"port": "8888",
 					"path": [
-						"webapi",
+						"webapiservice",
 						"default"
 					]
-				}
+				},
+				"description": "View microservice config.\nExample /webapiservice/default or /gameservice/default."
 			},
 			"response": []
 		},
 		{
-			"name": "webapi login gw",
+			"name": "Encrypt property",
 			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
-				},
 				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "123"
 				},
 				"url": {
-					"raw": "{{HOST}}/api/web/auth/token",
+					"raw": "http://localhost:8888/encrypt",
+					"protocol": "http",
 					"host": [
-						"{{HOST}}"
+						"localhost"
 					],
+					"port": "8888",
 					"path": [
-						"api",
-						"web",
-						"auth",
-						"token"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "webapi users basicauth gw",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "user",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "user",
-							"type": "string"
-						}
+						"encrypt"
 					]
 				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOST}}/api/web/method-protected/users",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"web",
-						"method-protected",
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "webapi users tokenauth gw",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "user",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "user",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOST}}/api/web/method-protected/users",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"web",
-						"method-protected",
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "webapi create user basicauth gw",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\": \"alex\",\n\t\"score\": 0\n}\t"
-				},
-				"url": {
-					"raw": "{{HOST}}/api/web/method-protected/user",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"web",
-						"method-protected",
-						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "webapi create user tokenauth gw",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{TOKEN}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\": \"alex\",\n\t\"score\": 0\n}\t"
-				},
-				"url": {
-					"raw": "{{HOST}}/api/web/method-protected/user",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"web",
-						"method-protected",
-						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "webapi games basicauth gw",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "user",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "user",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOST}}/api/web/url-protected/games",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"web",
-						"url-protected",
-						"games"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "webapi games tokenauth gw",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "user",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "user",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOST}}/api/web/url-protected/games",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"web",
-						"url-protected",
-						"games"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "webapi create game basicauth gw",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"userFirst\": \"5c038d736d0ae46b670c81b9\",\n\t\"userSecond\": \"5c00bca46d0ae4a28e844027\",\n\t\"black\": true\n}"
-				},
-				"url": {
-					"raw": "{{HOST}}/api/web/url-protected/game",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"web",
-						"url-protected",
-						"game"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "webapi create game tokenauth gw",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"userFirst\": \"5c038d736d0ae46b670c81b9\",\n\t\"userSecond\": \"5c00bca46d0ae4a28e844027\",\n\t\"black\": true\n}"
-				},
-				"url": {
-					"raw": "{{HOST}}/api/web/url-protected/game",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"web",
-						"url-protected",
-						"game"
-					]
-				}
+				"description": "Used for encrypting properties in git-config repository."
 			},
 			"response": []
 		}

@@ -2,13 +2,11 @@
 
 # Run in Postman
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3d22b6efe9ada28ae2de)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3d22b6efe9ada28ae2de#?env%5Bshashki%20local%5D=W3sia2V5IjoiSE9TVCIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo1NTU1IiwiZGVzY3JpcHRpb24iOiIiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6IlRPS0VOIiwidmFsdWUiOiJleUpoYkdjaU9pSklVekkxTmlKOS5leUp6ZFdJaU9pSmhaRzFwYmlJc0ltRjFkR2h6SWpvaVVrOU1SVjlCUkUxSlRpeFNUMHhGWDFWVFJWSWlMQ0pwYzNNaU9pSjBhV04wWVdOMGIyVXVZMjl0SWl3aVpYaHdJam94TlRRME9EUTNNVGN5ZlEuQzhVRjgwaDBLQk1DVFdrRExpbVh2aDhlOHFBVjBja2Z1aFUyM05ULWY5TSIsImRlc2NyaXB0aW9uIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJBTk9OX1RPS0VOIiwidmFsdWUiOiIiLCJkZXNjcmlwdGlvbiI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiSE9TVF9BUlRJQ0xFIiwidmFsdWUiOiIiLCJkZXNjcmlwdGlvbiI6IiIsInR5cGUiOiJ0ZXh0IiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJIT1NUX0JPQVJEIiwidmFsdWUiOiIiLCJkZXNjcmlwdGlvbiI6IiIsInR5cGUiOiJ0ZXh0IiwiZW5hYmxlZCI6dHJ1ZX1d)
 
 Or import `tictactoe-postman_collection.json`
 
 Services and Credential (**login/password**):
-
-user/user
 
 admin/admin
 
