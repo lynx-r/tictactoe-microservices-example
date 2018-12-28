@@ -17,24 +17,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.tictactoe.webapi;
+package com.tictactoe.domainmodule.repo;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.reactive.function.client.WebClient;
+import com.tictactoe.domainmodule.domain.User;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class WebApiApplicationTests {
+@Component
+public interface UserRepository extends ReactiveMongoRepository<User, String> {
 
-    @Autowired
-    private WebClient.Builder webClientBuilder;
+    Mono<User> findByEmail(String email);
 
-    @Test
-    public void testRoot() {
-    }
+    Mono<User> findByEmailAndFingerprint(String email, String fingerprint);
+
+    Mono<User> findByFingerprint(String fingerprint);
+
+    Mono<User> findByFingerprintAndGuestFalse(String fingerprint);
+
+    Mono<User> findByFingerprintAndGuestTrue(String fingerprint);
+
+    Mono<Boolean> existsByEmail(String email);
+
+    Mono<Void> deleteByFingerprint(String fingerprint);
 
 }

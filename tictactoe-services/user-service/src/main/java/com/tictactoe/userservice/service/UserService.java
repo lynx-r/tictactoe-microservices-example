@@ -20,8 +20,8 @@
 package com.tictactoe.userservice.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.tictactoe.domain.User;
-import com.tictactoe.domain.repo.UserRepository;
+import com.tictactoe.domainmodule.domain.User;
+import com.tictactoe.domainmodule.repo.UserRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

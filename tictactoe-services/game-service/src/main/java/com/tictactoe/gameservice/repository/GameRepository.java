@@ -19,7 +19,7 @@
 
 package com.tictactoe.gameservice.repository;
 
-import com.tictactoe.domain.Game;
+import com.tictactoe.domainmodule.domain.Game;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 /**

@@ -19,7 +19,7 @@
 
 package com.tictactoe.webapi.client;
 
-import com.tictactoe.domain.User;
+import com.tictactoe.domainmodule.domain.User;
 import com.tictactoe.webapi.config.ApplicationConfig;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -35,39 +35,37 @@ import reactor.core.publisher.Mono;
 @Service
 public class UserWebClient {
 
-    private final WebClient.Builder webClientBuilder;
-    private final String userServiceUrl;
+    private final WebClient webClient;
 
-    public UserWebClient(WebClient.Builder webClientBuilder,
+    public UserWebClient(WebClient webClient,
                          ApplicationConfig applicationConfig) {
-        this.webClientBuilder = webClientBuilder;
-        this.userServiceUrl = applicationConfig.getUserServiceUrl();
+        this.webClient = webClient
+                .mutate()
+                .baseUrl(applicationConfig.getUserServiceUrl())
+                .build();
     }
 
     public Flux<User> getAllUsers() {
-        return webClientBuilder
-                .build()
+        return webClient
                 .get()
-                .uri(userServiceUrl + "/v1/users")
+                .uri("/v1/users")
                 .retrieve()
                 .bodyToFlux(User.class);
     }
 
     public Mono<User> createUser(User userRequest) {
-        return webClientBuilder
-                .build()
+        return webClient
                 .post()
-                .uri(userServiceUrl + "/v1/users")
+                .uri("/v1/users")
                 .body(BodyInserters.fromObject(userRequest))
                 .retrieve()
                 .bodyToMono(User.class);
     }
 
     public Mono<User> getUser(String userId) {
-        return webClientBuilder
-                .build()
+        return webClient
                 .get()
-                .uri(userServiceUrl + "/v1/users/{userId}", userId)
+                .uri("/v1/users/{userId}", userId)
                 .retrieve()
                 .bodyToMono(User.class);
     }

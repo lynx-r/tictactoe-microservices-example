@@ -59,12 +59,8 @@ public class SpringSecurityWebFluxConfig {
     @Bean
     public SecurityWebFilterChain systemSecurityFilterChain(
             ServerHttpSecurity http, JwtService jwtService,
-            @Qualifier("userDetailsRepositoryInMemory") ReactiveUserDetailsService userDetailsServiceInMemory,
             @Qualifier("userDetailsRepository") ReactiveUserDetailsService userDetailsService
     ) {
-        UserDetailsRepositoryReactiveAuthenticationManager authenticationManagerInMemory
-                = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsServiceInMemory);
-
         UserDetailsRepositoryReactiveAuthenticationManager authenticationManager
                 = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsService);
 
@@ -92,8 +88,8 @@ public class SpringSecurityWebFluxConfig {
                 .and()
                 .authorizeExchange()
                 .pathMatchers("/actuator/**").hasRole("SYSTEM")
-                .pathMatchers(HttpMethod.GET, "/url-protected/**").hasRole("USER")
-                .pathMatchers(HttpMethod.POST, "/url-protected/**").hasRole("ADMIN")
+                .pathMatchers(HttpMethod.GET, "/url-protected/**").hasRole("GUEST")
+                .pathMatchers(HttpMethod.POST, "/url-protected/**").hasRole("USER")
                 .and()
                 .httpBasic()
                 .and()

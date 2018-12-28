@@ -19,8 +19,9 @@
 
 package com.tictactoe.gameservice.controller;
 
-import com.tictactoe.domain.Game;
+import com.tictactoe.domainmodule.domain.Game;
 import com.tictactoe.gameservice.service.GameService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -52,7 +53,7 @@ public class GameController {
     }
 
     @PostMapping("{userId}/{opponentId}")
-    public Mono<?> createGame(
+    public Mono<ResponseEntity<Game>> createGame(
             @PathVariable("userId") String userId,
             @PathVariable("opponentId") String opponentId,
             @RequestParam("black") Boolean black

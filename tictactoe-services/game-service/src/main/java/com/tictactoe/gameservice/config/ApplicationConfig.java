@@ -20,6 +20,7 @@
 package com.tictactoe.gameservice.config;
 
 import com.workingbit.authmodule.config.ApplicationClientsProperties;
+import com.workingbit.authmodule.config.MicroserviceSpringSecurityWebFluxConfig;
 import com.workingbit.authmodule.config.SpringWebFluxConfig;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,7 +36,7 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 @Data
 @Configuration
 @EnableReactiveMongoRepositories("com.tictactoe.gameservice.repository")
-@Import({ApplicationClientsProperties.class, SpringWebFluxConfig.class})
+@Import({ApplicationClientsProperties.class, SpringWebFluxConfig.class, MicroserviceSpringSecurityWebFluxConfig.class})
 public class ApplicationConfig {
 
     @Value("${userserviceUrl}")

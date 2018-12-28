@@ -19,11 +19,10 @@
 
 package com.tictactoe.webapi.client;
 
-import com.tictactoe.domain.Game;
+import com.tictactoe.domainmodule.domain.Game;
 import com.tictactoe.webapi.config.ApplicationConfig;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.DefaultUriBuilderFactory;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -37,32 +36,30 @@ import java.util.Map;
 @Service
 public class GameWebClient {
 
-    private final WebClient.Builder webClientBuilder;
-    private final String gameServiceUrl;
+    private final WebClient webClient;
 
-    public GameWebClient(WebClient.Builder webClientBuilder,
+    public GameWebClient(WebClient webClient,
                          ApplicationConfig applicationConfig) {
-        this.webClientBuilder = webClientBuilder;
-        this.gameServiceUrl = applicationConfig.getGameServiceUrl();
+        this.webClient = webClient
+                .mutate()
+                .baseUrl(applicationConfig.getGameServiceUrl())
+                .build();
     }
 
     public Flux<Game> getAllGames() {
-        return webClientBuilder
-                .build()
+        return webClient
                 .get()
-                .uri(gameServiceUrl + "/v1/games")
+                .uri("/v1/games")
                 .retrieve()
                 .bodyToFlux(Game.class);
     }
 
     public Mono<Game> createGame(Map<String, Object> params) {
         Boolean black = (Boolean) params.remove("black");
-        return webClientBuilder
-                .build()
+        return webClient
                 .post()
                 .uri(uriBuilder ->
-                        new DefaultUriBuilderFactory(gameServiceUrl)
-                                .builder()
+                        uriBuilder
                                 .path("/v1/games/{userFirst}/{userSecond}")
                                 .queryParam("black", black)
                                 .build(params)
@@ -72,10 +69,9 @@ public class GameWebClient {
     }
 
     public Mono<Game> getGame(String gameId) {
-        return webClientBuilder
-                .build()
+        return webClient
                 .get()
-                .uri(gameServiceUrl + "/v1/games/{gameId}", gameId)
+                .uri("/v1/games/{gameId}", gameId)
                 .retrieve()
 //        .onStatus(HttpStatus::is4xxClientError, resp -> Mono.error(new RuntimeException("4xx")))
 //        .onStatus(HttpStatus::is5xxServerError, resp -> Mono.error(new RuntimeException("5xx")))

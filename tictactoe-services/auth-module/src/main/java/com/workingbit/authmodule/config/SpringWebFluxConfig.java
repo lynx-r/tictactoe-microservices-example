@@ -25,8 +25,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import com.tictactoe.domain.config.DomainModuleConfig;
-import com.tictactoe.domain.repo.UserRepository;
+import com.tictactoe.domainmodule.config.DomainModuleConfig;
+import com.tictactoe.domainmodule.repo.UserRepository;
 import com.workingbit.authmodule.auth.JwtService;
 import org.bson.types.ObjectId;
 import org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerExchangeFilterFunction;
@@ -52,7 +52,7 @@ import static java.util.stream.Collectors.toList;
 
 @Configuration
 @ComponentScan({"com.workingbit.authmodule"})
-//@EnableReactiveMongoRepositories("com.tictactoe.domain.repo")
+//@EnableReactiveMongoRepositories("com.tictactoe.domainmodule.repo")
 @Import(DomainModuleConfig.class)
 public class SpringWebFluxConfig {
 

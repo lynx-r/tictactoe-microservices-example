@@ -17,18 +17,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.tictactoe.domain;
+package com.tictactoe.webapi;
 
-import lombok.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.reactive.function.client.WebClient;
 
-import java.io.Serializable;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class WebApiServiceApplicationTests {
 
-@Data
-@ToString
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class JwtAuthRequest implements Serializable {
-    private String username;
-    private String password;
+    @Autowired
+    private WebClient.Builder webClientBuilder;
+
+    @Test
+    public void testRoot() {
+    }
+
 }

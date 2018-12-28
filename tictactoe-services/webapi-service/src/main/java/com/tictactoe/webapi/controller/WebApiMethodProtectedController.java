@@ -19,7 +19,7 @@
 
 package com.tictactoe.webapi.controller;
 
-import com.tictactoe.domain.User;
+import com.tictactoe.domainmodule.domain.User;
 import com.tictactoe.webapi.service.WebApiService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

@@ -17,16 +17,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.tictactoe.domain;
+package com.tictactoe.domainmodule.domain;
 
 import lombok.*;
+
+import java.io.Serializable;
 
 @Data
 @ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class JwtAuthResponse {
-    private String token;
+public class JwtAuthRequest implements Serializable {
     private String username;
+    private String password;
 }

@@ -17,35 +17,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.tictactoe.userservice.config;
+package com.workingbit.authmodule.config;
 
 import com.workingbit.authmodule.auth.JwtAuthWebFilter;
 import com.workingbit.authmodule.auth.JwtService;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.PathPatternParserServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * User: aleksey
  * Date: 2018-12-03
  * Time: 09:29
  */
-public class UserServiceJwtAuthWebFilter extends JwtAuthWebFilter {
+public class MicroserviceServiceJwtAuthWebFilter extends JwtAuthWebFilter {
 
-    public UserServiceJwtAuthWebFilter(JwtService jwtService) {
+    private final String[] matchersStrings;
+
+    MicroserviceServiceJwtAuthWebFilter(JwtService jwtService, String[] matchersStrings) {
         super(jwtService);
+        this.matchersStrings = matchersStrings;
     }
 
     @Override
     protected ServerWebExchangeMatcher getAuthMatcher() {
-        List<ServerWebExchangeMatcher> matchers = new ArrayList<>();
-        matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.GET));
-        matchers.add(new PathPatternParserServerWebExchangeMatcher("/v1/users/**", HttpMethod.POST));
+        List<ServerWebExchangeMatcher> matchers = Arrays.stream(this.matchersStrings)
+                .map(PathPatternParserServerWebExchangeMatcher::new)
+                .collect(Collectors.toList());
         return ServerWebExchangeMatchers.matchers(new OrServerWebExchangeMatcher(matchers));
     }
 }

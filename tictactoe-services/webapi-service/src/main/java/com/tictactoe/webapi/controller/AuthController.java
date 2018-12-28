@@ -19,9 +19,9 @@
 
 package com.tictactoe.webapi.controller;
 
-import com.tictactoe.domain.JwtAuthResponse;
-import com.tictactoe.domain.User;
-import com.tictactoe.domain.repo.UserRepository;
+import com.tictactoe.domainmodule.domain.JwtAuthResponse;
+import com.tictactoe.domainmodule.domain.User;
+import com.tictactoe.domainmodule.repo.UserRepository;
 import com.workingbit.authmodule.auth.JwtService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

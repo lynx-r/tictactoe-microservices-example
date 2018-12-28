@@ -17,12 +17,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.tictactoe.domain.config;
+package com.tictactoe.domainmodule.domain;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Configuration
-@EnableReactiveMongoRepositories("com.tictactoe.domain.repo")
-public class DomainModuleConfig {
+import java.util.List;
+
+/**
+ * User: aleksey
+ * Date: 28/11/2018
+ * Time: 08:52
+ */
+@Data
+@NoArgsConstructor
+@Document("game")
+public class Game {
+
+    public static final int FIELD_SIZE = 3;
+
+    @Id
+    private String id;
+
+    @DBRef
+    private User userBlack;
+
+    @DBRef
+    private User userWhite;
+
+    private List<List<Boolean>> field;
+
+    @JsonCreator
+    public Game(@JsonProperty("userBlack") User userBlack, @JsonProperty("userWhite") User userWhite) {
+        this.userBlack = userBlack;
+        this.userWhite = userWhite;
+    }
 }

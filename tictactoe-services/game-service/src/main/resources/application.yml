@@ -1,1 +1,9 @@
 userserviceUrl: "http://userservice"
+
+whiteListedAuthUrls:
+  - /
+  - /v1/games/**
+  - /public/**
+
+jwtTokenMatchUrls:
+  - /v1/games/**

@@ -20,8 +20,8 @@
 package com.tictactoe.webapi.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.tictactoe.domain.Game;
-import com.tictactoe.domain.User;
+import com.tictactoe.domainmodule.domain.Game;
+import com.tictactoe.domainmodule.domain.User;
 import com.tictactoe.webapi.client.GameWebClient;
 import com.tictactoe.webapi.client.UserWebClient;
 import org.springframework.security.access.prepost.PreAuthorize;

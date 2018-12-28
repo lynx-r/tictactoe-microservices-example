@@ -19,7 +19,7 @@
 
 package com.tictactoe.webapi.controller;
 
-import com.tictactoe.domain.User;
+import com.tictactoe.domainmodule.domain.User;
 import com.tictactoe.webapi.config.TestConfig;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Before;

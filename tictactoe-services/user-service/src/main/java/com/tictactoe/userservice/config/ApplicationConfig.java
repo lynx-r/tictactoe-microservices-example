@@ -20,11 +20,11 @@
 package com.tictactoe.userservice.config;
 
 import com.workingbit.authmodule.config.ApplicationClientsProperties;
+import com.workingbit.authmodule.config.MicroserviceSpringSecurityWebFluxConfig;
 import com.workingbit.authmodule.config.SpringWebFluxConfig;
 import lombok.Data;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
 /**
  * User: aleksey
@@ -33,7 +33,6 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
  */
 @Data
 @Configuration
-@EnableReactiveMongoRepositories("com.tictactoe.userservice.repository")
-@Import({ApplicationClientsProperties.class, SpringWebFluxConfig.class})
+@Import({ApplicationClientsProperties.class, SpringWebFluxConfig.class, MicroserviceSpringSecurityWebFluxConfig.class})
 public class ApplicationConfig {
 }

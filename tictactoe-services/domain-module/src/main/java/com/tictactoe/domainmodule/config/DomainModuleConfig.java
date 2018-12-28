@@ -17,15 +17,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.tictactoe.webapi;
+package com.tictactoe.domainmodule.config;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
-@SpringBootApplication
-public class WebApiApplication {
-
-  public static void main(String[] args) {
-    SpringApplication.run(WebApiApplication.class, args);
-  }
+@Configuration
+@EnableReactiveMongoRepositories("com.tictactoe.domainmodule.repo")
+public class DomainModuleConfig {
 }

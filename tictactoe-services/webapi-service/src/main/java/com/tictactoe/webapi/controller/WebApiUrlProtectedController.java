@@ -19,7 +19,7 @@
 
 package com.tictactoe.webapi.controller;
 
-import com.tictactoe.domain.Game;
+import com.tictactoe.domainmodule.domain.Game;
 import com.tictactoe.webapi.service.WebApiService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;

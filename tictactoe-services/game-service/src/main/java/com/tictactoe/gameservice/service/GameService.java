@@ -21,12 +21,13 @@ package com.tictactoe.gameservice.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.tictactoe.domain.Game;
-import com.tictactoe.domain.User;
+import com.tictactoe.domainmodule.domain.Game;
+import com.tictactoe.domainmodule.domain.User;
 import com.tictactoe.gameservice.client.UserWebClient;
 import com.tictactoe.gameservice.repository.GameRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -77,7 +78,7 @@ public class GameService {
         return gameRepository.findAll();
     }
 
-    public Mono<Game> createGame(String userBlackId, String userWhiteId, Boolean black) {
+    public Mono<ResponseEntity<Game>> createGame(String userBlackId, String userWhiteId, Boolean black) {
         Mono<User> userBlackMono = userClient.getUser(userBlackId);
         Mono<User> userWhiteMono = userClient.getUser(userWhiteId);
         return userBlackMono
@@ -91,7 +92,8 @@ public class GameService {
                     initGameField(game);
                     return game;
                 })
-                .flatMap(gameRepository::insert);
+                .flatMap(gameRepository::insert)
+                .map(ResponseEntity::ok);
     }
 
     private void initGameField(Game game) {

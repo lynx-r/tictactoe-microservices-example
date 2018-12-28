@@ -19,7 +19,7 @@
 
 package com.tictactoe.userservice.controller;
 
-import com.tictactoe.domain.User;
+import com.tictactoe.domainmodule.domain.User;
 import com.tictactoe.userservice.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
