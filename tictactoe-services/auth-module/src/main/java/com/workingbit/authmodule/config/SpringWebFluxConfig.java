@@ -52,7 +52,6 @@ import static java.util.stream.Collectors.toList;
 
 @Configuration
 @ComponentScan({"com.workingbit.authmodule"})
-//@EnableReactiveMongoRepositories("com.tictactoe.domainmodule.repo")
 @Import(DomainModuleConfig.class)
 public class SpringWebFluxConfig {
 
@@ -70,6 +69,11 @@ public class SpringWebFluxConfig {
     return PasswordEncoderFactories.createDelegatingPasswordEncoder();
   }
 
+  /**
+   * It will be used by default for Basic Auth
+   *
+   * @return
+   */
   @Bean
   @Primary
   public MapReactiveUserDetailsService userDetailsRepositoryInMemory() {

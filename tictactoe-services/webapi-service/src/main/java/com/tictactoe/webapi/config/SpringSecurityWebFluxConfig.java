@@ -21,9 +21,12 @@ package com.tictactoe.webapi.config;
 
 import com.workingbit.authmodule.auth.JwtAuthSuccessHandler;
 import com.workingbit.authmodule.auth.JwtService;
+import com.workingbit.authmodule.config.MicroserviceServiceJwtAuthWebFilter;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,23 +43,15 @@ import reactor.core.publisher.Mono;
 @EnableReactiveMethodSecurity
 public class SpringSecurityWebFluxConfig {
 
-    private static final String[] WHITELISTED_AUTH_URLS = {
-            "/",
-            "/auth/**",
-            "/method-protected/**",
-            "/public/**",
-    };
+    private static final String AUTH_TOKEN_PATH = "/auth/token";
 
-    /**
-     * The test defined in SampleApplicationTests class will only get executed
-     * if you change the authentication mechanism to basic (from form mechanism)
-     * in SpringSecurityWebFluxConfig file
-     *
-     * @param http
-     * @return
-     * @throws Exception
-     */
+    @Value("${whiteListedAuthUrls}")
+    private String[] whiteListedAuthUrls;
+    @Value("${jwtTokenMatchUrls}")
+    private String[] jwtTokenMatchUrls;
+
     @Bean
+    @Primary
     public SecurityWebFilterChain systemSecurityFilterChain(
             ServerHttpSecurity http, JwtService jwtService,
             @Qualifier("userDetailsRepository") ReactiveUserDetailsService userDetailsService
@@ -67,7 +62,7 @@ public class SpringSecurityWebFluxConfig {
         AuthenticationWebFilter tokenWebFilter = new AuthenticationWebFilter(authenticationManager);
         tokenWebFilter.setServerAuthenticationConverter(exchange ->
                 Mono.justOrEmpty(exchange)
-                        .filter(ex -> ex.getRequest().getPath().value().equalsIgnoreCase("/auth/token"))
+                        .filter(ex -> AUTH_TOKEN_PATH.equalsIgnoreCase(ex.getRequest().getPath().value()))
                         .flatMap(ServerWebExchange::getFormData)
                         .filter(formData -> !formData.isEmpty())
                         .map((formData) -> {
@@ -78,12 +73,12 @@ public class SpringSecurityWebFluxConfig {
         );
         tokenWebFilter.setAuthenticationSuccessHandler(new JwtAuthSuccessHandler(jwtService));
 
-        WebApiServiceJwtAuthWebFilter webApiJwtServiceWebFilter = new WebApiServiceJwtAuthWebFilter(jwtService);
+        MicroserviceServiceJwtAuthWebFilter webApiJwtServiceWebFilter = new MicroserviceServiceJwtAuthWebFilter(jwtService, jwtTokenMatchUrls);
         http.csrf().disable();
 
         http
                 .authorizeExchange()
-                .pathMatchers(WHITELISTED_AUTH_URLS)
+                .pathMatchers(whiteListedAuthUrls)
                 .permitAll()
                 .and()
                 .authorizeExchange()

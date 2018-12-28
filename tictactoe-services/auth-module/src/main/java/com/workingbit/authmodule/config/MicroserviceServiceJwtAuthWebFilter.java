@@ -39,7 +39,7 @@ public class MicroserviceServiceJwtAuthWebFilter extends JwtAuthWebFilter {
 
     private final String[] matchersStrings;
 
-    MicroserviceServiceJwtAuthWebFilter(JwtService jwtService, String[] matchersStrings) {
+    public MicroserviceServiceJwtAuthWebFilter(JwtService jwtService, String[] matchersStrings) {
         super(jwtService);
         this.matchersStrings = matchersStrings;
     }
