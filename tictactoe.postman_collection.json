@@ -20,7 +20,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"fingerprint\": \"123\"\n}"
+                  "raw": "{\n\t\"fingerprint\": \"1234\"\n}"
 				},
 				"url": {
 					"raw": "{{HOST}}/api/web/auth/guest",
@@ -46,7 +46,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjMiLCJhdXRocyI6IlJPTEVfR1VFU1QiLCJpc3MiOiJ3b3JraW5nYml0LmNvbSIsImV4cCI6MTU0NTk2Nzg5OX0.XYmgiNwCbnFK-OoVKfhnMh4ghALuMW4grR5i-bTi2W8",
+                          "value": "{{TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -127,6 +127,59 @@
 						"token"
 					]
 				},
+              "description": "An user token can be acquired via guest token.\nIt is used for creating a game."
+            },
+          "response": []
+        },
+      {
+        "name": "Logout",
+        "request": {
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4QG1haWwucnUiLCJhdXRocyI6IlJPTEVfVVNFUixST0xFX0dVRVNUIiwiaXNzIjoid29ya2luZ2JpdC5jb20iLCJleHAiOjE1NDYwMDUzNzF9.TTaL6w30IgxM94qzFJr06BCUPzyMJObpFRwtSPpKoEc",
+                "type": "string"
+              }
+            ]
+          },
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "body": {
+            "mode": "urlencoded",
+            "urlencoded": [
+              {
+                "key": "email",
+                "value": "alex@mail.ru",
+                "type": "text"
+              },
+              {
+                "key": "password",
+                "value": "alex",
+                "type": "text"
+              }
+            ]
+          },
+          "url": {
+            "raw": "{{HOST}}/api/web/auth/logout",
+            "host": [
+              "{{HOST}}"
+            ],
+            "path": [
+              "api",
+              "web",
+              "auth",
+              "logout"
+            ]
+          },
 				"description": "An user token can be acquired via guest token.\nIt is used for creating a game."
 			},
 			"response": []
