@@ -51,7 +51,7 @@ public class WebApiService {
     }
 
     @HystrixCommand
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @PreAuthorize("hasRole('GUEST')")
     public Flux<User> getAllUsers() {
         return userWebClient.getAllUsers();
     }
