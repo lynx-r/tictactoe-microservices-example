@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c041220a-d0da-40de-9336-f5d0ab45efba" name="Default Changelist" comment="fix">
+    <list default="true" id="c041220a-d0da-40de-9336-f5d0ab45efba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -106,11 +105,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="305" selection-start-line="305" selection-end-line="305" />
+            <state relative-caret-position="329">
+              <caret line="294" column="27" lean-forward="true" selection-start-line="294" selection-start-column="27" selection-end-line="294" selection-end-column="27" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tictactoe-create-images.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tictactoe-push-images.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -120,7 +137,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="299">
-                <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+                <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
               </first_editor>
               <second_editor />
             </state>
@@ -131,7 +148,7 @@
         <entry file="file://$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="45" column="3" lean-forward="true" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
+              <caret line="45" column="3" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
               <folding>
                 <element signature="e#1750#1751#0" expanded="true" />
                 <element signature="e#1791#1792#0" expanded="true" />
@@ -162,7 +179,7 @@
         <entry file="file://$PROJECT_DIR$/tictactoe-services/webapi-service/src/main/java/com/tictactoe/webapi/service/WebApiService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="389">
-              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+              <caret line="74" selection-start-line="74" selection-end-line="74" />
               <folding>
                 <element signature="e#2136#2137#0" expanded="true" />
                 <element signature="e#2186#2187#0" expanded="true" />
@@ -172,15 +189,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docker-compose-up.sh">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tictactoe-shared.env">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -189,16 +201,7 @@
         <entry file="file://$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="291">
-              <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="10" lean-forward="true" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+              <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -221,6 +224,8 @@
       <find>fingerprin</find>
       <find>gameservice</find>
       <find>domainmodule</find>
+      <find>working</find>
+      <find>docker</find>
     </findStrings>
     <replaceStrings>
       <replace>tictactoe</replace>
@@ -232,8 +237,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tictactoe-services/domain-module/src/main/java/com/tictactoe/domain/repo/UserRepository.java" />
-        <option value="$PROJECT_DIR$/tictactoe-services/user-service/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/tictactoe-services/webapi-service/settings.gradle" />
         <option value="$PROJECT_DIR$/tictactoe-services/user-service/settings.gradle" />
         <option value="$PROJECT_DIR$/tictactoe-services/game-service/settings.gradle" />
@@ -282,6 +285,8 @@
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/tictactoe-services/webapi-service/src/main/java/com/tictactoe/webapi/service/WebApiService.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/tictactoe-push-images.sh" />
+        <option value="$PROJECT_DIR$/tictactoe-create-images.sh" />
         <option value="$PROJECT_DIR$/build.gradle" />
       </list>
     </option>
@@ -948,7 +953,7 @@
       <option name="presentableId" value="Default" />
       <updated>1544206231309</updated>
       <workItem from="1544206233497" duration="9688000" />
-      <workItem from="1545924617586" duration="22644000" />
+      <workItem from="1545924617586" duration="23309000" />
     </task>
     <task id="LOCAL-00001" summary="exclude mongo from webapi">
       <created>1544211329688</created>
@@ -1069,11 +1074,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545973418516</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix scripts">
+      <created>1545974673279</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1545974673279</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32332000" />
+    <option name="totallyTimeSpent" value="32997000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -1174,7 +1186,8 @@
     <MESSAGE value="updated readme" />
     <MESSAGE value="fix" />
     <MESSAGE value="Config repo link" />
-    <option name="LAST_COMMIT_MESSAGE" value="Config repo link" />
+    <MESSAGE value="fix scripts" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix scripts" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1243,20 +1256,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tictactoe-services/game-service/src/main/java/com/tictactoe/gameservice/service/GameService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="80" column="36" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webflux/5.1.3.RELEASE/781285bd5b7724196893007b677cf237e67b4628/spring-webflux-5.1.3.RELEASE-sources.jar!/org/springframework/web/reactive/function/client/DefaultWebClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="468" column="52" selection-start-line="468" selection-start-column="52" selection-end-line="468" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tictactoe-services/webapi-service/src/main/java/com/tictactoe/webapi/client/GameWebClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -1568,28 +1567,28 @@
     <entry file="file://$PROJECT_DIR$/docker-compose.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" column="10" lean-forward="true" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tictactoe-shared.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
-          <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+          <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tictactoe-services/user-service/src/main/java/com/tictactoe/userservice/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="45" column="3" lean-forward="true" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
+          <caret line="45" column="3" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
           <folding>
             <element signature="e#1750#1751#0" expanded="true" />
             <element signature="e#1791#1792#0" expanded="true" />
@@ -1614,7 +1613,7 @@
     <entry file="file://$PROJECT_DIR$/tictactoe-services/webapi-service/src/main/java/com/tictactoe/webapi/service/WebApiService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
           <folding>
             <element signature="e#2136#2137#0" expanded="true" />
             <element signature="e#2186#2187#0" expanded="true" />
@@ -1626,16 +1625,30 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="299">
-            <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+            <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-push-images.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tictactoe-create-images.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="305" selection-start-line="305" selection-end-line="305" />
+        <state relative-caret-position="329">
+          <caret line="294" column="27" lean-forward="true" selection-start-line="294" selection-start-column="27" selection-end-line="294" selection-end-column="27" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
