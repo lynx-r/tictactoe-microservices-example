@@ -30,7 +30,7 @@ zipkin/zipkin
 
 Run `docker-compose` via `gradle plugin`:
 
-    Before run `docker-compose` copy `tictactoe-shared.env` into `${HOME}/Docker/tictactoe-shared.env`.
+    Before running `docker-compose` copy `tictactoe-shared.env` in `${HOME}/Docker/tictactoe-shared.env`.
 
 ```
 ./docker-compose-up.sh

@@ -303,18 +303,13 @@ project(':spring-servers:admin-server') {
 subprojects { subproject ->
     if (file("${subproject.projectDir}/docker/Dockerfile").exists()) {
         docker {
+            // workingbit - replace with your dockerhub's username
             name "workingbit/${subproject.group}.${subproject.bootJar.baseName}"
             tags 'latest'
             dockerfile file("${subproject.projectDir}/docker/Dockerfile")
             files tasks.bootJar.archivePath, 'docker/run.sh'
             buildArgs "JAR_FILE": "${subproject.bootJar.baseName}-${subproject.bootJar.version}.jar",
                     "RUN_SH": "run.sh"
-        }
-
-        dockerRun {
-            name "${subproject.bootJar.baseName}"
-            image "workingbit/${subproject.group}.${subproject.bootJar.baseName}"
-            ports '8080:8080'
         }
     } else {
         docker.name = 'noop'
