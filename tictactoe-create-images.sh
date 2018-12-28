@@ -6,5 +6,5 @@ echo ./gradlew :tictactoe-services:user-service:docker
 echo ./gradlew :tictactoe-services:game-service:docker
 ./gradlew :tictactoe-services:game-service:docker
 echo ./gradlew :tictactoe-services:web-api:docker
-./gradlew :tictactoe-services:web-api:docker
+./gradlew :tictactoe-services:webapi-service:docker
 
