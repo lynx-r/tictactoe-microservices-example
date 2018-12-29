@@ -89,7 +89,7 @@ public class SpringSecurityWebFluxConfig {
                 .httpBasic()
                 .and()
                 .authorizeExchange()
-                .pathMatchers("/auth/token").authenticated()
+                .pathMatchers(AUTH_TOKEN_PATH).authenticated()
                 .and()
                 .addFilterAt(webApiJwtServiceWebFilter, SecurityWebFiltersOrder.AUTHENTICATION)
                 .addFilterAt(tokenWebFilter, SecurityWebFiltersOrder.AUTHENTICATION);

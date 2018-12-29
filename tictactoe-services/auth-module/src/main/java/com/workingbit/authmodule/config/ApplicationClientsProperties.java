@@ -1,6 +1,3 @@
-
-
-
 /*
  * © Copyright 2018 Aleksey Popryadukhin
  *
@@ -48,4 +45,3 @@ public class ApplicationClientsProperties {
     }
 
 }
-
