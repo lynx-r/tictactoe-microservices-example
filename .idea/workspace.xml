@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c041220a-d0da-40de-9336-f5d0ab45efba" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Стартер для работы со Spring Cloud.pages" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -161,8 +162,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="58">
-                <caret line="4" column="130" selection-start-line="4" selection-start-column="123" selection-end-line="4" selection-end-column="130" />
+              <first_editor relative-caret-position="283">
+                <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
               </first_editor>
               <second_editor />
             </state>
@@ -274,7 +275,6 @@
         <option value="$PROJECT_DIR$/tictactoe-services/game-service/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/tictactoe-services/webapi-service/src/main/java/com/tictactoe/webapi/service/WebApiService.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/tictactoe-push-images.sh" />
         <option value="$PROJECT_DIR$/tictactoe-create-images.sh" />
         <option value="$PROJECT_DIR$/build.gradle" />
@@ -287,6 +287,7 @@
         <option value="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/workingbit/authmodule/config/AuthModuleConfig.java" />
         <option value="$PROJECT_DIR$/tictactoe-services/auth-module/src/main/java/com/workingbit/authmodule/config/MicroserviceSpringSecurityWebFluxConfig.java" />
         <option value="$PROJECT_DIR$/tictactoe-services/webapi-service/src/main/java/com/tictactoe/webapi/config/SpringSecurityWebFluxConfig.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -437,7 +438,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546101769672" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546103142676" />
     <property name="eu.ydp.idea.ts.spec.generator.settings.spec.template" value="import {$ClassName$} from '$TestsRelativePath$../src/$classRelativePath$/$ClassName$';&#10;&#10;describe('$ClassName$', () =&gt; {&#10;  let $ObjName$:$ClassName$;&#10;&#10;  beforeEach(() =&gt; {&#10;    $ObjName$ = new $ClassName$();&#10;  });&#10;&#10;  describe('', () =&gt; {&#10;    it('', () =&gt; {&#10;      // given&#10;&#10;      // when&#10;&#10;      // then&#10;    });&#10;  });&#10;});&#10;" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -625,7 +626,7 @@
       <option name="presentableId" value="Default" />
       <updated>1544206231309</updated>
       <workItem from="1544206233497" duration="9688000" />
-      <workItem from="1545924617586" duration="40143000" />
+      <workItem from="1545924617586" duration="40948000" />
     </task>
     <task id="LOCAL-00001" summary="exclude mongo from webapi">
       <created>1544211329688</created>
@@ -795,17 +796,24 @@
       <option name="project" value="LOCAL" />
       <updated>1546099097660</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="update readme">
+      <created>1546101819207</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1546101819208</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49831000" />
+    <option name="totallyTimeSpent" value="50636000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.30472103" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30472103" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -905,7 +913,8 @@
     <MESSAGE value="fix" />
     <MESSAGE value="postman" />
     <MESSAGE value="clear &amp; fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="clear &amp; fix" />
+    <MESSAGE value="update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="update readme" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1352,8 +1361,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="58">
-            <caret line="4" column="130" selection-start-line="4" selection-start-column="123" selection-end-line="4" selection-end-column="130" />
+          <first_editor relative-caret-position="283">
+            <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
           </first_editor>
           <second_editor />
         </state>
