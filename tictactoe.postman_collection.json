@@ -86,7 +86,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4QG1haWwucnUiLCJhdXRocyI6IlJPTEVfVVNFUixST0xFX0dVRVNUIiwiaXNzIjoid29ya2luZ2JpdC5jb20iLCJleHAiOjE1NDYwMDUzNzF9.TTaL6w30IgxM94qzFJr06BCUPzyMJObpFRwtSPpKoEc",
+                          "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4MkBtYWlsLnJ1IiwiYXV0aHMiOiJST0xFX1VTRVIsUk9MRV9HVUVTVCIsImlzcyI6IndvcmtpbmdiaXQuY29tIiwiZXhwIjoxNTQ2MDQ5NzAwfQ.bCQDSULH5b8eaGMXTS0asTRgzug1x25XXxNpzPO8N-U",
 							"type": "string"
 						}
 					]
@@ -132,60 +132,52 @@
           "response": []
         },
       {
-        "name": "Logout",
+        "name": "Users",
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        },
         "request": {
           "auth": {
             "type": "bearer",
             "bearer": [
               {
                 "key": "token",
-                "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGV4QG1haWwucnUiLCJhdXRocyI6IlJPTEVfVVNFUixST0xFX0dVRVNUIiwiaXNzIjoid29ya2luZ2JpdC5jb20iLCJleHAiOjE1NDYwMDUzNzF9.TTaL6w30IgxM94qzFJr06BCUPzyMJObpFRwtSPpKoEc",
+                "value": "{{TOKEN}}",
                 "type": "string"
               }
             ]
           },
-          "method": "POST",
+          "method": "GET",
           "header": [
             {
               "key": "Content-Type",
               "name": "Content-Type",
-              "type": "text",
-              "value": "application/x-www-form-urlencoded"
+              "value": "application/json",
+              "type": "text"
             }
           ],
           "body": {
-            "mode": "urlencoded",
-            "urlencoded": [
-              {
-                "key": "email",
-                "value": "alex@mail.ru",
-                "type": "text"
-              },
-              {
-                "key": "password",
-                "value": "alex",
-                "type": "text"
-              }
-            ]
+            "mode": "raw",
+            "raw": ""
           },
           "url": {
-            "raw": "{{HOST}}/api/web/auth/logout",
+            "raw": "{{HOST}}/api/web/method-protected/users",
             "host": [
               "{{HOST}}"
             ],
             "path": [
               "api",
               "web",
-              "auth",
-              "logout"
+              "method-protected",
+              "users"
             ]
           },
-				"description": "An user token can be acquired via guest token.\nIt is used for creating a game."
+          "description": "Get users who are registerd in system and can play.\nMay be acquired using a guest or user tokens."
 			},
 			"response": []
 		},
 		{
-			"name": "Users",
+          "name": "Games",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -214,23 +206,23 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{HOST}}/api/web/method-protected/users",
+                  "raw": "{{HOST}}/api/web/url-protected/games",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"web",
-						"method-protected",
-						"users"
+                      "url-protected",
+                      "games"
 					]
 				},
-				"description": "Get users who are registerd in system and can play.\nMay be acquired using a guest or user tokens."
+              "description": "Get created games.\nMay be acquired using a guest or user tokens."
 			},
 			"response": []
 		},
 		{
-			"name": "Games",
+          "name": "Games Histryx",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -250,8 +242,8 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+                      "type": "text",
+                      "value": "application/json"
 					}
 				],
 				"body": {
@@ -259,15 +251,16 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{HOST}}/api/web/url-protected/games",
+                  "raw": "http://localhost:40002/v1/games/long",
+                  "protocol": "http",
 					"host": [
-						"{{HOST}}"
+                      "localhost"
 					],
+                  "port": "40002",
 					"path": [
-						"api",
-						"web",
-						"url-protected",
-						"games"
+                      "v1",
+                      "games",
+                      "long"
 					]
 				},
 				"description": "Get created games.\nMay be acquired using a guest or user tokens."

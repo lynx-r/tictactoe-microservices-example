@@ -139,6 +139,7 @@ public class AuthController {
     }
 
     private Mono<User> logoutInternal(User user) {
+        user.setGuest(true);
         user.loggedOut();
         return userRepository.save(user)
                 .flatMap((u) -> userRepository.findByFingerprintAndGuestTrue(u.getFingerprint()));
