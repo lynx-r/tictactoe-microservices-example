@@ -11,8 +11,6 @@ services:
   configserver:
     image: 'workingbit/com.tictactoe.config-server'
     container_name: configserver
-    links:
-      - "discoveryserver:discoveryserver"
     ports:
       - "8881:8881"
     env_file:

@@ -1,5 +1,5 @@
-FROM openjdk:11
-RUN apt-get -y update && apt-get -y upgrade && apt-get -y install netcat
+FROM openjdk:jdk-oracle
+RUN yum -y upgrade && yum -y install nmap-ncat
 RUN mkdir app
 ARG JAR_FILE
 ARG RUN_SH
