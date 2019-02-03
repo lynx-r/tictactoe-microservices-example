@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      username: ${CONFIG_USERNAME:configUser}
+      password: ${CONFIG_PASSWORD:configPassword}
+      discovery:
+        enabled: true
+        service-id: configserver
+
