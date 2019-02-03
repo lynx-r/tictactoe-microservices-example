@@ -40,9 +40,9 @@ public class MicroserviceSpringSecurityWebFluxConfig {
     private String[] jwtTokenMatchUrls;
 
     /**
-     * The test defined in SampleApplicationTests class will only get executed
-     * if you change the authentication mechanism to basic (from form mechanism)
-     * in SpringSecurityWebFluxConfig file
+     * Bean which configures whiteListed and JWT filter urls
+     * Also it configures authentication for Actuator. Actuator takes configured AuthenticationManager automatically
+     * which uses MapReactiveUserDetailsService to configure inMemory users
      */
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(
